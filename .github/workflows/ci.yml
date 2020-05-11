@@ -36,5 +36,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: lint
-        run: ./gradlew lint
+#      There are currently no Android modules, so this doesn't actually resolve to a task (and therefore fails)
+#      - name: lint
+#        run: ./gradlew lint
