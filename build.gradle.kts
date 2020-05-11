@@ -189,7 +189,9 @@ fun linkModuleDocs(
 }
 
 val clean by tasks.registering {
-  delete("build")
+  doLast {
+    delete("build")
+  }
 }
 
 subprojects {
@@ -235,8 +237,9 @@ val cleanDocs by tasks.registering {
   description = "cleans /docs"
   group = "documentation"
 
-  cleanDocs()
-
+  doLast {
+    cleanDocs()
+  }
 }
 
 val copyRootFiles by tasks.registering {
