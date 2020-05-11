@@ -6,8 +6,6 @@
 
 ## Contents
 <!--- TOC -->
-
-
 <!--- END -->
 
 I promise I'll put things here soon.
