@@ -15,58 +15,58 @@
 
 package autoreset.api
 
+import io.kotest.core.spec.*
 import io.kotest.core.spec.style.*
 import io.kotest.matchers.*
 
-internal class ResetManagerTest : FreeSpec(),
-                                  FakeTest<ResetManager, ResetManager, TestResetManager> {
+internal class ResetManagerTest : FreeSpec({
 
-  override val subject1Factory: () -> ResetManager = { ResetManager() }
+  include(managerTests(ResetManager()))
+  include(managerTests(TestResetManager()))
+}) {
+  override fun isolationMode(): IsolationMode? = IsolationMode.InstancePerLeaf
+}
 
-  override val subject2Factory: () -> TestResetManager = { TestResetManager() }
+private inline fun <reified T : ResetManager> managerTests(manager: T) = freeSpec {
 
-  init {
+  manager::class.toString() - {
 
     "resetAll" - {
 
       "registered delegates should  be reset" - {
-        runTest { manager ->
 
-          val a = TestResets()
-          val b = TestResets()
+        val a = TestResets()
+        val b = TestResets()
 
-          manager.register(a)
-          manager.register(b)
+        manager.register(a)
+        manager.register(b)
 
-          a.numResets shouldBe 0
-          b.numResets shouldBe 0
+        a.numResets shouldBe 0
+        b.numResets shouldBe 0
 
-          manager.resetAll()
+        manager.resetAll()
 
-          a.numResets shouldBe 1
-          b.numResets shouldBe 1
-        }
+        a.numResets shouldBe 1
+        b.numResets shouldBe 1
       }
+    }
 
-      "delegates should only be reset once unless re-registered" - {
-        runTest { manager ->
+    "delegates should only be reset once unless re-registered" - {
 
-          val a = TestResets()
-          val b = TestResets()
+      val a = TestResets()
+      val b = TestResets()
 
-          manager.register(a)
-          manager.register(b)
+      manager.register(a)
+      manager.register(b)
 
-          a.numResets shouldBe 0
-          b.numResets shouldBe 0
+      a.numResets shouldBe 0
+      b.numResets shouldBe 0
 
-          manager.resetAll()
-          manager.resetAll()
+      manager.resetAll()
+      manager.resetAll()
 
-          a.numResets shouldBe 1
-          b.numResets shouldBe 1
-        }
-      }
+      a.numResets shouldBe 1
+      b.numResets shouldBe 1
     }
   }
 }
