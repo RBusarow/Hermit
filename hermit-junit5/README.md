@@ -1,41 +1,32 @@
-# Change log for Hermit
+# MODULE hermit-junit5
 
 ## Contents
 <!--- TOC -->
-
-* [Version 0.9.0](#version-090)
-  * [General](#general)
-  * [Testing](#testing)
-
 <!--- END -->
 
 
 
-## Version 0.9.0
 
-### General
-* [ResetManager] class for bulk resets
-* [LazyResets] delegate class for automatically binding to the [ResetManager]
-* [by resets][resets] function
 
-### Testing
-* [AutoResetRule] JUnit4 [Rule]
-* [AutoReset] interface with [AutoResetExtension] for JUnit5
-*
+
+
+
+
+
+
+
+
+
 <!--- MODULE hermit-core-->
 <!--- INDEX  -->
-[ResetManager]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-reset-manager/index.html
-[LazyResets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-lazy-resets/index.html
-[resets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/resets.html
 <!--- MODULE hermit-junit4-->
 <!--- INDEX  -->
-[AutoResetRule]: https://rbusarow.github.io/Hermit/hermit-junit4//hermit.test.junit/-auto-reset-rule/index.html
 <!--- MODULE hermit-junit5-->
 <!--- INDEX  -->
-[AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
-[AutoResetExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset-extension/index.html
 <!--- INDEX  -->
 <!--- END -->
+
+
 
 [Android Lifecycle]: https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html
 [androidx-lifecycle-runtime-ktx]: https://developer.android.com/jetpack/androidx/releases/lifecycle

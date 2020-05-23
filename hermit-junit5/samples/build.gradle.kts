@@ -12,12 +12,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+import kotlinx.atomicfu.plugin.gradle.*
+
+plugins {
+  id(Plugins.javaLibrary)
+  id(Plugins.kotlin)
+}
+
+sourceSets["test"].java.srcDir("test")
+
+dependencies {
+  implementation(Libs.Kotlin.stdlib)
+
+  implementation(project(":hermit-core"))
+  implementation(project(":hermit-junit5"))
+
+  testImplementation(Libs.JUnit.core)
+
+  testImplementation(Libs.KoTest.assertions)
+  testImplementation(Libs.KoTest.properties)
+  testImplementation(Libs.KoTest.runner)
+
+  testImplementation(Libs.Kotlin.test)
+  testImplementation(Libs.Kotlin.testCommon)
+
+}

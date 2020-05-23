@@ -12,12 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+package samples
+
+import hermit.test.*
+
+object MutableSingleton : Resets {
+
+  var sideEffect1: Int? = null
+  var sideEffect2: Int? = null
+
+  // assume this was added after the initial Resettable implementation
+  var sideEffect3: Int? = null
+
+  override fun reset() {
+    sideEffect1 = null
+    sideEffect2 = null
+
+    // the updating author forgot to add sideEffect3 to the reset function!
+  }
+}

@@ -12,12 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+plugins {
+  id(Plugins.dokka)
+  id(Plugins.javaLibrary)
+  id(Plugins.kotlin)
+  id(Plugins.mavenPublish)
+}
+
+dependencies {
+
+  api(project(":hermit-core"))
+
+  implementation(Libs.JUnit.jUnit4)
+  implementation(Libs.Kotlin.reflect)
+  implementation(Libs.Kotlin.stdlib)
+
+  testImplementation(Libs.KoTest.assertions)
+  testImplementation(Libs.KoTest.properties)
+  testImplementation(Libs.KoTest.runner)
+  testImplementation(Libs.Kotlin.test)
+  testImplementation(Libs.Kotlin.testCommon)
+}

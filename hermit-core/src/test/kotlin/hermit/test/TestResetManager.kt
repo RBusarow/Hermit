@@ -12,12 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+package hermit.test
+
+/**
+ * Same as the normal [ResetManager] factory instance
+ * except that it exposes its delegates
+ */
+internal class TestResetManager : ResetManager {
+
+  val delegates = mutableListOf<Resets>()
+
+  override fun register(delegate: Resets) {
+    synchronized(delegates) {
+      delegates.add(delegate)
+    }
+  }
+
+  override fun resetAll() = synchronized(delegates) {
+    delegates.forEach { it.reset() }
+    delegates.clear()
+  }
+}
+

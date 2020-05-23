@@ -19,8 +19,8 @@ object Modules {
   private val sampleRegex = ".*sample.*".toRegex()
 
   val allPaths = listOf(
-    ":api",
-    ":api:samples",
+    ":hermit-core",
+    ":hermit-core:samples",
     ":junit4",
     ":junit4:samples",
     ":junit5",

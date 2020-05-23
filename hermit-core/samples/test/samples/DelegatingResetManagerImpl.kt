@@ -12,12 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+package samples
+
+import hermit.test.*
+
+class DelegatingResetManagerImpl : ResetManager by ResetManager() {
+
+  // auto-registered with this ResetManager
+  val someResettable by resets { SomeClass() }
+
+  init {
+
+    // initializes the someResettable instance
+    someResettable
+
+    // resets someResettable
+    resetAll()
+  }
+}
+
+class SomeClass
