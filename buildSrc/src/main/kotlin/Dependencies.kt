@@ -47,7 +47,7 @@ object Versions {
   const val kotlin = "1.3.72"
   const val mavenPublish = "0.9.0"
 
-  const val versionName = "0.9.0"
+  const val versionName = "0.9.1"
 }
 
 object BuildPlugins {
