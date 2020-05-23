@@ -1,4 +1,4 @@
-[api](../index.md) / [autoreset.api](index.md) / [ResetManager](./-reset-manager.md)
+[api](../index.md) / [hermit.api](index.md) / [ResetManager](./-reset-manager.md)
 
 # ResetManager
 

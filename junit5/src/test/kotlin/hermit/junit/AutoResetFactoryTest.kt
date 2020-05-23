@@ -13,16 +13,17 @@
  * limitations under the License.
  */
 
-package autoreset.api
+package hermit.junit
 
+import hermit.*
 import io.kotest.core.spec.*
 import io.kotest.core.spec.style.*
 import io.kotest.matchers.*
 
-internal class ResetManagerTest : FreeSpec({
+internal class AutoResetFactoryTest : FreeSpec({
 
   include(managerTests(ResetManager()))
-  include(managerTests(TestResetManager()))
+  include(managerTests(AutoReset()))
 }) {
   override fun isolationMode(): IsolationMode? = IsolationMode.InstancePerLeaf
 }

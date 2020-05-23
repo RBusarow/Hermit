@@ -1,4 +1,4 @@
-[junit5](../../index.md) / [autoreset.junit](../index.md) / [AutoResetExtension](index.md) / [register](./register.md)
+[junit5](../../index.md) / [hermit.junit](../index.md) / [AutoResetExtension](index.md) / [register](./register.md)
 
 # register
 

@@ -1,6 +1,6 @@
-[junit5](../index.md) / [autoreset.junit](./index.md)
+[junit5](../index.md) / [hermit.junit](./index.md)
 
-## Package autoreset.junit
+## Package hermit.junit
 
 ### Types
 
@@ -39,7 +39,7 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
     someDao.getAllThings() shouldBe listOf()
   }
 }<br>```
-<br>`interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/AutoReset/api/autoreset.api/-reset-manager/index.md) |
+<br>`interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/AutoReset/api/hermit.api/-reset-manager/index.md) |
 | [AutoResetExtension](-auto-reset-extension/index.md) | `class AutoResetExtension : TestInstancePostProcessor, AfterEachCallback, `[`AutoReset`](-auto-reset.md) |
 
 ### Functions

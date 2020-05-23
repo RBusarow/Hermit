@@ -15,7 +15,7 @@
 
 package samples
 
-import autoreset.api.*
+import hermit.*
 
 object MutableSingleton : Resets {
 

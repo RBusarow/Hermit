@@ -13,30 +13,15 @@
  * limitations under the License.
  */
 
-package autoreset.api
+package hermit
 
 /**
- * Marks a class which is capable of tracking and resetting multiple [Resets] instances.
- *
- * @sample samples.UnsafeResetManager
- * @see [ResetManager]
+ * Same as the normal [ResetManager] factory instance
+ * except that it exposes its delegates
  */
-interface ResetManager {
+internal class TestResetManager : ResetManager {
 
-  fun register(delegate: Resets)
-  fun resetAll()
-}
-
-/**
- * Factory for creating a default [ResetManager] instance.
- *
- * All calls to [register][ResetManager.register] and [resetAll][ResetManager.resetAll] are thread-safe.
- *
- * @sample samples.DelegatingResetManagerImpl
- */
-fun ResetManager(): ResetManager = object : ResetManager {
-
-  private val delegates: MutableList<Resets> = mutableListOf()
+  val delegates = mutableListOf<Resets>()
 
   override fun register(delegate: Resets) {
     synchronized(delegates) {
@@ -49,3 +34,4 @@ fun ResetManager(): ResetManager = object : ResetManager {
     delegates.clear()
   }
 }
+

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package autoreset.api
+package hermit
 
 /**
  * Marks any type which may be reset.

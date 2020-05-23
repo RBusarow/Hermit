@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [LazyResets](index.md) / [isInitialized](./is-initialized.md)
+[api](../../index.md) / [hermit.api](../index.md) / [LazyResets](index.md) / [isInitialized](./is-initialized.md)
 
 # isInitialized
 

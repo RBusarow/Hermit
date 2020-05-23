@@ -1,4 +1,4 @@
-[api](../index.md) / [autoreset.api](index.md) / [resets](./resets.md)
+[api](../index.md) / [hermit.api](index.md) / [resets](./resets.md)
 
 # resets
 
@@ -32,7 +32,7 @@ Lazy instance which can be reset.  After a reset, the next access will create a 
 Each time a new instance is created, it is registered with the [ResetManager](-reset-manager/index.md) and will be reset with the next [ResetManager.resetAll](-reset-manager/reset-all.md).
 
 If the type being created can be initialized with a default constructor,
-this function can be invoked without a [valueFactory](resets.md#autoreset.api$resets(autoreset.api.ResetManager, kotlin.Function0((autoreset.api.resets.T)))/valueFactory) argument.
+this function can be invoked without a [valueFactory](resets.md#hermit.api$resets(hermit.api.ResetManager, kotlin.Function0((hermit.api.resets.T)))/valueFactory) argument.
 
 If the type being created is an interface, abstract class, or does not have a default constructor,
 then a factory must be specified.

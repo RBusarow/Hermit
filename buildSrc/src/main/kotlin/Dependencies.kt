@@ -194,9 +194,9 @@ object Libs {
 
     object AutoReset {
 
-      const val api = "com.rickbusarow.autoreset:autoreset-api:${Versions.versionName}"
-      const val junit4 = "com.rickbusarow.autoreset:autoreset-junit4:${Versions.versionName}"
-      const val junit5 = "com.rickbusarow.autoreset:autoreset-junit5:${Versions.versionName}"
+      const val api = "com.rickbusarow.hermit:hermit-api:${Versions.versionName}"
+      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:${Versions.versionName}"
+      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:${Versions.versionName}"
     }
 
     object Dispatch {

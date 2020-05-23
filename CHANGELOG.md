@@ -1,4 +1,4 @@
-# Change log for AutoReset
+# Change log for Hermit
 
 ## Contents
 <!--- TOC -->

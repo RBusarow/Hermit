@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [ResetManager](index.md) / [register](./register.md)
+[api](../../index.md) / [hermit.api](../index.md) / [ResetManager](index.md) / [register](./register.md)
 
 # register
 

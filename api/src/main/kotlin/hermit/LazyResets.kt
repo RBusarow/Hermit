@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package autoreset.api
+package hermit
 
 import kotlin.reflect.*
 
@@ -81,8 +81,8 @@ public inline fun <reified T : Any> ResetManager.resets(
 
       when {
         clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
-        clazz.isAbstract       -> throw LazyResetDelegateAbstractException(clazz)
-        else                   -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
+        clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)
+        else -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
       }
     }
 

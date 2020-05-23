@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [LazyResetDelegateNonDefaultConstructorException](index.md) / [&lt;init&gt;](./-init-.md)
+[api](../../index.md) / [hermit.api](../index.md) / [LazyResetDelegateNonDefaultConstructorException](index.md) / [&lt;init&gt;](./-init-.md)
 
 # &lt;init&gt;
 

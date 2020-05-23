@@ -15,7 +15,7 @@
 
 package samples
 
-import autoreset.api.*
+import hermit.*
 
 class UnsafeResetManager : ResetManager {
 

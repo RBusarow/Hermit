@@ -15,13 +15,15 @@
 
 package samples
 
-import autoreset.api.*
-import autoreset.junit.*
+import hermit.*
+import hermit.junit.*
 import io.kotest.matchers.*
 
 class AutoResetRuleSample {
 
-  @JvmField @Rule val rule = AutoResetRule()
+  @JvmField
+  @Rule
+  val rule = AutoResetRule()
 
   /**
    * automatically has reset() called on it after each test
@@ -33,7 +35,9 @@ class AutoResetRuleSample {
   /**
    * you can also pass in your own [ResetManager]
    */
-  @JvmField @Rule val explicitRule = AutoResetRule(resetManager)
+  @JvmField
+  @Rule
+  val explicitRule = AutoResetRule(resetManager)
 
   @Test
   fun `some property gets reset`() {

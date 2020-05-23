@@ -15,7 +15,7 @@
 
 package samples
 
-import autoreset.api.*
+import hermit.*
 
 /**
  * Makes a MutableMap which conforms to the Resettable interface,

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package autoreset.api
+package hermit
 
 import io.kotest.assertions.throwables.*
 import io.kotest.core.spec.style.*

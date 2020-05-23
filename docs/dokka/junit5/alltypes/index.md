@@ -8,7 +8,7 @@
 |---|---|
 |
 
-##### [autoreset.junit.AutoReset](../autoreset.junit/-auto-reset.md)
+##### [hermit.junit.AutoReset](../autoreset.junit/-auto-reset.md)
 
 ``` kotlin
 /**
@@ -46,6 +46,6 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
 
 |
 
-##### [autoreset.junit.AutoResetExtension](../autoreset.junit/-auto-reset-extension/index.md)
+##### [hermit.junit.AutoResetExtension](../autoreset.junit/-auto-reset-extension/index.md)
 
 

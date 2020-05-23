@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [Resets](index.md) / [reset](./reset.md)
+[api](../../index.md) / [hermit.api](../index.md) / [Resets](index.md) / [reset](./reset.md)
 
 # reset
 

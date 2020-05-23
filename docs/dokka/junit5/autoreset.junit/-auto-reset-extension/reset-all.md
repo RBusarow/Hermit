@@ -1,4 +1,4 @@
-[junit5](../../index.md) / [autoreset.junit](../index.md) / [AutoResetExtension](index.md) / [resetAll](./reset-all.md)
+[junit5](../../index.md) / [hermit.junit](../index.md) / [AutoResetExtension](index.md) / [resetAll](./reset-all.md)
 
 # resetAll
 

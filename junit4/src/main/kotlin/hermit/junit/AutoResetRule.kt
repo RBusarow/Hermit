@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package autoreset.junit
+package hermit.junit
 
-import autoreset.api.*
+import hermit.*
 import org.junit.rules.*
 import org.junit.runner.*
 
@@ -31,7 +31,8 @@ import org.junit.runner.*
  */
 class AutoResetRule(
   private val delegate: ResetManager = ResetManager()
-) : TestWatcher(), ResetManager by delegate {
+) : TestWatcher(),
+    ResetManager by delegate {
 
   override fun finished(description: Description?) {
     delegate.resetAll()

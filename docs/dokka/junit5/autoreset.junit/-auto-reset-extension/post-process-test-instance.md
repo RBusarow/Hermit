@@ -1,4 +1,4 @@
-[junit5](../../index.md) / [autoreset.junit](../index.md) / [AutoResetExtension](index.md) / [postProcessTestInstance](./post-process-test-instance.md)
+[junit5](../../index.md) / [hermit.junit](../index.md) / [AutoResetExtension](index.md) / [postProcessTestInstance](./post-process-test-instance.md)
 
 # postProcessTestInstance
 

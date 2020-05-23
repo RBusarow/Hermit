@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package autoreset.junit
+package hermit.junit
 
-import autoreset.api.*
+import hermit.*
 import io.kotest.matchers.*
 import org.junit.*
 import org.junit.runners.*
@@ -23,11 +23,15 @@ import org.junit.runners.*
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 internal class AutoResetRuleTest {
 
-  @JvmField @Rule val defaultRule = AutoResetRule()
+  @JvmField
+  @Rule
+  val defaultRule = AutoResetRule()
 
   val resetManager = ResetManager()
 
-  @JvmField @Rule val argumentRule = AutoResetRule(resetManager)
+  @JvmField
+  @Rule
+  val argumentRule = AutoResetRule(resetManager)
 
   val defaultResetProperty by defaultRule.resets { System.nanoTime() }
   val argumentResetProperty by defaultRule.resets { System.nanoTime() }

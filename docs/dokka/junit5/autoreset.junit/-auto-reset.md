@@ -1,8 +1,8 @@
-[junit5](../index.md) / [autoreset.junit](index.md) / [AutoReset](./-auto-reset.md)
+[junit5](../index.md) / [hermit.junit](index.md) / [AutoReset](./-auto-reset.md)
 
 # AutoReset
 
-`@ExtendWith([NormalClass(value=autoreset/junit/AutoResetExtension)]) interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/AutoReset/api/autoreset.api/-reset-manager/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/junit5/src/main/kotlin/autoreset/junit/AutoReset.kt#L26)
+`@ExtendWith([NormalClass(value=hermit/junit/AutoResetExtension)]) interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/AutoReset/api/autoreset.api/-reset-manager/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/junit5/src/main/kotlin/autoreset/junit/AutoReset.kt#L26)
 
 ``` kotlin
 /**

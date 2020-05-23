@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [LazyResets](index.md) / [value](./value.md)
+[api](../../index.md) / [hermit.api](../index.md) / [LazyResets](index.md) / [value](./value.md)
 
 # value
 

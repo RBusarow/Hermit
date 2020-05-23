@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-package autoreset.junit
+package hermit.junit
 
-import autoreset.api.*
+import hermit.*
 import kotlinx.atomicfu.*
 import org.junit.jupiter.api.extension.*
 

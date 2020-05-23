@@ -1,6 +1,6 @@
-[junit4](../index.md) / [autoreset.junit](./index.md)
+[junit4](../index.md) / [hermit.junit](./index.md)
 
-## Package autoreset.junit
+## Package hermit.junit
 
 ### Types
 

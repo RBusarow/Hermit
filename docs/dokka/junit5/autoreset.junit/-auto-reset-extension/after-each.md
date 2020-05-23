@@ -1,4 +1,4 @@
-[junit5](../../index.md) / [autoreset.junit](../index.md) / [AutoResetExtension](index.md) / [afterEach](./after-each.md)
+[junit5](../../index.md) / [hermit.junit](../index.md) / [AutoResetExtension](index.md) / [afterEach](./after-each.md)
 
 # afterEach
 

@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "AutoReset"
+rootProject.name = "Hermit"
 include(
-  ":api",
-  ":api:samples",
-  ":junit4",
-  ":junit4:samples",
-  ":junit5",
-  ":junit5:samples"
+        ":api",
+        ":api:samples",
+        ":junit4",
+        ":junit4:samples",
+        ":junit5",
+        ":junit5:samples"
 )

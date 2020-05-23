@@ -15,8 +15,8 @@
 
 package samples
 
-import autoreset.api.*
-import autoreset.junit.*
+import hermit.*
+import hermit.junit.*
 import io.kotest.matchers.*
 import org.junit.jupiter.api.*
 

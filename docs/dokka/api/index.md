@@ -6,7 +6,7 @@
 
 | Name | Summary |
 |---|---|
-| [autoreset.api](autoreset.api/index.md) |  |
+| [hermit.api](autoreset.api/index.md) |  |
 
 ### Index
 

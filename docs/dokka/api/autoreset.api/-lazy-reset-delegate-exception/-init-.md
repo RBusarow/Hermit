@@ -1,4 +1,4 @@
-[api](../../index.md) / [autoreset.api](../index.md) / [LazyResetDelegateException](index.md) / [&lt;init&gt;](./-init-.md)
+[api](../../index.md) / [hermit.api](../index.md) / [LazyResetDelegateException](index.md) / [&lt;init&gt;](./-init-.md)
 
 # &lt;init&gt;
 

@@ -1,4 +1,4 @@
-[junit4](../../index.md) / [autoreset.junit](../index.md) / [AutoResetRule](./index.md)
+[junit4](../../index.md) / [hermit.junit](../index.md) / [AutoResetRule](./index.md)
 
 # AutoResetRule
 

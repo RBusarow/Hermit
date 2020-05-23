@@ -1,6 +1,6 @@
-[api](../index.md) / [autoreset.api](./index.md)
+[api](../index.md) / [hermit.api](./index.md)
 
-## Package autoreset.api
+## Package hermit.api
 
 ### Types
 
