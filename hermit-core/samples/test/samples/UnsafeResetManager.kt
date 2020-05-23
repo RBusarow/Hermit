@@ -12,12 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+package samples
+
+import hermit.test.*
+
+class UnsafeResetManager : ResetManager {
+
+  private val delegates = mutableListOf<Resets>()
+
+  override fun register(delegate: Resets) {
+    delegates.add(delegate)
+  }
+
+  override fun resetAll() {
+    delegates.forEach { it.reset() }
+    delegates.clear()
+  }
+
+}

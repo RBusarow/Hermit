@@ -131,13 +131,13 @@ allprojects {
        which point to something in moduleA's kdoc will actually work.
        */
 
-      if (this@proj.name != "api") {
+      if (this@proj.name != "hermit-core") {
 
         linkModuleDocs(
           matchingModules = emptyList(), // all
           currentProject = this@proj,
           currentTask = this@dokkaTask,
-          dependencyModule = "api"
+          dependencyModule = "hermit-core"
         )
       }
 
@@ -179,7 +179,7 @@ fun linkModuleDocs(
 
     currentTask.configuration {
       externalDocumentationLink {
-        url = URL("https://rbusarow.github.io/AutoReset/$dependencyModule/")
+        url = URL("https://rbusarow.github.io/Hermit/$dependencyModule/")
         packageListUrl = URL(
           "file://$projectDir/$dependencyModule/build/dokka/$dependencyModule/package-list"
         )
@@ -269,7 +269,7 @@ extensions.configure<KnitPluginExtension> {
 
   moduleDocs = "build/dokka"
   moduleMarkers = listOf("build.gradle", "build.gradle.kts")
-  siteRoot = "https://rbusarow.github.io/AutoReset"
+  siteRoot = "https://rbusarow.github.io/Hermit"
 }
 
 // Build API docs for all modules with dokka before running Libs.Kotlinx.Knit

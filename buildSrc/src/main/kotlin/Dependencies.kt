@@ -47,7 +47,7 @@ object Versions {
   const val kotlin = "1.3.72"
   const val mavenPublish = "0.9.0"
 
-  const val versionName = "0.9.0"
+  const val versionName = "0.9.1"
 }
 
 object BuildPlugins {
@@ -194,9 +194,9 @@ object Libs {
 
     object AutoReset {
 
-      const val api = "com.rickbusarow.autoreset:autoreset-api:${Versions.versionName}"
-      const val junit4 = "com.rickbusarow.autoreset:autoreset-junit4:${Versions.versionName}"
-      const val junit5 = "com.rickbusarow.autoreset:autoreset-junit5:${Versions.versionName}"
+      const val api = "com.rickbusarow.hermit:hermit-core:${Versions.versionName}"
+      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:${Versions.versionName}"
+      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:${Versions.versionName}"
     }
 
     object Dispatch {

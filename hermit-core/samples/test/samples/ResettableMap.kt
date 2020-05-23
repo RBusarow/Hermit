@@ -12,12 +12,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
-)
+
+package samples
+
+import hermit.test.*
+
+/**
+ * Makes a MutableMap which conforms to the Resettable interface,
+ * by delegating `reset()` to the existing [clear] function.
+ */
+class ResettableMap<K, V> : MutableMap<K, V> by mutableMapOf(),
+                            Resets {
+
+  override fun reset() {
+    clear()
+  }
+}
+
