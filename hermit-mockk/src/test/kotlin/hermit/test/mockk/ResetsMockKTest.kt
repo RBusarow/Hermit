@@ -6,16 +6,16 @@ import io.kotest.core.spec.style.*
 import io.kotest.matchers.*
 import io.mockk.*
 
-internal class ClearsMockKTest : FreeSpec({
+internal class ResetsMockKTest : FreeSpec({
 
   include(
-    resetMockkTests(name = "ResetMockks class", resetManager = ResetManager()) { manager, factory ->
-      ClearsMockK(manager, mockk(), factory)
+    resetMockkTests(name = "ResetMockks class", resetManager = Hermit()) { manager, factory ->
+      ResetsMockK(manager, mockk(), ResetsMockK.ClearPolicy(), factory)
     }
   )
   include(
-    resetMockkTests(name = "delegate", resetManager = ResetManager()) { manager, factory ->
-      manager.clears(block = factory)
+    resetMockkTests(name = "delegate", resetManager = Hermit()) { manager, factory ->
+      manager.resetsMockk(block = factory)
     }
   )
 }) {

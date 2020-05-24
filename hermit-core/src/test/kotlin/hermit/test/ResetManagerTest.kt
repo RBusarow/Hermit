@@ -21,7 +21,7 @@ import io.kotest.matchers.*
 
 internal class ResetManagerTest : FreeSpec({
 
-  include(managerTests(ResetManager()))
+  include(managerTests(Hermit()))
   include(managerTests(TestResetManager()))
 }) {
   override fun isolationMode(): IsolationMode? = IsolationMode.InstancePerLeaf

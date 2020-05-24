@@ -28,11 +28,12 @@ import kotlin.reflect.*
  * because otherwise, it is likely that the first access of the [mock] instance would be inside an [every] block.
  * Attempting to invoke [every] while already inside [every] causes a [MockKException].
  *
- * @sample samples.LazyResetsSample.lazyResetClassSample
+ * @sample samples.SimpleTest
  */
-public class ClearsMockK<out T : Any>(
+public class ResetsMockK<out T : Any>(
   private val resetManager: ResetManager,
   private val mock: T,
+  private val clearPolicy: ClearPolicy = ClearPolicy(),
   private val block: T.() -> Unit = {}
 ) : Lazy<T>,
     Resets {
@@ -55,23 +56,41 @@ public class ClearsMockK<out T : Any>(
 
   override fun reset() {
     lazyHolder = createLazy()
-    clearMocks(mock)
+    clearMocks(
+      firstMock = mock,
+      answers = clearPolicy.answers,
+      recordedCalls = clearPolicy.recordedCalls,
+      childMocks = clearPolicy.childMocks,
+      verificationMarks = clearPolicy.verificationMarks,
+      exclusionRules = clearPolicy.exclusionRules
+    )
     mock.block()
   }
+
+  data class ClearPolicy(
+    val answers: Boolean = true,
+    val recordedCalls: Boolean = true,
+    val childMocks: Boolean = true,
+    val verificationMarks: Boolean = true,
+    val exclusionRules: Boolean = true
+  )
 }
 
-public inline fun <reified T : Any> ResetManager.clears(
+public inline fun <reified T : Any> ResetManager.resetsMockk(
   name: String? = null,
   relaxed: Boolean = false,
   vararg moreInterfaces: KClass<*>,
   relaxUnitFun: Boolean = false,
+  clearPolicy: ResetsMockK.ClearPolicy = ResetsMockK.ClearPolicy(),
   noinline block: T.() -> Unit = {}
-): ClearsMockK<T> = ClearsMockK(
+): ResetsMockK<T> = ResetsMockK(
   resetManager = this,
   mock = mockk(
     name = name,
     relaxed = relaxed,
-    moreInterfaces = *moreInterfaces, relaxUnitFun = relaxUnitFun
+    moreInterfaces = *moreInterfaces,
+    relaxUnitFun = relaxUnitFun
   ),
+  clearPolicy = clearPolicy,
   block = block
 )

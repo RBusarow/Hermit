@@ -25,6 +25,8 @@ sourceSets["test"].java.srcDir("test")
 dependencies {
   implementation(Libs.Kotlin.stdlib)
 
+  implementation(project(":hermit-core"))
+  implementation(project(":hermit-junit5"))
   implementation(project(":hermit-mockk"))
 
   testImplementation(Libs.JUnit.core)
@@ -35,5 +37,7 @@ dependencies {
 
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
+
+  testImplementation(Libs.MockK.core)
 
 }
