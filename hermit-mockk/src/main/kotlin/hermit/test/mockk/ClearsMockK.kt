@@ -5,9 +5,28 @@ import io.mockk.*
 import kotlin.reflect.*
 
 /**
- * Lazy instance which can be reset.  After a reset, the next access will create a new instance.
+ * Lazy MockK object for which [reset] will call [clearMocks].
  *
- * Each time a new instance is created, it is registered with the [ResetManager] and will be reset with the next [ResetManager.resetAll].
+ * # Lifecycle
+ *
+ * ## On initialization
+ * * creates a MockK instance
+ * * *if [block] was specified* sets all answers from the `every { ... }` [block] argument
+ *
+ * ## On first access after reset
+ * * registers the [mock] with the [resetManager]
+ *
+ * ## On repeated access
+ * * returns the same [mock] instance and does nothing with [block]
+ *
+ * ## On reset
+ * * calls [clearMocks(mock)][clearMocks] and eagerly invokes [block] again to reset the state to the initial one
+ *
+ * **Implementation Note**
+ *
+ * This behavior of eagerly invoking the answers [block] is atypical for this library.  It is necessary
+ * because otherwise, it is likely that the first access of the [mock] instance would be inside an [every] block.
+ * Attempting to invoke [every] while already inside [every] causes a [MockKException].
  *
  * @sample samples.LazyResetsSample.lazyResetClassSample
  */
