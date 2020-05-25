@@ -48,9 +48,9 @@ allprojects {
     jcenter()
   }
 
-//  tasks.withType<Test> {
-//    useJUnitPlatform()
-//  }
+  tasks.withType<Test> {
+    useJUnitPlatform()
+  }
 
   afterEvaluate proj@{
     tasks.withType<DokkaTask> dokkaTask@{

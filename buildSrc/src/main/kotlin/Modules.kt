@@ -24,9 +24,7 @@ object Modules {
     ":hermit-junit4",
     ":hermit-junit4:samples",
     ":hermit-junit5",
-    ":hermit-junit5:samples",
-    ":hermit-mockk",
-    ":hermit-mockk:samples"
+    ":hermit-junit5:samples"
   )
   val allInternalPaths = allPaths.filter { it.matches(internalRegex) }
   val allProductionPaths = allPaths.filter { !it.matches(internalRegex, sampleRegex) }
