@@ -12,14 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
-include(
-  ":hermit-core",
-  ":hermit-core:samples",
-  ":hermit-junit4",
-  ":hermit-junit4:samples",
-  ":hermit-junit5",
-  ":hermit-junit5:samples",
-  ":hermit-mockk",
-  ":hermit-mockk:samples"
-)
+
+package samples
+
+import io.kotest.matchers.*
+import org.junit.jupiter.api.*
+
+typealias Sample = Test
+
+infix fun Any?.shouldPrint(
+  expected: String
+) = toString() shouldBe expected
+
+infix fun List<Any?>.shouldPrint(
+  expected: String
+) = joinToString("\n") shouldBe expected
+
+abstract class SampleTest {
+
+  protected val output = mutableListOf<String>()
+
+  @AfterEach
+  fun afterEach() {
+    output.clear()
+  }
+
+  protected fun println(message: Any?) {
+    output.add("$message")
+  }
+}

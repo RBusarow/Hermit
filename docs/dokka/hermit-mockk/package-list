@@ -1,0 +1,4 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:hermit.test.mockk$resetsMockk(hermit.test.ResetManager, kotlin.String, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.Boolean, hermit.test.mockk.ResetsMockK.ClearPolicy, kotlin.Function1((hermit.test.mockk.resetsMockk.T, kotlin.Unit)))hermit.test.mockk/hermit.test.-reset-manager/resets-mockk.md
+hermit.test.mockk
