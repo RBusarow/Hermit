@@ -23,6 +23,8 @@
 <!--- INDEX  -->
 <!--- MODULE hermit-junit5-->
 <!--- INDEX  -->
+<!--- MODULE hermit-mockk-->
+<!--- INDEX  -->
 <!--- INDEX  -->
 <!--- END -->
 

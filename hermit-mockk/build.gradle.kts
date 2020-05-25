@@ -13,19 +13,31 @@
  * limitations under the License.
  */
 
-package samples
-
-import hermit.test.*
-
-/**
- * Makes a MutableMap which conforms to the Resettable interface,
- * by delegating `reset()` to the existing [clear][MutableMap.clear] function.
- */
-class ResettableMap<K, V> : MutableMap<K, V> by mutableMapOf(),
-                            Resets {
-
-  override fun reset() {
-    clear()
-  }
+plugins {
+  id(Plugins.dokka)
+  id(Plugins.javaLibrary)
+  id(Plugins.kotlin)
+  id(Plugins.mavenPublish)
 }
 
+dependencies {
+
+  api(project(":hermit-core"))
+  implementation(Libs.JUnit.api)
+
+  implementation(Libs.Kotlin.stdlib)
+  implementation(Libs.Kotlin.reflect)
+
+  implementation(Libs.MockK.core)
+
+  runtimeOnly(Libs.JUnit.runtime)
+
+  testImplementation(Libs.KoTest.assertions)
+  testImplementation(Libs.KoTest.properties)
+  testImplementation(Libs.KoTest.runner)
+
+  testImplementation(Libs.Kotlin.test)
+  testImplementation(Libs.Kotlin.testCommon)
+
+  testImplementation(Libs.Kotlinx.Coroutines.test)
+}

@@ -34,6 +34,8 @@
 <!--- INDEX  -->
 [AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
 [HermitExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-hermit-extension/index.html
+<!--- MODULE hermit-mockk-->
+<!--- INDEX  -->
 <!--- INDEX  -->
 <!--- END -->
 

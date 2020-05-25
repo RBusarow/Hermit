@@ -1,4 +1,4 @@
-# MODULE hermit-junit4
+# MODULE hermit-mockk
 
 ## Contents
 <!--- TOC -->
