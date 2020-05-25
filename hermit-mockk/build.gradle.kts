@@ -13,17 +13,31 @@
  * limitations under the License.
  */
 
-package hermit.test
-
-/**
- * Marks a class which is capable of tracking and resetting multiple [Resets] instances.
- *
- * @sample samples.UnsafeResetManager
- * @see [ResetManager]
- */
-interface ResetManager {
-
-  fun register(delegate: Resets)
-  fun resetAll()
+plugins {
+  id(Plugins.dokka)
+  id(Plugins.javaLibrary)
+  id(Plugins.kotlin)
+  id(Plugins.mavenPublish)
 }
 
+dependencies {
+
+  api(project(":hermit-core"))
+  implementation(Libs.JUnit.api)
+
+  implementation(Libs.Kotlin.stdlib)
+  implementation(Libs.Kotlin.reflect)
+
+  implementation(Libs.MockK.core)
+
+  runtimeOnly(Libs.JUnit.runtime)
+
+  testImplementation(Libs.KoTest.assertions)
+  testImplementation(Libs.KoTest.properties)
+  testImplementation(Libs.KoTest.runner)
+
+  testImplementation(Libs.Kotlin.test)
+  testImplementation(Libs.Kotlin.testCommon)
+
+  testImplementation(Libs.Kotlinx.Coroutines.test)
+}

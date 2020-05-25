@@ -19,5 +19,7 @@ include(
         ":hermit-junit4",
         ":hermit-junit4:samples",
         ":hermit-junit5",
-        ":hermit-junit5:samples"
+        ":hermit-junit5:samples",
+        ":hermit-mockk",
+        ":hermit-mockk:samples"
 )

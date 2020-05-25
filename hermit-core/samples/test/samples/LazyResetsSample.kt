@@ -24,7 +24,7 @@ class LazyResetsSample : SampleTest() {
 
     var instanceNumber = 0
 
-    val resetManager = ResetManager()
+    val resetManager = Hermit()
 
     val lazyInt = LazyResets(resetManager) {
 
@@ -63,7 +63,7 @@ class LazyResetsSample : SampleTest() {
 
     var instanceNumber = 0
 
-    val resetManager = ResetManager()
+    val resetManager = Hermit()
 
     val lazyInt by resetManager.resets {
 
@@ -100,7 +100,7 @@ class LazyResetsSample : SampleTest() {
   @Sample
   fun lazyResetDelegateInImplementationSample() {
 
-    class SomeImplementation : ResetManager by ResetManager() {
+    class SomeImplementation : Hermit() {
 
       var instanceNumber = 0
 

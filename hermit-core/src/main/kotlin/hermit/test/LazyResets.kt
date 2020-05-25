@@ -102,7 +102,7 @@ public class LazyResetDelegateNonDefaultConstructorException(problemClass: KClas
   )
 
 /**
- * Interfaces cannot be used with a 'by resetss' delegate since they cannot be instantiated.
+ * Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
  *
  * @see Class.newInstance
  */

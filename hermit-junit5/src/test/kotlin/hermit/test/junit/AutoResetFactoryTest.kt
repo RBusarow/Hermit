@@ -22,8 +22,9 @@ import io.kotest.matchers.*
 
 internal class AutoResetFactoryTest : FreeSpec({
 
-  include(managerTests(ResetManager()))
+  include(managerTests(Hermit()))
   include(managerTests(AutoReset()))
+  include(managerTests(object : HermitJUnit5() {}))
 }) {
   override fun isolationMode(): IsolationMode? = IsolationMode.InstancePerLeaf
 }

@@ -13,17 +13,31 @@
  * limitations under the License.
  */
 
-package hermit.test
+package samples
 
-/**
- * Marks a class which is capable of tracking and resetting multiple [Resets] instances.
- *
- * @sample samples.UnsafeResetManager
- * @see [ResetManager]
- */
-interface ResetManager {
+import io.kotest.matchers.*
+import org.junit.jupiter.api.*
 
-  fun register(delegate: Resets)
-  fun resetAll()
+typealias Sample = Test
+
+infix fun Any?.shouldPrint(
+  expected: String
+) = toString() shouldBe expected
+
+infix fun List<Any?>.shouldPrint(
+  expected: String
+) = joinToString("\n") shouldBe expected
+
+abstract class SampleTest {
+
+  protected val output = mutableListOf<String>()
+
+  @AfterEach
+  fun afterEach() {
+    output.clear()
+  }
+
+  protected fun println(message: Any?) {
+    output.add("$message")
+  }
 }
-

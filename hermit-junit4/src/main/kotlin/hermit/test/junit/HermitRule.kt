@@ -29,8 +29,8 @@ import org.junit.runner.*
  *
  * @sample samples.AutoResetRuleSample
  */
-class AutoResetRule(
-  private val delegate: ResetManager = ResetManager()
+class HermitRule(
+  private val delegate: ResetManager = Hermit()
 ) : TestWatcher(),
     ResetManager by delegate {
 
