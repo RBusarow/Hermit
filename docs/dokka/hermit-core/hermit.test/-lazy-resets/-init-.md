@@ -11,7 +11,7 @@ Each time a new instance is created, it is registered with the [ResetManager](..
 ``` kotlin
 var instanceNumber = 0
 
-val resetManager = ResetManager()
+val resetManager = Hermit()
 
 val lazyInt = LazyResets(resetManager) {
 

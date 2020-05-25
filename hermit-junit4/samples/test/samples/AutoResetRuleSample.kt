@@ -23,21 +23,21 @@ class AutoResetRuleSample {
 
   @JvmField
   @Rule
-  val rule = AutoResetRule()
+  val rule = HermitRule()
 
   /**
    * automatically has reset() called on it after each test
    */
   val someProperty by rule.resets { SomeProperty() }
 
-  val resetManager = ResetManager()
+  val resetManager = Hermit()
 
   /**
    * you can also pass in your own [ResetManager]
    */
   @JvmField
   @Rule
-  val explicitRule = AutoResetRule(resetManager)
+  val explicitRule = HermitRule(resetManager)
 
   @Test
   fun `some property gets reset`() {

@@ -62,3 +62,9 @@ class UnsafeResetManager : ResetManager {
     }
 
   }): `[`LazyResets`](../-lazy-resets/index.md)`<T>` |
+
+### Inheritors
+
+| Name | Summary |
+|---|---|
+| [Hermit](../-hermit/index.md) | Factory for creating a default [ResetManager](./index.md) instance.`open class Hermit : `[`ResetManager`](./index.md) |

@@ -19,8 +19,8 @@
 * [by resets][resets] function
 
 ### Testing
-* [AutoResetRule] JUnit4 [Rule]
-* [AutoReset] interface with [AutoResetExtension] for JUnit5
+* [HermitRule] JUnit4 [Rule]
+* [AutoReset] interface with [HermitExtension] for JUnit5
 *
 <!--- MODULE hermit-core-->
 <!--- INDEX  -->
@@ -29,11 +29,11 @@
 [resets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/resets.html
 <!--- MODULE hermit-junit4-->
 <!--- INDEX  -->
-[AutoResetRule]: https://rbusarow.github.io/Hermit/hermit-junit4//hermit.test.junit/-auto-reset-rule/index.html
+[HermitRule]: https://rbusarow.github.io/Hermit/hermit-junit4//hermit.test.junit/-hermit-rule/index.html
 <!--- MODULE hermit-junit5-->
 <!--- INDEX  -->
 [AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
-[AutoResetExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset-extension/index.html
+[HermitExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-hermit-extension/index.html
 <!--- INDEX  -->
 <!--- END -->
 

@@ -2,7 +2,7 @@
 
 # AutoReset
 
-`@ExtendWith([NormalClass(value=hermit/test/junit/AutoResetExtension)]) interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/Hermit/hermit-core/hermit.test/-reset-manager/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-junit5/src/main/kotlin/hermit/test/junit/AutoReset.kt#L26)
+`@ExtendWith([NormalClass(value=hermit/test/junit/HermitExtension)]) interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/Hermit/hermit-core/hermit.test/-reset-manager/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-junit5/src/main/kotlin/hermit/test/junit/AutoReset.kt#L25)
 
 ``` kotlin
 /**

@@ -14,10 +14,10 @@
  */
 rootProject.name = "Hermit"
 include(
-        ":hermit-core",
-        ":hermit-core:samples",
-        ":hermit-junit4",
-        ":hermit-junit4:samples",
-        ":hermit-junit5",
-        ":hermit-junit5:samples"
+  ":hermit-core",
+  ":hermit-core:samples",
+  ":hermit-junit4",
+  ":hermit-junit4:samples",
+  ":hermit-junit5",
+  ":hermit-junit5:samples"
 )

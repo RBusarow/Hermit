@@ -15,3 +15,5 @@
 /.idea/
 /projectFilesBackup/.idea/
 !/.idea/scopes/*
+!/.idea/codeStyles
+!/.idea/inspectionProfiles

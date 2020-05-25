@@ -40,7 +40,8 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
   }
 }<br>```
 <br>`interface AutoReset : `[`ResetManager`](https://rbusarow.github.io/Hermit/hermit-core/hermit.test/-reset-manager/index.md) |
-| [AutoResetExtension](-auto-reset-extension/index.md) | `class AutoResetExtension : TestInstancePostProcessor, AfterEachCallback, `[`AutoReset`](-auto-reset.md) |
+| [HermitExtension](-hermit-extension/index.md) | `class HermitExtension : TestInstancePostProcessor, AfterEachCallback, `[`ResetManager`](https://rbusarow.github.io/Hermit/hermit-core/hermit.test/-reset-manager/index.md) |
+| [HermitJUnit5](-hermit-j-unit5/index.md) | `abstract class HermitJUnit5 : `[`Hermit`](https://rbusarow.github.io/Hermit/hermit-core/hermit.test/-hermit/index.md)`, `[`AutoReset`](-auto-reset.md) |
 
 ### Functions
 

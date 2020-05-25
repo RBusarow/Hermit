@@ -21,17 +21,17 @@ import org.junit.*
 import org.junit.runners.*
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-internal class AutoResetRuleTest {
+internal class HermitRuleTest {
 
   @JvmField
   @Rule
-  val defaultRule = AutoResetRule()
+  val defaultRule = HermitRule()
 
-  val resetManager = ResetManager()
+  val resetManager = Hermit()
 
   @JvmField
   @Rule
-  val argumentRule = AutoResetRule(resetManager)
+  val argumentRule = HermitRule(resetManager)
 
   val defaultResetProperty by defaultRule.resets { System.nanoTime() }
   val argumentResetProperty by defaultRule.resets { System.nanoTime() }
@@ -53,7 +53,6 @@ internal class AutoResetRuleTest {
     lastArgumentResetProperty shouldNotBe null
 
     lastArgumentResetProperty shouldNotBe argumentResetProperty
-
   }
 
   companion object {

@@ -21,10 +21,10 @@ object Modules {
   val allPaths = listOf(
     ":hermit-core",
     ":hermit-core:samples",
-    ":junit4",
-    ":junit4:samples",
-    ":junit5",
-    ":junit5:samples"
+    ":hermit-junit4",
+    ":hermit-junit4:samples",
+    ":hermit-junit5",
+    ":hermit-junit5:samples"
   )
   val allInternalPaths = allPaths.filter { it.matches(internalRegex) }
   val allProductionPaths = allPaths.filter { !it.matches(internalRegex, sampleRegex) }

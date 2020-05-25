@@ -17,7 +17,7 @@ package samples
 
 import hermit.test.*
 
-class DelegatingResetManagerImpl : ResetManager by ResetManager() {
+class DelegatingResetManagerImpl : ResetManager by Hermit() {
 
   // auto-registered with this ResetManager
   val someResettable by resets { SomeClass() }
