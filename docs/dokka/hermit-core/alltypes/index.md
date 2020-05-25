@@ -6,6 +6,13 @@
 |---|---|
 |
 
+##### [hermit.test.Hermit](../hermit.test/-hermit/index.md)
+
+Factory for creating a default [ResetManager](../hermit.test/-reset-manager/index.md) instance.
+
+
+|
+
 ##### [hermit.test.LazyResetDelegateAbstractException](../hermit.test/-lazy-reset-delegate-abstract-exception/index.md)
 
 Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated.
@@ -20,7 +27,7 @@ Abstract classes cannot be used with a 'by resets' delegate since they cannot be
 
 ##### [hermit.test.LazyResetDelegateInterfaceException](../hermit.test/-lazy-reset-delegate-interface-exception/index.md)
 
-Interfaces cannot be used with a 'by resetss' delegate since they cannot be instantiated.
+Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
 
 
 |

@@ -29,9 +29,11 @@
 [resets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/resets.html
 <!--- MODULE hermit-junit4-->
 <!--- INDEX  -->
+[HermitRule]: https://rbusarow.github.io/Hermit/hermit-junit4//hermit.test.junit/-hermit-rule/index.html
 <!--- MODULE hermit-junit5-->
 <!--- INDEX  -->
 [AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
+[HermitExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-hermit-extension/index.html
 <!--- INDEX  -->
 <!--- END -->
 

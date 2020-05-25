@@ -42,7 +42,7 @@ If the type being created is a Kotlin object, then it must implement the [Resets
 ``` kotlin
 var instanceNumber = 0
 
-val resetManager = ResetManager()
+val resetManager = Hermit()
 
 val lazyInt = LazyResets(resetManager) {
 
@@ -77,7 +77,7 @@ output shouldPrint """after declaration
 ```
 
 ``` kotlin
-class SomeImplementation : ResetManager by ResetManager() {
+class SomeImplementation : Hermit() {
 
   var instanceNumber = 0
 

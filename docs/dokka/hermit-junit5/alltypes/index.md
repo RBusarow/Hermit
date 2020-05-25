@@ -44,6 +44,11 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
 
 |
 
-##### [hermit.test.junit.AutoResetExtension](../hermit.test.junit/-auto-reset-extension/index.md)
+##### [hermit.test.junit.HermitExtension](../hermit.test.junit/-hermit-extension/index.md)
+
+
+|
+
+##### [hermit.test.junit.HermitJUnit5](../hermit.test.junit/-hermit-j-unit5/index.md)
 
 

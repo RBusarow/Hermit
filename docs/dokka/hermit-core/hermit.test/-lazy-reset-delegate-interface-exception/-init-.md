@@ -4,7 +4,7 @@
 
 `LazyResetDelegateInterfaceException(problemClass: `[`KClass`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html)`<*>)`
 
-Interfaces cannot be used with a 'by resetss' delegate since they cannot be instantiated.
+Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
 
 **See Also**
 
