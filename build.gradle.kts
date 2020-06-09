@@ -14,6 +14,7 @@
  */
 
 import kotlinx.knit.*
+import kotlinx.validation.*
 import org.gradle.kotlin.dsl.*
 import org.jetbrains.dokka.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.*
@@ -35,6 +36,7 @@ buildscript {
     classpath(BuildPlugins.benManesVersions)
     classpath(BuildPlugins.kotlinGradlePlugin)
     classpath(BuildPlugins.gradleMavenPublish)
+    classpath(BuildPlugins.binaryCompatibility)
     classpath(BuildPlugins.dokka)
     classpath(BuildPlugins.knit)
   }
@@ -271,4 +273,21 @@ extensions.configure<KnitPluginExtension> {
 // Build API docs for all modules with dokka before running Libs.Kotlinx.Knit
 tasks.getByName("knitPrepare") {
   dependsOn(subprojects.mapNotNull { it.tasks.findByName("dokka") })
+}
+
+apply(plugin = Plugins.binaryCompatilibity)
+
+extensions.configure<ApiValidationExtension> {
+
+  /**
+   * Packages that are excluded from public API dumps even if they
+   * contain public API.
+   */
+  ignoredPackages = mutableSetOf("sample", "samples")
+
+  /**
+   * Sub-projects that are excluded from API validation
+   */
+  ignoredProjects =
+    mutableSetOf("samples")
 }

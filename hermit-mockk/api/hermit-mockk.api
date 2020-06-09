@@ -1,0 +1,29 @@
+public final class hermit/test/mockk/ResetsMockK : hermit/test/Resets, kotlin/Lazy {
+	public fun <init> (Lhermit/test/ResetManager;Ljava/lang/Object;Lhermit/test/mockk/ResetsMockK$ClearPolicy;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Lhermit/test/ResetManager;Ljava/lang/Object;Lhermit/test/mockk/ResetsMockK$ClearPolicy;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getValue ()Ljava/lang/Object;
+	public fun isInitialized ()Z
+	public fun reset ()V
+}
+
+public final class hermit/test/mockk/ResetsMockK$ClearPolicy {
+	public fun <init> ()V
+	public fun <init> (ZZZZZ)V
+	public synthetic fun <init> (ZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun copy (ZZZZZ)Lhermit/test/mockk/ResetsMockK$ClearPolicy;
+	public static synthetic fun copy$default (Lhermit/test/mockk/ResetsMockK$ClearPolicy;ZZZZZILjava/lang/Object;)Lhermit/test/mockk/ResetsMockK$ClearPolicy;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAnswers ()Z
+	public final fun getChildMocks ()Z
+	public final fun getExclusionRules ()Z
+	public final fun getRecordedCalls ()Z
+	public final fun getVerificationMarks ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

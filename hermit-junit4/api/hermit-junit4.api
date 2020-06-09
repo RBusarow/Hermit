@@ -1,0 +1,14 @@
+public abstract class hermit/test/junit/HermitJUnit4 : hermit/test/ResetManager {
+	public fun <init> (Lhermit/test/ResetManager;)V
+	public fun register (Lhermit/test/Resets;)V
+	public fun resetAll ()V
+}
+
+public final class hermit/test/junit/HermitRule : org/junit/rules/TestWatcher, hermit/test/ResetManager {
+	public fun <init> ()V
+	public fun <init> (Lhermit/test/ResetManager;)V
+	public synthetic fun <init> (Lhermit/test/ResetManager;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun register (Lhermit/test/Resets;)V
+	public fun resetAll ()V
+}
+
