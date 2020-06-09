@@ -1,13 +1,13 @@
-site_name: 'Dispatch'
-site_description: 'Quality of life coroutine utilities.'
+site_name: 'Hermit'
+site_description: 'Resettable Lazy delegates which automatically reset with a test lifecycle.'
 site_author: '2020 Rick Busarow'
-site_url: 'https://rbusarow.github.io/Dispatch/'
+site_url: 'https://rbusarow.github.io/Hermit/'
 remote_branch: gh-pages
 docs_dir: '../docs'
 
 # Repository
-repo_name: 'Dispatch'
-repo_url: 'https://github.com/rbusarow/dispatch'
+repo_name: 'Hermit'
+repo_url: 'https://github.com/rbusarow/hermit'
 
 # Copyright
 copyright: 'Copyright &copy; 2020 Rick Busarow'
@@ -16,7 +16,7 @@ copyright: 'Copyright &copy; 2020 Rick Busarow'
 extra:
   social:
     - type: github
-      link: https://github.com/rbusarow/dispatch
+      link: https://github.com/rbusarow/hermit
     - type: twitter
       link: https://twitter.com/rbusarow
     - type: linkedin
@@ -26,25 +26,19 @@ nav:
   - 'Intro': index.md
   #  - 'Getting Started': getting-started.md
   - 'Modules':
-      - 'Core': modules/core.md
-      - 'Extensions': modules/extensions.md
-      - 'Test-Core': modules/core-test.md
-      - 'Test-JUnit4': modules/core-test-junit4.md
-      - 'Test-JUnit5': modules/core-test-junit5.md
-      - 'Android-Espresso': modules/android-espresso.md
-      - 'android-lifecycle': modules/android-lifecycle.md
-      - 'Android-viewmodel': modules/android-viewmodel.md
+      - 'Core': modules/hermit-core.md
+      - 'Coroutines': modules/hermit-coroutines.md
+      - 'JUnit4': modules/hermit-junit4.md
+      - 'JUnit5': modules/hermit-junit5.md
+      - 'MockK': modules/hermit-mockk.md
   #  - 'Change Log':
   - 'Change Log': CHANGELOG.md
-  - 'KDoc':
-      - 'core': kdoc/core/index.md
-      - 'extensions': kdoc/extensions/index.md
-      - 'test-core': kdoc/core-test/index.md
-      - 'test-junit4': kdoc/core-test-junit4/index.md
-      - 'test-junit5': kdoc/core-test-junit5/index.md
-      - 'android-espresso': kdoc/android-espresso/index.md
-      - 'android-lifecycle': kdoc/android-lifecycle/index.md
-      - 'android-viewmodel': kdoc/android-viewmodel/index.md
+  - 'API':
+      - 'core': kdoc/hermit-core/index.md
+      - 'coroutines': kdoc/hermit-coroutines/index.md
+      - 'jUnit4': kdoc/hermit-junit4/index.md
+      - 'jUnit5': kdoc/hermit-junit5/index.md
+      - 'mockK': kdoc/hermit-mockk/index.md
 
 theme:
   name: 'material'
