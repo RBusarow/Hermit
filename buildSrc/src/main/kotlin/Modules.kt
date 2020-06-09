@@ -21,6 +21,8 @@ object Modules {
   val allPaths = listOf(
     ":hermit-core",
     ":hermit-core:samples",
+    ":hermit-coroutines",
+    ":hermit-coroutines:samples",
     ":hermit-junit4",
     ":hermit-junit4:samples",
     ":hermit-junit5",

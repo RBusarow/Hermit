@@ -147,16 +147,7 @@ fun File.updateLibraryVersions(): File {
         Libs.Kotlinx.Coroutines.test.toDependencyMatcher(),
         Libs.RickBusarow.AutoReset.api.toDependencyMatcher(),
         Libs.RickBusarow.AutoReset.junit4.toDependencyMatcher(),
-        Libs.RickBusarow.AutoReset.junit5.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.espresso.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.extensions.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.lifecycleExtensions.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.lifecycle.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.viewModel.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.Test.jUnit4.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.Test.jUnit5.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.Test.core.toDependencyMatcher(),
-        Libs.RickBusarow.Dispatch.core.toDependencyMatcher()
+        Libs.RickBusarow.AutoReset.junit5.toDependencyMatcher()
       )
 
       forEachLine { originalLine ->
