@@ -3,6 +3,10 @@
 ## Contents
 <!--- TOC -->
 
+* [Version 0.9.1](#version-091)
+  * [Breaking change](#breaking-change)
+  * [New modules](#new-modules)
+  * [Testing](#testing)
 * [Version 0.9.0](#version-090)
   * [General](#general)
   * [Testing](#testing)
@@ -10,6 +14,21 @@
 <!--- END -->
 
 
+
+## Version 0.9.1
+
+### Breaking change
+* The project and modules have been renamed.
+  * Project is now called Hermit.
+  * All base packages are now `hermit.test.*`
+
+### New modules
+* [hermit-coroutines] provides the ability to bind a [CoroutineScope] to the [ResetManager].
+* [hermit-mockk] automatically clears all answers and recorded calls with [ResetManager], using a single MockK object.
+
+### Testing
+* [HermitRule] JUnit4 [Rule]
+* [AutoReset] interface with [HermitExtension] for JUnit5
 
 ## Version 0.9.0
 
@@ -21,11 +40,11 @@
 ### Testing
 * [HermitRule] JUnit4 [Rule]
 * [AutoReset] interface with [HermitExtension] for JUnit5
-*
+
 <!--- MODULE hermit-core-->
 <!--- INDEX  -->
 [ResetManager]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-reset-manager/index.html
-[LazyResets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-lazy-resets/index.html
+[LazyResets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-lazy-resets.html
 [resets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/resets.html
 <!--- MODULE hermit-junit4-->
 <!--- INDEX  -->
@@ -35,6 +54,10 @@
 [AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
 [HermitExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-hermit-extension/index.html
 <!--- MODULE hermit-mockk-->
+[hermit-mockk]: https::rbusarow.github.io/Hermit/hermit-mockk/index.html
+<!--- INDEX  -->
+<!--- MODULE hermit-coroutines-->
+[hermit-coroutines]: https::rbusarow.github.io/Hermit/hermit-coroutines/index.html
 <!--- INDEX  -->
 <!--- INDEX  -->
 <!--- END -->

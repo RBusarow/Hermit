@@ -2,7 +2,7 @@
 
 # LazyResetDelegateObjectException
 
-`class LazyResetDelegateObjectException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L131)
+`class LazyResetDelegateObjectException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L110)
 
 Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
 

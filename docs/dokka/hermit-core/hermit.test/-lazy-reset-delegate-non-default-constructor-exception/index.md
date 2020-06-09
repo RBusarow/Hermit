@@ -2,7 +2,7 @@
 
 # LazyResetDelegateNonDefaultConstructorException
 
-`class LazyResetDelegateNonDefaultConstructorException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L98)
+`class LazyResetDelegateNonDefaultConstructorException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L77)
 
 Classes without a default constructor cannot be used with a 'by resets' delegate.
 
