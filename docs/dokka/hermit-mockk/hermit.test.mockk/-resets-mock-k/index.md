@@ -32,6 +32,7 @@ because otherwise, it is likely that the first access of the [mock](#) instance 
 Attempting to invoke [every](#) while already inside [every](#) causes a [MockKException](#).
 
 ``` kotlin
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SimpleTest : HermitJUnit5() {
 

@@ -2,7 +2,7 @@
 
 # LazyResetDelegateAbstractException
 
-`class LazyResetDelegateAbstractException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L120)
+`class LazyResetDelegateAbstractException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L99)
 
 Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated.
 

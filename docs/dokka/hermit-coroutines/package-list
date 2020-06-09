@@ -1,0 +1,4 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:hermit.test.coroutines$resetsScope(hermit.test.ResetManager, hermit.test.coroutines.resetsScope.T)hermit.test.coroutines/hermit.test.-reset-manager/resets-scope.md
+hermit.test.coroutines

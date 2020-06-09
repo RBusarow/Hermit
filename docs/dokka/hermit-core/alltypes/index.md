@@ -46,9 +46,7 @@ Objects may not be used with a 'by resets' delegate unless they implement the La
 
 |
 
-##### [hermit.test.LazyResets](../hermit.test/-lazy-resets/index.md)
-
-Lazy instance which can be reset.  After a reset, the next access will create a new instance.
+##### [hermit.test.LazyResets](../hermit.test/-lazy-resets.md)
 
 
 |

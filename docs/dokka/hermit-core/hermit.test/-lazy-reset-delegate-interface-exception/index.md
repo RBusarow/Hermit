@@ -2,7 +2,7 @@
 
 # LazyResetDelegateInterfaceException
 
-`class LazyResetDelegateInterfaceException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L109)
+`class LazyResetDelegateInterfaceException : `[`LazyResetDelegateException`](../-lazy-reset-delegate-exception/index.md) [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L88)
 
 Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
 

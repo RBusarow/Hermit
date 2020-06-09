@@ -1,66 +1,36 @@
-# Change log for Hermit
+# Module hermit-coroutines
 
 ## Contents
 <!--- TOC -->
-
-* [Version 0.9.1](#version-091)
-  * [Breaking change](#breaking-change)
-  * [New modules](#new-modules)
-  * [Testing](#testing)
-* [Version 0.9.0](#version-090)
-  * [General](#general)
-  * [Testing](#testing)
-
 <!--- END -->
 
 
 
-## Version 0.9.1
 
-### Breaking change
-* The project and modules have been renamed.
-  * Project is now called Hermit.
-  * All base packages are now `hermit.test.*`
 
-### New modules
-* [hermit-coroutines] provides the ability to bind a [CoroutineScope] to the [ResetManager].
-* [hermit-mockk] automatically clears all answers and recorded calls with [ResetManager], using a single MockK object.
 
-### Testing
-* [HermitRule] JUnit4 [Rule]
-* [AutoReset] interface with [HermitExtension] for JUnit5
 
-## Version 0.9.0
 
-### General
-* [ResetManager] class for bulk resets
-* [LazyResets] delegate class for automatically binding to the [ResetManager]
-* [by resets][resets] function
 
-### Testing
-* [HermitRule] JUnit4 [Rule]
-* [AutoReset] interface with [HermitExtension] for JUnit5
+
+
+
+
 
 <!--- MODULE hermit-core-->
 <!--- INDEX  -->
-[ResetManager]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-reset-manager/index.html
-[LazyResets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/-lazy-resets.html
-[resets]: https://rbusarow.github.io/Hermit/hermit-core//hermit.test/resets.html
 <!--- MODULE hermit-junit4-->
 <!--- INDEX  -->
-[HermitRule]: https://rbusarow.github.io/Hermit/hermit-junit4//hermit.test.junit/-hermit-rule/index.html
 <!--- MODULE hermit-junit5-->
 <!--- INDEX  -->
-[AutoReset]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-auto-reset.html
-[HermitExtension]: https://rbusarow.github.io/Hermit/hermit-junit5//hermit.test.junit/-hermit-extension/index.html
 <!--- MODULE hermit-mockk-->
-[hermit-mockk]: https::rbusarow.github.io/Hermit/hermit-mockk/index.html
 <!--- INDEX  -->
 <!--- MODULE hermit-coroutines-->
-[hermit-coroutines]: https::rbusarow.github.io/Hermit/hermit-coroutines/index.html
 <!--- INDEX  -->
 <!--- INDEX  -->
 <!--- END -->
+
+
 
 [Android Lifecycle]: https://developer.android.com/reference/androidx/lifecycle/Lifecycle.html
 [androidx-lifecycle-runtime-ktx]: https://developer.android.com/jetpack/androidx/releases/lifecycle

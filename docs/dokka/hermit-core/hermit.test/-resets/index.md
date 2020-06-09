@@ -54,4 +54,4 @@ object MutableSingleton : Resets {
 
 | Name | Summary |
 |---|---|
-| [LazyResets](../-lazy-resets/index.md) | Lazy instance which can be reset.  After a reset, the next access will create a new instance.`class LazyResets<out T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> : `[`Lazy`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-lazy/index.html)`<T>, `[`Resets`](./index.md) |
+| [LazyResets](../-lazy-resets.md) | `interface LazyResets<out T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> : `[`Lazy`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-lazy/index.html)`<T>, `[`Resets`](./index.md) |

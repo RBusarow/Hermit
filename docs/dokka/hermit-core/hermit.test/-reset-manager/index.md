@@ -61,7 +61,7 @@ class UnsafeResetManager : ResetManager {
       }
     }
 
-  }): `[`LazyResets`](../-lazy-resets/index.md)`<T>` |
+  }): `[`LazyResets`](../-lazy-resets.md)`<T>` |
 
 ### Inheritors
 

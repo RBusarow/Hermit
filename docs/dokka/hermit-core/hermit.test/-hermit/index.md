@@ -65,4 +65,4 @@ class DelegatingResetManagerImpl : ResetManager by Hermit() {
       }
     }
 
-  }): `[`LazyResets`](../-lazy-resets/index.md)`<T>` |
+  }): `[`LazyResets`](../-lazy-resets.md)`<T>` |

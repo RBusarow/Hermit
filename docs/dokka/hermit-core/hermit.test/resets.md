@@ -25,7 +25,7 @@
       }
     }
 
-  }): `[`LazyResets`](-lazy-resets/index.md)`<T>` [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L66)
+  }): `[`LazyResets`](-lazy-resets.md)`<T>` [(source)](https://github.com/RBusarow/AutoReset/tree/master/hermit-core/src/main/kotlin/hermit/test/LazyResets.kt#L45)
 
 Lazy instance which can be reset.  After a reset, the next access will create a new instance.
 

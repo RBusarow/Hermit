@@ -7,7 +7,7 @@
 | Name | Summary |
 |---|---|
 | [Hermit](-hermit/index.md) | Factory for creating a default [ResetManager](-reset-manager/index.md) instance.`open class Hermit : `[`ResetManager`](-reset-manager/index.md) |
-| [LazyResets](-lazy-resets/index.md) | Lazy instance which can be reset.  After a reset, the next access will create a new instance.`class LazyResets<out T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> : `[`Lazy`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-lazy/index.html)`<T>, `[`Resets`](-resets/index.md) |
+| [LazyResets](-lazy-resets.md) | `interface LazyResets<out T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> : `[`Lazy`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-lazy/index.html)`<T>, `[`Resets`](-resets/index.md) |
 | [ResetManager](-reset-manager/index.md) | Marks a class which is capable of tracking and resetting multiple [Resets](-resets/index.md) instances.`interface ResetManager` |
 | [Resets](-resets/index.md) | Marks any type which may be reset.`interface Resets` |
 
@@ -25,6 +25,7 @@
 
 | Name | Summary |
 |---|---|
+| [LazyResets](-lazy-resets.md) | `fun <T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> LazyResets(resetManager: `[`ResetManager`](-reset-manager/index.md)`, valueFactory: () -> T): `[`LazyResets`](-lazy-resets.md)`<T>` |
 | [resets](resets.md) | Lazy instance which can be reset.  After a reset, the next access will create a new instance.`fun <T : `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`> `[`ResetManager`](-reset-manager/index.md)`.resets(valueFactory: () -> T = {
     val clazz = T::class
 
@@ -48,4 +49,4 @@
       }
     }
 
-  }): `[`LazyResets`](-lazy-resets/index.md)`<T>` |
+  }): `[`LazyResets`](-lazy-resets.md)`<T>` |
