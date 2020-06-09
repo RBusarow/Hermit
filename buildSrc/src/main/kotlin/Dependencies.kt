@@ -199,27 +199,10 @@ object Libs {
       const val junit5 = "com.rickbusarow.hermit:hermit-junit5:${Versions.versionName}"
     }
 
-    object Dispatch {
-
-      private const val version = "1.0.0-beta03"
-
-      const val core = "com.rickbusarow.dispatch:dispatch-core:$version"
-      const val espresso =
-        "com.rickbusarow.dispatch:dispatch-android-espresso:$version"
-      const val extensions = "com.rickbusarow.dispatch:dispatch-extensions:$version"
-      const val lifecycle =
-        "com.rickbusarow.dispatch:dispatch-android-lifecycle:$version"
-      const val lifecycleExtensions =
-        "com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:$version"
-      const val viewModel =
-        "com.rickbusarow.dispatch:dispatch-android-viewmodel:$version"
-
-      object Test {
-        const val core = "com.rickbusarow.dispatch:dispatch-core-test:$version"
-        const val jUnit4 = "com.rickbusarow.dispatch:dispatch-core-test-junit4:$version"
-        const val jUnit5 = "com.rickbusarow.dispatch:dispatch-core-test-junit5:$version"
-
-      }
+    object DispatcherProvider {
+      private const val version = "1.0.0-beta02"
+      const val core = "com.rickbusarow.dispatcherprovider:dispatcher-provider:$version"
+      const val test = "com.rickbusarow.dispatcherprovider:dispatcher-provider-test:$version"
     }
   }
 

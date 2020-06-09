@@ -15,37 +15,16 @@
 
 package hermit.test
 
+import hermit.test.internal.*
 import kotlin.reflect.*
 
-/**
- * Lazy instance which can be reset.  After a reset, the next access will create a new instance.
- *
- * Each time a new instance is created, it is registered with the [ResetManager] and will be reset with the next [ResetManager.resetAll].
- *
- * @sample samples.LazyResetsSample.lazyResetClassSample
- */
-public class LazyResets<out T : Any>(
-  private val resetManager: ResetManager,
-  private val valueFactory: () -> T
-) : Lazy<T>,
-    Resets {
+interface LazyResets<out T : Any> : Lazy<T>,
+                                    Resets
 
-  private var lazyHolder: Lazy<T> = createLazy()
-
-  override val value: T
-    get() = lazyHolder.value
-
-  override fun isInitialized(): Boolean = lazyHolder.isInitialized()
-
-  private fun createLazy() = lazy {
-    resetManager.register(this)
-    valueFactory()
-  }
-
-  override fun reset() {
-    lazyHolder = createLazy()
-  }
-}
+fun <T : Any> LazyResets(
+  resetManager: ResetManager,
+  valueFactory: () -> T
+): LazyResets<T> = LazyResetsImpl(resetManager, valueFactory)
 
 /**
  * Lazy instance which can be reset.  After a reset, the next access will create a new instance.

@@ -7,6 +7,7 @@ import io.kotest.matchers.*
 import io.mockk.*
 import org.junit.jupiter.api.*
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SimpleTest : HermitJUnit5() {
 
