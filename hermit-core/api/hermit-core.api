@@ -1,0 +1,44 @@
+public class hermit/test/Hermit : hermit/test/ResetManager {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Collection;)V
+	public synthetic fun <init> (Ljava/util/Collection;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun register (Lhermit/test/Resets;)V
+	public fun resetAll ()V
+}
+
+public final class hermit/test/LazyResetDelegateAbstractException : hermit/test/LazyResetDelegateException {
+	public fun <init> (Lkotlin/reflect/KClass;)V
+}
+
+public abstract class hermit/test/LazyResetDelegateException : java/lang/Exception {
+	public fun <init> (Lkotlin/reflect/KClass;Ljava/lang/String;)V
+}
+
+public final class hermit/test/LazyResetDelegateInterfaceException : hermit/test/LazyResetDelegateException {
+	public fun <init> (Lkotlin/reflect/KClass;)V
+}
+
+public final class hermit/test/LazyResetDelegateNonDefaultConstructorException : hermit/test/LazyResetDelegateException {
+	public fun <init> (Lkotlin/reflect/KClass;)V
+}
+
+public final class hermit/test/LazyResetDelegateObjectException : hermit/test/LazyResetDelegateException {
+	public fun <init> (Lkotlin/reflect/KClass;)V
+}
+
+public abstract interface class hermit/test/LazyResets : hermit/test/Resets, kotlin/Lazy {
+}
+
+public final class hermit/test/LazyResetsKt {
+	public static final fun LazyResets (Lhermit/test/ResetManager;Lkotlin/jvm/functions/Function0;)Lhermit/test/LazyResets;
+}
+
+public abstract interface class hermit/test/ResetManager {
+	public abstract fun register (Lhermit/test/Resets;)V
+	public abstract fun resetAll ()V
+}
+
+public abstract interface class hermit/test/Resets {
+	public abstract fun reset ()V
+}
+

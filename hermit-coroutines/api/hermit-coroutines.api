@@ -1,0 +1,7 @@
+public abstract interface class hermit/test/coroutines/LazyResetsCoroutineScope : hermit/test/LazyResets {
+}
+
+public final class hermit/test/coroutines/LazyResetsCoroutineScopeKt {
+	public static final fun lazyResetsCoroutineScope (Lhermit/test/ResetManager;Lkotlinx/coroutines/CoroutineScope;)Lhermit/test/coroutines/LazyResetsCoroutineScope;
+}
+
