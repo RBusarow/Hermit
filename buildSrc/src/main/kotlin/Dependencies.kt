@@ -196,11 +196,13 @@ object Libs {
 
   object RickBusarow {
 
-    object AutoReset {
-
-      const val api = "com.rickbusarow.hermit:hermit-core:${Versions.versionName}"
-      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:${Versions.versionName}"
-      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:${Versions.versionName}"
+    object Hermit {
+      private const val version = "0.9.2"
+      const val core = "com.rickbusarow.hermit:hermit-core:$version"
+      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:$version"
+      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:$version"
+      const val mockk = "com.rickbusarow.hermit:hermit-mockk:$version"
+      const val coroutines = "com.rickbusarow.hermit:hermit-coroutines:$version"
     }
 
     object DispatcherProvider {
