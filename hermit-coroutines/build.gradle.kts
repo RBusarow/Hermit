@@ -34,8 +34,8 @@ dependencies {
 
   implementation(Libs.MockK.core)
 
-  implementation(Libs.RickBusarow.DispatcherProvider.core)
-  implementation(Libs.RickBusarow.DispatcherProvider.test)
+  implementation(Libs.RickBusarow.Dispatch.core)
+  implementation(Libs.RickBusarow.Dispatch.Test.core)
 
   runtimeOnly(Libs.JUnit.runtime)
 

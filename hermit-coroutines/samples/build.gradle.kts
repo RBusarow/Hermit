@@ -40,6 +40,6 @@ dependencies {
 
   testImplementation(Libs.MockK.core)
 
-  testImplementation(Libs.RickBusarow.DispatcherProvider.core)
-  testImplementation(Libs.RickBusarow.DispatcherProvider.test)
+  testImplementation(Libs.RickBusarow.Dispatch.core)
+  testImplementation(Libs.RickBusarow.Dispatch.Test.core)
 }
