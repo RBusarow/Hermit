@@ -38,6 +38,8 @@ dependencies {
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
 
+  testImplementation(Libs.Kotlinx.Coroutines.test)
+
   testImplementation(Libs.MockK.core)
 
   testImplementation(Libs.RickBusarow.Dispatch.core)
