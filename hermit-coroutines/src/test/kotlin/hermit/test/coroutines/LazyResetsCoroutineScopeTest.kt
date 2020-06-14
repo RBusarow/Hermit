@@ -1,6 +1,6 @@
 package hermit.test.coroutines
 
-import com.rickbusarow.dispatcherprovider.test.*
+import dispatch.test.*
 import hermit.test.junit.*
 import io.kotest.assertions.throwables.*
 import io.kotest.matchers.*

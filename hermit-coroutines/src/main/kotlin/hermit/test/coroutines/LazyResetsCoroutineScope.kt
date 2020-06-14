@@ -1,7 +1,7 @@
 package hermit.test.coroutines
 
-import com.rickbusarow.dispatcherprovider.*
-import com.rickbusarow.dispatcherprovider.test.*
+import dispatch.core.*
+import dispatch.test.*
 import hermit.test.*
 import hermit.test.coroutines.internal.*
 import kotlinx.coroutines.*
