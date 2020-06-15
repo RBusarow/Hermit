@@ -30,9 +30,9 @@ dependencies {
 
   implementation(Libs.JUnit.api)
 
-  testImplementation(Libs.KoTest.assertions)
-  testImplementation(Libs.KoTest.properties)
-  testImplementation(Libs.KoTest.runner)
+  testImplementation(Libs.Kotest.assertions)
+  testImplementation(Libs.Kotest.properties)
+  testImplementation(Libs.Kotest.runner)
 
   implementation(Libs.Kotlin.reflect)
 

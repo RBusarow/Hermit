@@ -162,7 +162,7 @@ object Libs {
     const val testCommon = "org.jetbrains.kotlin:kotlin-test-common:$version"
   }
 
-  object KoTest {
+  object Kotest {
     private const val version = "4.0.5"
     const val assertions = "io.kotest:kotest-assertions-core-jvm:$version"
     const val properties = "io.kotest:kotest-property-jvm:$version"
