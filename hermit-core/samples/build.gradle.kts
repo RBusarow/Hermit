@@ -29,7 +29,7 @@ dependencies {
   implementation(project(":hermit-core"))
 
   testImplementation(Libs.JUnit.core)
-  testImplementation(Libs.KoTest.runner)
+  testImplementation(Libs.Kotest.runner)
 
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
