@@ -172,7 +172,7 @@ object Libs {
   object Kotlinx {
 
     object Coroutines {
-      private const val version = "1.3.6"
+      private const val version = "1.3.9"
       const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
       const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       const val jdk8 = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$version"
