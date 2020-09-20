@@ -31,15 +31,17 @@ dependencies {
 
   testImplementation(Libs.JUnit.core)
 
-  testImplementation(Libs.KoTest.assertions)
-  testImplementation(Libs.KoTest.properties)
-  testImplementation(Libs.KoTest.runner)
+  testImplementation(Libs.Kotest.assertions)
+  testImplementation(Libs.Kotest.properties)
+  testImplementation(Libs.Kotest.runner)
 
   testImplementation(Libs.Kotlin.test)
   testImplementation(Libs.Kotlin.testCommon)
 
+  testImplementation(Libs.Kotlinx.Coroutines.test)
+
   testImplementation(Libs.MockK.core)
 
-  testImplementation(Libs.RickBusarow.DispatcherProvider.core)
-  testImplementation(Libs.RickBusarow.DispatcherProvider.test)
+  testImplementation(Libs.RickBusarow.Dispatch.core)
+  testImplementation(Libs.RickBusarow.Dispatch.Test.core)
 }

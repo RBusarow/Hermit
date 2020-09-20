@@ -1,6 +1,6 @@
 package samples
 
-import com.rickbusarow.dispatcherprovider.test.*
+import dispatch.test.*
 import hermit.test.coroutines.*
 import hermit.test.junit.*
 import io.kotest.assertions.throwables.*
