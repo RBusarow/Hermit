@@ -198,7 +198,7 @@ object Libs {
 
     object Dispatch {
 
-      private const val version = "1.0.0-beta03"
+      private const val version = "1.0.0-beta04"
 
       const val core = "com.rickbusarow.dispatch:dispatch-core:${version}"
       const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:${version}"
