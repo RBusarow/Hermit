@@ -25,7 +25,7 @@ abstract class HermitJUnit5(
       val clazz = T::class
 
       try {
-        clazz.java.newInstance()
+        clazz.java.getDeclaredConstructor().newInstance()
       } catch (illegal: IllegalAccessException) {
 
         val obj = clazz.objectInstance
