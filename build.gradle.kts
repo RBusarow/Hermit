@@ -15,7 +15,6 @@
 
 import kotlinx.knit.*
 import kotlinx.validation.*
-import org.gradle.kotlin.dsl.*
 import org.jetbrains.dokka.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.*
 import java.net.*
@@ -199,6 +198,7 @@ subprojects {
     resolutionStrategy {
       force(
         Libs.Kotlin.stdlib,
+        Libs.Kotlin.reflect,
         // androidx is currently leaking coroutines 1.1.1 everywhere
         Libs.Kotlinx.Coroutines.android,
         Libs.Kotlinx.Coroutines.common,
