@@ -143,7 +143,7 @@ object Libs {
   object JUnit {
     const val jUnit4 = "junit:junit:4.12"
 
-    private const val version = "5.6.0"
+    private const val version = "5.6.2"
 
     const val core = "org.junit.jupiter:junit-jupiter:$version"
     const val api = "org.junit.jupiter:junit-jupiter-api:$version"
@@ -162,7 +162,7 @@ object Libs {
     const val testCommon = "org.jetbrains.kotlin:kotlin-test-common:$version"
   }
 
-  object KoTest {
+  object Kotest {
     private const val version = "4.0.5"
     const val assertions = "io.kotest:kotest-assertions-core-jvm:$version"
     const val properties = "io.kotest:kotest-property-jvm:$version"
@@ -196,18 +196,38 @@ object Libs {
 
   object RickBusarow {
 
-    object AutoReset {
+    object Dispatch {
 
-      const val api = "com.rickbusarow.hermit:hermit-core:${Versions.versionName}"
-      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:${Versions.versionName}"
-      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:${Versions.versionName}"
+      private const val version = "1.0.0-beta03"
+
+      const val core = "com.rickbusarow.dispatch:dispatch-core:${version}"
+      const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:${version}"
+      const val espresso =
+        "com.rickbusarow.dispatch:dispatch-android-espresso:${version}"
+      const val lifecycle =
+        "com.rickbusarow.dispatch:dispatch-android-lifecycle:${version}"
+      const val lifecycleExtensions =
+        "com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:${version}"
+      const val viewModel =
+        "com.rickbusarow.dispatch:dispatch-android-viewmodel:${version}"
+
+      object Test {
+        const val core = "com.rickbusarow.dispatch:dispatch-test:${version}"
+        const val jUnit4 = "com.rickbusarow.dispatch:dispatch-test-junit4:${version}"
+        const val jUnit5 = "com.rickbusarow.dispatch:dispatch-test-junit5:${version}"
+
+      }
     }
 
-    object DispatcherProvider {
-      private const val version = "1.0.0-beta02"
-      const val core = "com.rickbusarow.dispatcherprovider:dispatcher-provider:$version"
-      const val test = "com.rickbusarow.dispatcherprovider:dispatcher-provider-test:$version"
+    object Hermit {
+      private const val version = "0.9.2"
+      const val core = "com.rickbusarow.hermit:hermit-core:$version"
+      const val coroutines = "com.rickbusarow.hermit:hermit-coroutines:$version"
+      const val junit4 = "com.rickbusarow.hermit:hermit-junit4:$version"
+      const val junit5 = "com.rickbusarow.hermit:hermit-junit5:$version"
+      const val mockk = "com.rickbusarow.hermit:hermit-mockk:$version"
     }
+
   }
 
   object Robolectric {
