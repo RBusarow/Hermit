@@ -122,7 +122,7 @@ public inline fun <reified T : Any> ResetManager.resetsMockk(
   mock = mockk(
     name = name,
     relaxed = relaxed,
-    moreInterfaces = *moreInterfaces,
+    moreInterfaces = moreInterfaces,
     relaxUnitFun = relaxUnitFun
   ),
   clearPolicy = clearPolicy,
