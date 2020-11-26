@@ -47,7 +47,7 @@ object Versions {
   const val benManes = "0.34.0"
   const val androidTools = "4.1.0"
   const val dagger = "2.25.2"
-  const val kotlin = "1.4.10"
+  const val kotlin = "1.4.20"
   const val mavenPublish = "0.13.0"
 
   const val versionName = "0.9.2"
@@ -154,7 +154,7 @@ object Libs {
   }
 
   object Kotlin {
-    private const val version = "1.4.10"
+    private const val version = "1.4.20"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
     const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
     const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
@@ -175,7 +175,7 @@ object Libs {
   object Kotlinx {
 
     object Coroutines {
-      private const val version = "1.3.6"
+      private const val version = "1.4.2"
       const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
       const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       const val jdk8 = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$version"
