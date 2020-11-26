@@ -110,6 +110,7 @@ public class ResetsMockK<out T : Any>(
  * @see mockk
  * @see ResetsMockK
  */
+@Suppress("CHANGING_ARGUMENTS_EXECUTION_ORDER_FOR_NAMED_VARARGS", "SpreadOperator")
 public inline fun <reified T : Any> ResetManager.resetsMockk(
   name: String? = null,
   relaxed: Boolean = false,
@@ -120,9 +121,9 @@ public inline fun <reified T : Any> ResetManager.resetsMockk(
 ): ResetsMockK<T> = ResetsMockK(
   resetManager = this,
   mock = mockk(
-    name = name,
-    relaxed = relaxed,
-    moreInterfaces = *moreInterfaces,
+    name,
+    relaxed,
+    *moreInterfaces,
     relaxUnitFun = relaxUnitFun
   ),
   clearPolicy = clearPolicy,

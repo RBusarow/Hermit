@@ -31,6 +31,7 @@ object Plugins {
   const val kotlinAndroidExtensions = "kotlin-android-extensions"
 
   const val mavenPublish = "com.vanniktech.maven.publish"
+  const val benManes = "com.github.ben-manes.versions"
 }
 
 object Versions {
@@ -43,13 +44,13 @@ object Versions {
   const val targetSdk = 29
 
   const val binaryCompatibility = "0.2.3"
-  const val benManes = "0.27.0"
-  const val gradleWrapper = "4.0.0"
+  const val benManes = "0.34.0"
+  const val androidTools = "4.1.0"
   const val dagger = "2.25.2"
-  const val kotlin = "1.3.72"
-  const val mavenPublish = "0.9.0"
+  const val kotlin = "1.4.20"
+  const val mavenPublish = "0.13.0"
 
-  const val versionName = "0.9.1"
+  const val versionName = "0.9.2"
 }
 
 object BuildPlugins {
@@ -59,11 +60,11 @@ object BuildPlugins {
   const val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
   const val knit = "org.jetbrains.kotlinx:kotlinx-knit:${Versions.knit}"
 
-  const val atomicFu = "org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.14.1"
+  const val atomicFu = "org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.14.4"
   const val binaryCompatibility =
     "org.jetbrains.kotlinx:binary-compatibility-validator:${Versions.binaryCompatibility}"
 
-  const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.gradleWrapper}"
+  const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.androidTools}"
   const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
   const val benManesVersions = "com.github.ben-manes:gradle-versions-plugin:${Versions.benManes}"
 
@@ -141,9 +142,9 @@ object Libs {
   }
 
   object JUnit {
-    const val jUnit4 = "junit:junit:4.12"
+    const val jUnit4 = "junit:junit:4.13.1"
 
-    private const val version = "5.6.2"
+    private const val version = "5.7.0"
 
     const val core = "org.junit.jupiter:junit-jupiter:$version"
     const val api = "org.junit.jupiter:junit-jupiter-api:$version"
@@ -153,7 +154,7 @@ object Libs {
   }
 
   object Kotlin {
-    private const val version = "1.4.10"
+    private const val version = "1.4.20"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
     const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
     const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
@@ -163,8 +164,10 @@ object Libs {
   }
 
   object Kotest {
-    private const val version = "4.2.5"
+    private const val version = "4.3.1"
     const val assertions = "io.kotest:kotest-assertions-core-jvm:$version"
+    const val assertionsShared = "io.kotest:kotest-assertions-shared-jvm:$version"
+    const val commonJvm = "io.kotest:kotest-common-jvm:$version"
     const val properties = "io.kotest:kotest-property-jvm:$version"
     const val runner = "io.kotest:kotest-runner-junit5-jvm:$version"
   }
@@ -172,7 +175,7 @@ object Libs {
   object Kotlinx {
 
     object Coroutines {
-      private const val version = "1.3.6"
+      private const val version = "1.4.2"
       const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$version"
       const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       const val jdk8 = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$version"
@@ -187,7 +190,7 @@ object Libs {
   }
 
   object MockK {
-    const val core = "io.mockk:mockk:1.9.2"
+    const val core = "io.mockk:mockk:1.10.2"
   }
 
   object Objenesis {
@@ -198,7 +201,7 @@ object Libs {
 
     object Dispatch {
 
-      private const val version = "1.0.0-beta04"
+      private const val version = "1.0.0-beta06"
 
       const val core = "com.rickbusarow.dispatch:dispatch-core:${version}"
       const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:${version}"

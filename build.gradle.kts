@@ -21,10 +21,9 @@ import java.net.*
 
 buildscript {
   repositories {
-    mavenLocal()
     mavenCentral()
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
     google()
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
     jcenter()
     gradlePluginPortal()
     maven("https://dl.bintray.com/kotlin/kotlinx")
@@ -39,6 +38,11 @@ buildscript {
     classpath(BuildPlugins.dokka)
     classpath(BuildPlugins.knit)
   }
+}
+
+plugins {
+  id(Plugins.benManes) version Versions.benManes
+  base
 }
 
 allprojects {
@@ -185,12 +189,6 @@ fun linkModuleDocs(
   }
 }
 
-val clean by tasks.registering {
-  doLast {
-    delete("build")
-  }
-}
-
 subprojects {
 
   // force update all transitive dependencies (prevents some library leaking an old version)
@@ -253,11 +251,6 @@ val copyRootFiles by tasks.registering {
   }
 }
 
-val check by tasks.registering {
-
-  dependsOn(allprojects.mapNotNull { it.tasks.findByName("build") })
-}
-
 apply(plugin = Plugins.knit)
 
 extensions.configure<KnitPluginExtension> {
@@ -290,4 +283,17 @@ extensions.configure<ApiValidationExtension> {
    */
   ignoredProjects =
     mutableSetOf("samples")
+}
+
+fun isNonStable(version: String): Boolean {
+  val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+  val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+  val isStable = stableKeyword || regex.matches(version)
+  return isStable.not()
+}
+
+tasks.named("dependencyUpdates", com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class.java).configure {
+  rejectVersionIf {
+    isNonStable(candidate.version) && !isNonStable(currentVersion)
+  }
 }
