@@ -19,7 +19,6 @@ class ResetsScopeSample : HermitJUnit5() {
   @Test
   fun `resetAll should throw an exception if a TestCoroutineScope is leaking`() =
     runBlocking<Unit> {
-
       testScope.leak()
 
       shouldThrow<UncompletedCoroutinesError> {
@@ -31,12 +30,10 @@ class ResetsScopeSample : HermitJUnit5() {
       shouldThrow<UncompletedCoroutinesError> {
         resetAll()
       }
-
     }
 
   @Test
   fun `resetAll should cancel all child coroutines if not a test scope`() = runBlocking<Unit> {
-
     val leakyJob = normalScope.leak()
 
     resetAll()

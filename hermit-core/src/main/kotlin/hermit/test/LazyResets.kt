@@ -18,8 +18,9 @@ package hermit.test
 import hermit.test.internal.*
 import kotlin.reflect.*
 
-interface LazyResets<out T : Any> : Lazy<T>,
-                                    Resets
+interface LazyResets<out T : Any> :
+  Lazy<T>,
+  Resets
 
 fun <T : Any> LazyResets(
   resetManager: ResetManager,
@@ -49,7 +50,6 @@ public inline fun <reified T : Any> ResetManager.resets(
     try {
       clazz.java.getDeclaredConstructor().newInstance()
     } catch (illegal: IllegalAccessException) {
-
       val obj = clazz.objectInstance
 
       if (obj != null && obj is Resets) {
@@ -58,14 +58,12 @@ public inline fun <reified T : Any> ResetManager.resets(
         throw LazyResetDelegateObjectException(clazz)
       }
     } catch (abstract: InstantiationException) {
-
       when {
         clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
-        clazz.isAbstract       -> throw LazyResetDelegateAbstractException(clazz)
-        else                   -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
+        clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)
+        else -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
       }
     }
-
   }
 ): LazyResets<T> = LazyResets(this, valueFactory)
 
@@ -109,7 +107,8 @@ public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
  */
 public class LazyResetDelegateObjectException(problemClass: KClass<*>) : LazyResetDelegateException(
   problemClass,
-  "Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface."
+  "Objects may not be used with a 'by resets' delegate " +
+    "unless they implement the LazyReset interface."
 )
 
 public abstract class LazyResetDelegateException(

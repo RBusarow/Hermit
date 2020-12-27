@@ -21,13 +21,11 @@ class LazyResetsSample : SampleTest() {
 
   @Sample
   fun lazyResetClassSample() {
-
     var instanceNumber = 0
 
     val resetManager = Hermit()
 
     val lazyInt = LazyResets(resetManager) {
-
       val newValue = ++instanceNumber
 
       println("initializing as $newValue")
@@ -60,13 +58,11 @@ class LazyResetsSample : SampleTest() {
 
   @Sample
   fun lazyResetDelegateSample() {
-
     var instanceNumber = 0
 
     val resetManager = Hermit()
 
     val lazyInt by resetManager.resets {
-
       val newValue = ++instanceNumber
 
       println("initializing as $newValue")
@@ -99,20 +95,17 @@ class LazyResetsSample : SampleTest() {
 
   @Sample
   fun lazyResetDelegateInImplementationSample() {
-
     class SomeImplementation : Hermit() {
 
       var instanceNumber = 0
 
       val lazyInt by resets {
-
         val newValue = ++instanceNumber
 
         println("initializing as $newValue")
 
         newValue
       }
-
     }
 
     val impl = SomeImplementation()
@@ -139,6 +132,4 @@ class LazyResetsSample : SampleTest() {
       |access lazy --> 2
     """.trimMargin()
   }
-
 }
-

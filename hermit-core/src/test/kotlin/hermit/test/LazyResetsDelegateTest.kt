@@ -210,21 +210,20 @@ internal class LazyResetsDelegateTest : FreeSpec({
           }
         }
 
-        "classes without default constructor should throw LazyResetDelegateNonDefaultConstructorException" - {
+        "classes without default constructor" {
 
           val subject = resetManager.resets<NoDefaultConstructor>()
 
-          shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
-            subject.value
+          "should throw LazyResetDelegateNonDefaultConstructorException" - {
+
+            shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
+              subject.value
+            }
           }
         }
-
       }
-
     }
-
   }
-
 })
 
 /*
@@ -244,4 +243,3 @@ internal class NoDefaultConstructor(val name: String)
 internal interface Interface
 internal abstract class AbstractClass
 internal object ObjectWithoutResets
-

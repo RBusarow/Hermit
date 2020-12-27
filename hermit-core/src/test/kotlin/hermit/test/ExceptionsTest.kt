@@ -35,9 +35,7 @@ class ExceptionsTest : FreeSpec({
       ) { exception ->
 
         exception.shouldBeInstanceOf<Exception>()
-
       }
-
     }
 
     "should all be LazyResetDelegateException" - {
@@ -50,7 +48,6 @@ class ExceptionsTest : FreeSpec({
       ) { exception ->
 
         exception.shouldBeInstanceOf<LazyResetDelegateException>()
-
       }
     }
   }

@@ -42,6 +42,7 @@ buildscript {
 
 plugins {
   id(Plugins.benManes) version Versions.benManes
+  id(Plugins.ktLint) version Versions.ktLint
   base
 }
 
@@ -173,9 +174,7 @@ fun linkModuleDocs(
   currentTask: DokkaTask,
   dependencyModule: String
 ) {
-
   if (matchingModules.contains(currentProject.name) || matchingModules.isEmpty()) {
-
     currentTask.dependsOn(project(":$dependencyModule").tasks.withType<DokkaTask>())
 
     currentTask.configuration {
@@ -292,8 +291,33 @@ fun isNonStable(version: String): Boolean {
   return isStable.not()
 }
 
-tasks.named("dependencyUpdates", com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class.java).configure {
+tasks.named(
+  "dependencyUpdates",
+  com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class.java
+).configure {
   rejectVersionIf {
     isNonStable(candidate.version) && !isNonStable(currentVersion)
+  }
+}
+
+allprojects {
+  apply {
+    plugin("org.jlleitschuh.gradle.ktlint")
+  }
+  ktlint {
+    debug.set(false)
+    version.set("0.40.0")
+    verbose.set(true)
+    outputColorName.set("RED")
+    android.set(false)
+    outputToConsole.set(true)
+    ignoreFailures.set(false)
+    enableExperimentalRules.set(true)
+    additionalEditorconfigFile.set(file("${rootProject.rootDir}/.editorconfig"))
+    disabledRules.set(setOf("no-wildcard-imports", "experimental:argument-list-wrapping"))
+    filter {
+      exclude("**/generated/**")
+      include("**/kotlin/**")
+    }
   }
 }

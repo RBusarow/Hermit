@@ -38,14 +38,12 @@ internal class HermitRuleTest {
 
   @Test
   fun `test 1`() {
-
     lastDefaultResetProperty = defaultResetProperty
     lastArgumentResetProperty = argumentResetProperty
   }
 
   @Test
   fun `test 2`() {
-
     lastDefaultResetProperty shouldNotBe null
 
     lastDefaultResetProperty shouldNotBe defaultResetProperty
@@ -60,5 +58,4 @@ internal class HermitRuleTest {
     var lastDefaultResetProperty: Long? = null
     var lastArgumentResetProperty: Long? = null
   }
-
 }

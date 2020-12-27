@@ -26,6 +26,8 @@ object Plugins {
 
   const val javaLibrary = "java-library"
 
+  const val ktLint = "org.jlleitschuh.gradle.ktlint"
+
   const val kotlin = "kotlin"
   const val kotlinAndroid = "kotlin-android"
   const val kotlinAndroidExtensions = "kotlin-android-extensions"
@@ -43,6 +45,7 @@ object Versions {
   const val minSdk = "21"
   const val targetSdk = 29
 
+  const val ktLint = "9.4.1"
   const val binaryCompatibility = "0.2.3"
   const val benManes = "0.34.0"
   const val androidTools = "4.1.0"

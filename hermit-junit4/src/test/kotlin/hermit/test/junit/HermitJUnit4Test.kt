@@ -33,5 +33,4 @@ class HermitJUnit4Test : HermitJUnit4(HermitJUnit4Test) {
   class TestSubject {
     var count = 0
   }
-
 }

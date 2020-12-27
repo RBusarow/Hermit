@@ -26,4 +26,3 @@ interface ResetManager {
   fun register(delegate: Resets)
   fun resetAll()
 }
-

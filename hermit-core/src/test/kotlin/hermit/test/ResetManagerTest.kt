@@ -28,13 +28,9 @@ internal class ResetManagerTest : FreeSpec({
 }
 
 private inline fun <reified T : ResetManager> managerTests(manager: T) = freeSpec {
-
   manager::class.toString() - {
-
     "resetAll" - {
-
       "registered delegates should  be reset" - {
-
         val a = TestResets()
         val b = TestResets()
 
@@ -52,7 +48,6 @@ private inline fun <reified T : ResetManager> managerTests(manager: T) = freeSpe
     }
 
     "delegates should only be reset once unless re-registered" - {
-
       val a = TestResets()
       val b = TestResets()
 
