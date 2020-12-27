@@ -25,5 +25,6 @@ import org.junit.jupiter.api.extension.*
 interface AutoReset : ResetManager
 
 @Suppress("FunctionName")
-fun AutoReset(): AutoReset = object : Hermit(),
-                                      AutoReset {}
+fun AutoReset(): AutoReset = object :
+  Hermit(),
+  AutoReset {}

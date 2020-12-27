@@ -27,14 +27,14 @@ import kotlinx.coroutines.test.*
 @ExperimentalCoroutinesApi
 public inline fun <reified T : CoroutineScope> ResetManager.resetsScope(
   scope: T = when (T::class) {
-    TestProvidedCoroutineScope::class  -> TestProvidedCoroutineScope()
-    TestCoroutineScope::class          -> TestCoroutineScope()
-    DefaultCoroutineScope::class       -> DefaultCoroutineScope()
-    IOCoroutineScope::class            -> IOCoroutineScope()
-    MainCoroutineScope::class          -> MainCoroutineScope()
+    TestProvidedCoroutineScope::class -> TestProvidedCoroutineScope()
+    TestCoroutineScope::class -> TestCoroutineScope()
+    DefaultCoroutineScope::class -> DefaultCoroutineScope()
+    IOCoroutineScope::class -> IOCoroutineScope()
+    MainCoroutineScope::class -> MainCoroutineScope()
     MainImmediateCoroutineScope::class -> MainImmediateCoroutineScope()
-    UnconfinedCoroutineScope::class    -> UnconfinedCoroutineScope()
-    else                               -> CoroutineScope(Job())
+    UnconfinedCoroutineScope::class -> UnconfinedCoroutineScope()
+    else -> CoroutineScope(Job())
   } as T
 ): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, scope)
 

@@ -35,7 +35,6 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
 
   @Test
   fun `test one`() {
-
     val thing = Thing()
 
     someDao.insertThing(thing)
@@ -45,7 +44,6 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
 
   @Test
   fun `test two`() {
-
     // This test passes because someDao has been reset and is a different instance
     someDao.getAllThings() shouldBe listOf()
   }

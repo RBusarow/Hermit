@@ -7,8 +7,8 @@ import org.junit.jupiter.api.extension.*
 class HermitExtension(
   resetManager: ResetManager = Hermit()
 ) : TestInstancePostProcessor,
-    AfterEachCallback,
-    ResetManager {
+  AfterEachCallback,
+  ResetManager {
 
   private var tempDelegates: MutableList<Resets>? = mutableListOf()
 
@@ -39,13 +39,11 @@ class HermitExtension(
   }
 
   override fun postProcessTestInstance(testInstance: Any?, context: ExtensionContext?) {
-
     /*
     Nested classes also trigger `postProcessTestInstance`,
     so add a check to only set the instance for the first (top-most) instance.
      */
     if (!topInstanceProcessed.value) {
-
       (testInstance as? ResetManager)?.let {
         delegate = it
       }

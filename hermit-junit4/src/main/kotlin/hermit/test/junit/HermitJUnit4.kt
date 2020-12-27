@@ -28,7 +28,6 @@ abstract class HermitJUnit4(
       try {
         clazz.java.getDeclaredConstructor().newInstance()
       } catch (illegal: IllegalAccessException) {
-
         val obj = clazz.objectInstance
 
         if (obj != null && obj is Resets) {
@@ -37,14 +36,12 @@ abstract class HermitJUnit4(
           throw LazyResetDelegateObjectException(clazz)
         }
       } catch (abstract: InstantiationException) {
-
         when {
           clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
-          clazz.isAbstract       -> throw LazyResetDelegateAbstractException(clazz)
-          else                   -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
+          clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)
+          else -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
         }
       }
-
     }
   ) = resetsExtension(valueFactory)
 }

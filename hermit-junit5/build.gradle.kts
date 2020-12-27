@@ -44,5 +44,4 @@ dependencies {
   testImplementation(Libs.Kotlinx.Coroutines.test)
 
   api(project(":hermit-core"))
-
 }

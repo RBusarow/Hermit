@@ -16,7 +16,6 @@ class SimpleTest : HermitJUnit5() {
   @Test
   @Order(1)
   fun `test-specific answers should be applied`() {
-
     every { car.manufacturer } returns "Tesla"
 
     car.manufacturer shouldBe "Tesla"
@@ -25,17 +24,14 @@ class SimpleTest : HermitJUnit5() {
   @Test
   @Order(2)
   fun `mocks are strict by default`() {
-
     shouldThrow<MockKException> { car.manufacturer shouldBe "Honda" }
   }
 
   @Test
   @Order(3)
   fun `recorded calls are reset for each test`() {
-
     verify(exactly = 0) { car.manufacturer }
   }
-
 }
 
 class Car {

@@ -41,9 +41,7 @@ class AutoResetRuleSample {
 
   @Test
   fun `some property gets reset`() {
-
     someProperty shouldBe false
-
   }
 }
 

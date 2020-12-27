@@ -41,7 +41,7 @@ public class ResetsMockK<out T : Any>(
   private val clearPolicy: ClearPolicy = ClearPolicy(),
   private val block: T.() -> Unit = {}
 ) : Lazy<T>,
-    Resets {
+  Resets {
 
   init {
     mock.block()

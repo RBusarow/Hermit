@@ -37,5 +37,4 @@ dependencies {
   testImplementation(Libs.Kotlin.testCommon)
 
   testImplementation(Libs.MockK.core)
-
 }

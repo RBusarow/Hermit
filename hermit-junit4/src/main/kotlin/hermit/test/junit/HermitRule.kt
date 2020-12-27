@@ -32,10 +32,9 @@ import org.junit.runner.*
 class HermitRule(
   private val delegate: ResetManager = Hermit()
 ) : TestWatcher(),
-    ResetManager by delegate {
+  ResetManager by delegate {
 
   override fun finished(description: Description?) {
     delegate.resetAll()
   }
-
 }

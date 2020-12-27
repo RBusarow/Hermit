@@ -21,7 +21,6 @@ internal class LazyResetsCoroutineScopeTest : HermitJUnit5() {
   @Test
   fun `resetAll should throw an exception if a TestCoroutineScope is leaking`() =
     runBlocking<Unit> {
-
       testScope.leak()
 
       shouldThrow<UncompletedCoroutinesError> {
@@ -33,12 +32,10 @@ internal class LazyResetsCoroutineScopeTest : HermitJUnit5() {
       shouldThrow<UncompletedCoroutinesError> {
         resetAll()
       }
-
     }
 
   @Test
   fun `resetAll should cancel all child coroutines if not a test scope`() = runBlocking<Unit> {
-
     val leakyJob = normalScope.leak()
 
     resetAll()
@@ -53,7 +50,6 @@ internal class LazyResetsCoroutineScopeTest : HermitJUnit5() {
     @Order(1)
     @Test
     fun `adding scopes to set`() {
-
       scopeInstances.add(testScope)
       scopeInstances.add(providedScope)
       scopeInstances.add(normalScope)
@@ -64,7 +60,6 @@ internal class LazyResetsCoroutineScopeTest : HermitJUnit5() {
     @Order(2)
     @Test
     fun `adding current scopes to set should still only have 3`() {
-
       scopeInstances.size shouldBe 3
 
       scopeInstances.add(testScope)
@@ -81,4 +76,3 @@ internal class LazyResetsCoroutineScopeTest : HermitJUnit5() {
     }
   }
 }
-

@@ -28,9 +28,7 @@ private inline fun resetMockkTests(
   crossinline carFactory: (ResetManager, Car.() -> Unit) -> Lazy<Car>
 ) = freeSpec {
   name - {
-
     "Mock should behave according to answers block" - {
-
       val car by carFactory.invoke(resetManager) {
         every { manufacturer } returns "Ford"
         every { numberOfWheels() } returns 6
@@ -46,7 +44,6 @@ private inline fun resetMockkTests(
     }
 
     "answers should be reset when ResetManager is reset" - {
-
       val car by carFactory.invoke(resetManager) {
         every { manufacturer } returns "Ford"
         every { numberOfWheels() } returns 6
@@ -62,7 +59,6 @@ private inline fun resetMockkTests(
     }
 
     "recorded calls should be reset when ResetManager is reset" - {
-
       val car by carFactory.invoke(resetManager) {
         every { manufacturer } returns "Ford"
         every { numberOfWheels() } returns 6
@@ -86,5 +82,4 @@ class Car {
   val manufacturer = "Toyota"
 
   fun numberOfWheels() = 4
-
 }

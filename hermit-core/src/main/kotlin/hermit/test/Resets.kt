@@ -34,4 +34,3 @@ package hermit.test
 interface Resets {
   fun reset()
 }
-

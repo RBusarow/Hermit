@@ -29,5 +29,4 @@ class UnsafeResetManager : ResetManager {
     delegates.forEach { it.reset() }
     delegates.clear()
   }
-
 }

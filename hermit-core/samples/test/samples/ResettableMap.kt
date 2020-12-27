@@ -21,11 +21,11 @@ import hermit.test.*
  * Makes a MutableMap which conforms to the Resettable interface,
  * by delegating `reset()` to the existing [clear][MutableMap.clear] function.
  */
-class ResettableMap<K, V> : MutableMap<K, V> by mutableMapOf(),
-                            Resets {
+class ResettableMap<K, V> :
+  MutableMap<K, V> by mutableMapOf(),
+  Resets {
 
   override fun reset() {
     clear()
   }
 }
-

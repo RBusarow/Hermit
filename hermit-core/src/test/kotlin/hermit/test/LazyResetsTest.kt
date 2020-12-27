@@ -128,6 +128,4 @@ internal class LazyResetsTest : FreeSpec({
       resetManager.delegates shouldBe listOf(subject)
     }
   }
-
 })
-

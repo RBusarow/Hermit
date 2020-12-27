@@ -7,7 +7,7 @@ import hermit.test.resets as resetsExtension
 abstract class HermitJUnit5(
   delegates: MutableCollection<Resets> = mutableListOf()
 ) : Hermit(delegates),
-    AutoReset {
+  AutoReset {
 
   @Suppress("FunctionName")
   @AfterEach
@@ -27,7 +27,6 @@ abstract class HermitJUnit5(
       try {
         clazz.java.getDeclaredConstructor().newInstance()
       } catch (illegal: IllegalAccessException) {
-
         val obj = clazz.objectInstance
 
         if (obj != null && obj is Resets) {
@@ -36,14 +35,12 @@ abstract class HermitJUnit5(
           throw LazyResetDelegateObjectException(clazz)
         }
       } catch (abstract: InstantiationException) {
-
         when {
           clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
-          clazz.isAbstract       -> throw LazyResetDelegateAbstractException(clazz)
-          else                   -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
+          clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)
+          else -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
         }
       }
-
     }
   ) = resetsExtension(valueFactory)
 }
