@@ -1,10 +1,12 @@
 package samples
 
-import hermit.test.junit.*
-import hermit.test.mockk.*
-import io.kotest.assertions.throwables.*
-import io.kotest.matchers.*
-import io.mockk.*
+import hermit.test.junit.HermitJUnit5
+import hermit.test.mockk.resetsMockk
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.shouldBe
+import io.mockk.MockKException
+import io.mockk.every
+import io.mockk.verify
 import org.junit.jupiter.api.*
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
@@ -38,5 +40,6 @@ class Car {
 
   val manufacturer = "Toyota"
 
-  fun nunmberOfWheels() = 4
+  @Suppress("FunctionOnlyReturningConstant")
+  fun numberOfWheels() = 4
 }

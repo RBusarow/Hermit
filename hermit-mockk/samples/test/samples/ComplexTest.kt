@@ -1,10 +1,14 @@
 package samples
 
-import hermit.test.junit.*
-import hermit.test.mockk.*
-import io.kotest.matchers.*
-import io.mockk.*
-import org.junit.jupiter.api.*
+import hermit.test.junit.HermitJUnit5
+import hermit.test.mockk.ResetsMockK
+import hermit.test.mockk.resetsMockk
+import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.mockk.verify
+import org.junit.jupiter.api.Order
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ComplexTest : HermitJUnit5() {
@@ -36,6 +40,6 @@ class ComplexTest : HermitJUnit5() {
   fun `recorded calls should not be reset for each test`() {
     verify(exactly = 2) { car.manufacturer }
 
-    car.nunmberOfWheels() shouldBe 0 // relaxed return value
+    car.numberOfWheels() shouldBe 0 // relaxed return value
   }
 }

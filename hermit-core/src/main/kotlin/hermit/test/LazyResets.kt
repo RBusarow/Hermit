@@ -15,8 +15,8 @@
 
 package hermit.test
 
-import hermit.test.internal.*
-import kotlin.reflect.*
+import hermit.test.internal.LazyResetsImpl
+import kotlin.reflect.KClass
 
 interface LazyResets<out T : Any> :
   Lazy<T>,
@@ -58,6 +58,12 @@ public inline fun <reified T : Any> ResetManager.resets(
         throw LazyResetDelegateObjectException(clazz)
       }
     } catch (abstract: InstantiationException) {
+      when {
+        clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
+        clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)
+        else -> throw LazyResetDelegateNonDefaultConstructorException(clazz)
+      }
+    } catch (abstract: NoSuchMethodException) {
       when {
         clazz.java.isInterface -> throw LazyResetDelegateInterfaceException(clazz)
         clazz.isAbstract -> throw LazyResetDelegateAbstractException(clazz)

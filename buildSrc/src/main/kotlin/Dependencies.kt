@@ -22,6 +22,7 @@ object Plugins {
   const val binaryCompatilibity = "binary-compatibility-validator"
 
   const val dokka = "org.jetbrains.dokka"
+  const val detekt = "io.gitlab.arturbosch.detekt"
   const val knit = "kotlinx-knit"
 
   const val javaLibrary = "java-library"
@@ -140,6 +141,14 @@ object Libs {
     const val androidSupport = "com.google.dagger:dagger-android-support:$version"
     const val compiler = "com.google.dagger:dagger-compiler:$version"
     const val core = "com.google.dagger:dagger:$version"
+  }
+  object Detekt {
+
+    const val version = "1.15.0"
+    const val api = "io.gitlab.arturbosch.detekt:detekt-api:$version"
+    const val cli = "io.gitlab.arturbosch.detekt:detekt-cli:$version"
+    const val formatting = "io.gitlab.arturbosch.detekt:detekt-formatting:$version"
+    const val test = "io.gitlab.arturbosch.detekt:detekt-test:$version"
   }
 
   object JakeWharton {

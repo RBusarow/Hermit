@@ -1,8 +1,12 @@
 package hermit.test.mockk
 
-import hermit.test.*
-import io.mockk.*
-import kotlin.reflect.*
+import hermit.test.ResetManager
+import hermit.test.Resets
+import io.mockk.MockKException
+import io.mockk.clearMocks
+import io.mockk.every
+import io.mockk.mockk
+import kotlin.reflect.KClass
 
 /**
  * Lazy MockK object for which [reset] will call [clearMocks].
@@ -110,7 +114,11 @@ public class ResetsMockK<out T : Any>(
  * @see mockk
  * @see ResetsMockK
  */
-@Suppress("CHANGING_ARGUMENTS_EXECUTION_ORDER_FOR_NAMED_VARARGS", "SpreadOperator")
+@Suppress(
+  "CHANGING_ARGUMENTS_EXECUTION_ORDER_FOR_NAMED_VARARGS",
+  "SpreadOperator",
+  "LongParameterList"
+)
 public inline fun <reified T : Any> ResetManager.resetsMockk(
   name: String? = null,
   relaxed: Boolean = false,
@@ -121,10 +129,10 @@ public inline fun <reified T : Any> ResetManager.resetsMockk(
 ): ResetsMockK<T> = ResetsMockK(
   resetManager = this,
   mock = mockk(
-    name,
-    relaxed,
-    *moreInterfaces,
-    relaxUnitFun = relaxUnitFun
+    name = name,
+    relaxed = relaxed,
+    relaxUnitFun = relaxUnitFun,
+    moreInterfaces = moreInterfaces
   ),
   clearPolicy = clearPolicy,
   block = block
