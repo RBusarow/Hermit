@@ -45,7 +45,7 @@ jobs:
         run : ./gradlew detekt
 
       - name: all tests
-        run: ./gradlew testJvm
+        run: ./gradlew test
 
       - name: Unit test results
         uses: mikepenz/action-junit-report@v1
