@@ -27,6 +27,7 @@ object Plugins {
   const val javaLibrary = "java-library"
 
   const val ktLint = "org.jlleitschuh.gradle.ktlint"
+  const val kotlinter = "org.jmailen.kotlinter"
 
   const val kotlin = "kotlin"
   const val kotlinAndroid = "kotlin-android"
@@ -39,18 +40,18 @@ object Plugins {
 object Versions {
   const val ktlint = "0.35.0"
   const val dokka = "0.10.1"
-  const val knit = "0.1.3"
+  const val knit = "0.2.3"
 
   const val compileSdk = 29
   const val minSdk = "21"
   const val targetSdk = 29
 
-  const val ktLint = "9.4.1"
-  const val binaryCompatibility = "0.2.3"
-  const val benManes = "0.34.0"
-  const val androidTools = "4.1.0"
+  const val kotlinter = "3.3.0"
+  const val binaryCompatibility = "0.4.0"
+  const val benManes = "0.36.0"
+  const val androidTools = "4.1.2"
   const val dagger = "2.25.2"
-  const val kotlin = "1.4.20"
+  const val kotlin = "1.4.30"
   const val mavenPublish = "0.13.0"
 
   const val versionName = "0.9.2"
@@ -63,7 +64,7 @@ object BuildPlugins {
   const val dokka = "org.jetbrains.dokka:dokka-gradle-plugin:${Versions.dokka}"
   const val knit = "org.jetbrains.kotlinx:kotlinx-knit:${Versions.knit}"
 
-  const val atomicFu = "org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.14.4"
+  const val atomicFu = "org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.15.1"
   const val binaryCompatibility =
     "org.jetbrains.kotlinx:binary-compatibility-validator:${Versions.binaryCompatibility}"
 
@@ -71,10 +72,11 @@ object BuildPlugins {
   const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
   const val benManesVersions = "com.github.ben-manes:gradle-versions-plugin:${Versions.benManes}"
 
+  const val kotlinter = "org.jmailen.gradle:kotlinter-gradle:${Versions.kotlinter}"
+
   const val androidApplication = "com.android.application"
   const val kotlinAndroid = "kotlin-android"
   const val kotlinAndroidExtensions = "kotlin-android-extensions"
-
 }
 
 object Libs {
@@ -147,7 +149,7 @@ object Libs {
   object JUnit {
     const val jUnit4 = "junit:junit:4.13.1"
 
-    private const val version = "5.7.0"
+    private const val version = "5.7.1"
 
     const val core = "org.junit.jupiter:junit-jupiter:$version"
     const val api = "org.junit.jupiter:junit-jupiter-api:$version"
@@ -157,7 +159,7 @@ object Libs {
   }
 
   object Kotlin {
-    private const val version = "1.4.20"
+    private const val version = "1.4.30"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
     const val reflect = "org.jetbrains.kotlin:kotlin-reflect:$version"
     const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
@@ -167,7 +169,7 @@ object Libs {
   }
 
   object Kotest {
-    private const val version = "4.3.1"
+    private const val version = "4.4.0"
     const val assertions = "io.kotest:kotest-assertions-core-jvm:$version"
     const val assertionsShared = "io.kotest:kotest-assertions-shared-jvm:$version"
     const val commonJvm = "io.kotest:kotest-common-jvm:$version"
@@ -189,39 +191,30 @@ object Libs {
     object Knit {
       const val test = "org.jetbrains.kotlinx:kotlinx-knit-test:${Versions.knit}"
     }
-
   }
 
   object MockK {
-    const val core = "io.mockk:mockk:1.10.2"
-  }
-
-  object Objenesis {
-    const val core = "org.objenesis:objenesis:2.6"
+    const val core = "io.mockk:mockk:1.10.5"
   }
 
   object RickBusarow {
 
     object Dispatch {
 
-      private const val version = "1.0.0-beta06"
+      private const val version = "1.0.0-beta08"
 
-      const val core = "com.rickbusarow.dispatch:dispatch-core:${version}"
-      const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:${version}"
-      const val espresso =
-        "com.rickbusarow.dispatch:dispatch-android-espresso:${version}"
-      const val lifecycle =
-        "com.rickbusarow.dispatch:dispatch-android-lifecycle:${version}"
+      const val core = "com.rickbusarow.dispatch:dispatch-core:$version"
+      const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:$version"
+      const val espresso = "com.rickbusarow.dispatch:dispatch-android-espresso:$version"
+      const val lifecycle = "com.rickbusarow.dispatch:dispatch-android-lifecycle:$version"
       const val lifecycleExtensions =
-        "com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:${version}"
-      const val viewModel =
-        "com.rickbusarow.dispatch:dispatch-android-viewmodel:${version}"
+        "com.rickbusarow.dispatch:dispatch-android-lifecycle-extensions:$version"
+      const val viewModel = "com.rickbusarow.dispatch:dispatch-android-viewmodel:$version"
 
       object Test {
-        const val core = "com.rickbusarow.dispatch:dispatch-test:${version}"
-        const val jUnit4 = "com.rickbusarow.dispatch:dispatch-test-junit4:${version}"
-        const val jUnit5 = "com.rickbusarow.dispatch:dispatch-test-junit5:${version}"
-
+        const val core = "com.rickbusarow.dispatch:dispatch-test:$version"
+        const val jUnit4 = "com.rickbusarow.dispatch:dispatch-test-junit4:$version"
+        const val jUnit5 = "com.rickbusarow.dispatch:dispatch-test-junit5:$version"
       }
     }
 
@@ -233,7 +226,6 @@ object Libs {
       const val junit5 = "com.rickbusarow.hermit:hermit-junit5:$version"
       const val mockk = "com.rickbusarow.hermit:hermit-mockk:$version"
     }
-
   }
 
   object Robolectric {
