@@ -15,10 +15,11 @@
 
 package hermit.test
 
-import io.kotest.core.spec.style.*
-import io.kotest.data.*
-import io.kotest.matchers.*
-import io.kotest.matchers.types.*
+import io.kotest.core.spec.style.FreeSpec
+import io.kotest.data.forAll
+import io.kotest.data.row
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
 
 class ExceptionsTest : FreeSpec({
 
@@ -55,8 +56,8 @@ class ExceptionsTest : FreeSpec({
   "non default constructor exception message" - {
 
     LazyResetDelegateNonDefaultConstructorException(String::class).message shouldBe """
-      
-     
+
+
       error initializing <kotlin.String>. Classes without a default constructor cannot be used with a 'by resets' delegate.
     """.trimIndent()
   }
@@ -64,8 +65,8 @@ class ExceptionsTest : FreeSpec({
   "interface exception message" - {
 
     LazyResetDelegateInterfaceException(String::class).message shouldBe """
-      
-     
+
+
       error initializing <kotlin.String>. Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
     """.trimIndent()
   }
@@ -73,8 +74,8 @@ class ExceptionsTest : FreeSpec({
   "abstract class exception message" - {
 
     LazyResetDelegateAbstractException(String::class).message shouldBe """
-      
-     
+
+
       error initializing <kotlin.String>. Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated.
     """.trimIndent()
   }
@@ -82,8 +83,8 @@ class ExceptionsTest : FreeSpec({
   "object without Resets implementation exception message" - {
 
     LazyResetDelegateObjectException(String::class).message shouldBe """
-      
-     
+
+
       error initializing <kotlin.String>. Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
     """.trimIndent()
   }

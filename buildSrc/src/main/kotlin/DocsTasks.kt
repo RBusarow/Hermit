@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+@file:Suppress("TooManyFunctions")
+
 import org.gradle.api.*
 import java.io.*
 
@@ -74,6 +76,7 @@ fun Project.copyKdoc() {
     }
 }
 
+  @Suppress("MagicNumber")
 fun Project.copyReadMe() {
 
   val regex = "$projectDir/README.md".toRegex()
@@ -108,6 +111,7 @@ fun Project.copySite() {
     }
 }
 
+@Suppress("MagicNumber")
 fun Project.updateReadMeArtifactVersions() {
 
   val regex = "$projectDir/README.md".toRegex()

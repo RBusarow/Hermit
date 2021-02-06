@@ -15,8 +15,8 @@
 
 package samples
 
-import io.kotest.matchers.*
-import org.junit.jupiter.api.*
+import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Test
 
 typealias Sample = Test
 
@@ -27,17 +27,3 @@ infix fun Any?.shouldPrint(
 infix fun List<Any?>.shouldPrint(
   expected: String
 ) = joinToString("\n") shouldBe expected
-
-abstract class SampleTest {
-
-  protected val output = mutableListOf<String>()
-
-  @AfterEach
-  fun afterEach() {
-    output.clear()
-  }
-
-  protected fun println(message: Any?) {
-    output.add("$message")
-  }
-}

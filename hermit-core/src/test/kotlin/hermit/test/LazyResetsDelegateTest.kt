@@ -15,13 +15,13 @@
 
 package hermit.test
 
-import io.kotest.assertions.throwables.*
-import io.kotest.core.spec.style.*
-import io.kotest.matchers.*
-import io.kotest.matchers.collections.*
-import io.kotest.matchers.types.*
-import io.kotest.property.*
-import kotlin.properties.*
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.FreeSpec
+import io.kotest.matchers.collections.shouldBeEmpty
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.types.shouldBeInstanceOf
+import io.kotest.property.checkAll
+import kotlin.properties.Delegates
 
 internal class LazyResetsDelegateTest : FreeSpec({
 
@@ -37,7 +37,7 @@ internal class LazyResetsDelegateTest : FreeSpec({
 
       val subject = resetManager.resets { 33 }
 
-      subject.shouldBeTypeOf<LazyResets<Int>>()
+      subject.shouldBeInstanceOf<LazyResets<Int>>()
     }
 
     "should be Lazy" - {

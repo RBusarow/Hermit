@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 
+@file:Suppress("DEPRECATION")
+
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import io.gitlab.arturbosch.detekt.detekt
 import kotlinx.knit.*
 import kotlinx.validation.*
 import org.jetbrains.dokka.gradle.*
@@ -43,6 +47,7 @@ buildscript {
 
 plugins {
   id(Plugins.benManes) version Versions.benManes
+  id(Plugins.detekt) version Libs.Detekt.version
   id(Plugins.dokka) version Versions.dokka
   base
 }
@@ -53,6 +58,10 @@ allprojects {
     mavenCentral()
     google()
     jcenter()
+  }
+
+  tasks.withType<Test> {
+    useJUnitPlatform()
   }
 }
 
@@ -74,6 +83,7 @@ subprojects {
 
     dokkaSourceSets.configureEach {
 
+      @Suppress("MagicNumber")
       jdkVersion.set(8)
       reportUndocumented.set(true)
       skipEmptyPackages.set(true)
@@ -99,6 +109,51 @@ subprojects {
       }
     }
   }
+}
+
+detekt {
+
+  parallel = true
+  config = files("$rootDir/detekt/detekt-config.yml")
+
+  val unique = "${rootProject.relativePath(projectDir)}/${project.name}"
+
+  reports {
+    xml {
+      enabled = true
+      destination = file("$rootDir/build/detekt-reports/$unique-detekt.xml")
+    }
+    html {
+      enabled = true
+      destination = file("$rootDir/build/detekt-reports/$unique-detekt.html")
+    }
+    txt {
+      enabled = false
+      destination = file("$rootDir/build/detekt-reports/$unique-detekt.txt")
+    }
+  }
+}
+
+tasks.withType<DetektCreateBaselineTask> {
+
+  setSource(files(rootDir))
+
+  include("**/*.kt", "**/*.kts")
+  exclude("**/resources/**", "**/build/**", "**/src/test/java**")
+
+  // Target version of the generated JVM bytecode. It is used for type resolution.
+  this.jvmTarget = "1.8"
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
+
+  setSource(files(rootDir))
+
+  include("**/*.kt", "**/*.kts")
+  exclude("**/resources/**", "**/build/**", "**/src/test/java**")
+
+  // Target version of the generated JVM bytecode. It is used for type resolution.
+  this.jvmTarget = "1.8"
 }
 
 subprojects {

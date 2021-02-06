@@ -1,10 +1,14 @@
 package hermit.test.mockk
 
-import hermit.test.*
-import io.kotest.core.spec.*
-import io.kotest.core.spec.style.*
-import io.kotest.matchers.*
-import io.mockk.*
+import hermit.test.Hermit
+import hermit.test.ResetManager
+import io.kotest.core.spec.IsolationMode
+import io.kotest.core.spec.style.FreeSpec
+import io.kotest.core.spec.style.freeSpec
+import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.verify
 
 internal class ResetsMockKTest : FreeSpec({
 
@@ -81,5 +85,6 @@ class Car {
 
   val manufacturer = "Toyota"
 
+  @Suppress("FunctionOnlyReturningConstant")
   fun numberOfWheels() = 4
 }
