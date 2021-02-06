@@ -43,6 +43,7 @@ buildscript {
 
 plugins {
   id(Plugins.benManes) version Versions.benManes
+  id(Plugins.dokka) version Versions.dokka
   base
 }
 
@@ -53,136 +54,48 @@ allprojects {
     google()
     jcenter()
   }
-
-  afterEvaluate proj@{
-    tasks.withType<DokkaTask> dokkaTask@{
-
-      /*
-      Basic Dokka config
-       */
-
-      outputFormat = "gfm"
-      outputDirectory = "${project.buildDir}/dokka"
-
-      subProjects = Modules.allProduction
-
-      configuration {
-
-        jdkVersion = 6
-        reportUndocumented = true
-        skipDeprecated = true
-        skipEmptyPackages = true
-
-        samples = listOf("samples")
-        includes = listOf("README.md")
-
-        externalDocumentationLink {
-          url = URL("https://developer.android.com/reference/androidx/")
-          packageListUrl = URL(
-            "https://developer.android.com/reference/androidx/package-list"
-          )
-        }
-        externalDocumentationLink {
-          url = URL("https://developer.android.com/reference/androidx/test/")
-          packageListUrl = URL(
-            "https://developer.android.com/reference/androidx/test/package-list"
-          )
-        }
-        externalDocumentationLink {
-          url = URL("https://developer.android.com/reference/")
-          packageListUrl = URL(
-            "https://developer.android.com/reference/android/support/package-list"
-          )
-        }
-        externalDocumentationLink { url = URL("https://junit.org/junit4/javadoc/latest/") }
-        externalDocumentationLink {
-          url = URL(
-            "https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-android/"
-          )
-          packageListUrl = URL(
-            "https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-android/package-list"
-          )
-        }
-        externalDocumentationLink {
-          url = URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/")
-          packageListUrl = URL(
-            "https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/package-list"
-          )
-        }
-        externalDocumentationLink {
-          url = URL("https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/")
-          packageListUrl = URL(
-            "https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-test/package-list"
-          )
-        }
-
-        sourceLink {
-          // Unix based directory relative path to the root of the project (where you execute gradle respectively).
-          path = "./"
-
-          // URL showing where the source code can be accessed through the web browser
-          url = "https://github.com/RBusarow/AutoReset/tree/master"
-
-          // Suffix which is used to append the line number to the URL. Use #L for GitHub
-          lineSuffix = "#L"
-        }
-      }
-
-      /*
-       Module-specific linking fixes.  This makes it so that links in moduleB's kdoc
-       which point to something in moduleA's kdoc will actually work.
-       */
-
-      if (this@proj.name != "hermit-core") {
-
-        linkModuleDocs(
-          matchingModules = emptyList(), // all
-          currentProject = this@proj,
-          currentTask = this@dokkaTask,
-          dependencyModule = "hermit-core"
-        )
-      }
-
-      val buildDocs by tasks.registering {
-
-        description = "recreates all documentation for the /docs directory"
-        group = "documentation"
-
-        doFirst {
-          updateReadMeArtifactVersions()
-        }
-
-        dependsOn(
-          rootProject.tasks.findByName("cleanDocs"),
-          rootProject.tasks.findByName("copyRootFiles"),
-          rootProject.tasks.findByName("knit"),
-          this@dokkaTask
-        )
-
-        doLast {
-          copyKdoc()
-          copyReadMe()
-        }
-      }
-    }
-  }
 }
 
-fun linkModuleDocs(
-  matchingModules: List<String>,
-  currentProject: Project,
-  currentTask: DokkaTask,
-  dependencyModule: String
-) {
-  if (matchingModules.contains(currentProject.name) || matchingModules.isEmpty()) {
-    currentTask.dependsOn(project(":$dependencyModule").tasks.withType<DokkaTask>())
+tasks.dokkaHtmlMultiModule.configure {
 
-    currentTask.configuration {
-      externalDocumentationLink {
-        url = URL("https://rbusarow.github.io/Hermit/$dependencyModule/")
-        packageListUrl = URL(
-          "file://$projectDir/$dependencyModule/build/dokka/$dependencyModule/package-list"
-        )
+  outputDirectory.set(buildDir.resolve("dokka"))
+
+  // missing from 1.4.10  https://github.com/Kotlin/dokka/issues/1530
+  // documentationFileName.set("README.md")
+}
+
+subprojects {
+
+  tasks.withType<DokkaTask>().configureEach {
+
+    dependsOn(allprojects.mapNotNull { it.tasks.findByName("assemble") })
+
+    outputDirectory.set(buildDir.resolve("dokka"))
+
+    dokkaSourceSets.configureEach {
+
+      jdkVersion.set(8)
+      reportUndocumented.set(true)
+      skipEmptyPackages.set(true)
+      noAndroidSdkLink.set(false)
+
+      samples.from(files("samples"))
+
+      if (File("$projectDir/README.md").exists()) {
+        includes.from(files("README.md"))
+      }
+
+      sourceLink {
+
+        val modulePath = this@subprojects.path.replace(":", "/").replaceFirst("/", "")
+
+        // Unix based directory relative path to the root of the project (where you execute gradle respectively).
+        localDirectory.set(file("src/main"))
+
+        // URL showing where the source code can be accessed through the web browser
+        remoteUrl.set(uri("https://github.com/RBusarow/Dispatch/blob/main/$modulePath/src/main").toURL())
+        // Suffix which is used to append the line number to the URL. Use #L for GitHub
+        remoteLineSuffix.set("#L")
       }
     }
   }
