@@ -21,6 +21,7 @@ import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
+@Suppress("MaxLineLength")
 class ExceptionsTest : FreeSpec({
 
   "types" - {
