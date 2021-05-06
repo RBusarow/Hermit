@@ -1,4 +1,4 @@
-# Module hermit-coroutines
+Module hermit-coroutines
 
 ## Contents
 <!--- TOC -->

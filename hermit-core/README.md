@@ -1,4 +1,4 @@
-# MODULE hermit-core
+Module hermit-core
 
 ## Contents
 <!--- TOC -->

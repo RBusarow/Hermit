@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,24 +13,22 @@
  * limitations under the License.
  */
 
-plugins {
-  javaLibrary
-  id(Plugins.dokka)
-  id(Plugins.mavenPublish)
+package psi.visitor
+
+import org.jetbrains.kotlin.psi.KtFile
+import org.jetbrains.kotlin.psi.KtTreeVisitorVoid
+import kotlin.properties.Delegates
+
+abstract class KotlinVisitor<T> : KtTreeVisitorVoid() {
+
+  protected var root: KtFile by Delegates.notNull()
+    private set
+
+  abstract val properties: T
+
+  fun parse(file: KtFile): T {
+    root = file
+    file.accept(this)
+    return properties
+  }
 }
-
-dependencies {
-
-  api(projects.hermitCore)
-
-  implementation(libs.junit.api)
-  implementation(libs.kotlin.reflect)
-  implementation(libs.mockk)
-
-  runtimeOnly(libs.junit.engine)
-
-  testImplementation(libs.bundles.kotest)
-  testImplementation(libs.kotlin.test)
-  testImplementation(libs.kotlin.testCommon)
-  testImplementation(libs.kotlinx.coroutines.test)
-}1

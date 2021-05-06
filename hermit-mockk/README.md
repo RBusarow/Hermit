@@ -1,4 +1,4 @@
-# MODULE hermit-mockk
+Module hermit-mockk
 
 ## Contents
 <!--- TOC -->

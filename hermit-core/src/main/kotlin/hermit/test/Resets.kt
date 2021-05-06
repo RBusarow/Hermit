@@ -31,6 +31,6 @@ package hermit.test
  *
  * @sample samples.MutableSingleton
  */
-interface Resets {
-  fun reset()
+public interface Resets {
+  public fun reset()
 }

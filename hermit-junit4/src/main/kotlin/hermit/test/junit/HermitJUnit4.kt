@@ -1,10 +1,10 @@
 package hermit.test.junit
 
 import hermit.test.*
-import org.junit.*
+import org.junit.After
 import hermit.test.resets as resetsExtension
 
-abstract class HermitJUnit4(
+public abstract class HermitJUnit4(
   private val resetManager: ResetManager
 ) : ResetManager by resetManager {
 
@@ -21,7 +21,7 @@ abstract class HermitJUnit4(
    *
    * @see resetsExtension
    */
-  inline fun <reified T : Any> resets(
+  public  inline fun <reified T : Any> resets(
     noinline valueFactory: () -> T = {
       val clazz = T::class
 
@@ -43,5 +43,5 @@ abstract class HermitJUnit4(
         }
       }
     }
-  ) = resetsExtension(valueFactory)
+  ): LazyResets<T> = resetsExtension(valueFactory)
 }

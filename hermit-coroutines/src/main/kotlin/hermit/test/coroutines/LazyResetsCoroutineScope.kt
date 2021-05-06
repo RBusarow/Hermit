@@ -1,11 +1,16 @@
 package hermit.test.coroutines
 
 import dispatch.core.*
-import dispatch.test.*
-import hermit.test.*
-import hermit.test.coroutines.internal.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.test.*
+import dispatch.test.TestProvidedCoroutineScope
+import hermit.test.LazyResets
+import hermit.test.ResetManager
+import hermit.test.Resets
+import hermit.test.coroutines.internal.LazyResetsCoroutineScopeImpl
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.test.TestCoroutineScope
 
 /**
  * Binds a single instance of [CoroutineScope] to a [ResetManager].
@@ -38,10 +43,10 @@ public inline fun <reified T : CoroutineScope> ResetManager.resetsScope(
   } as T
 ): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, scope)
 
-interface LazyResetsCoroutineScope<T : CoroutineScope> : LazyResets<T>
+public interface LazyResetsCoroutineScope<T : CoroutineScope> : LazyResets<T>
 
 @ExperimentalCoroutinesApi
-fun <T : CoroutineScope> lazyResetsCoroutineScope(
+public fun <T : CoroutineScope> lazyResetsCoroutineScope(
   resetManager: ResetManager,
   scope: T
 ): LazyResetsCoroutineScope<T> = LazyResetsCoroutineScopeImpl(resetManager, scope)

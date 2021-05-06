@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,39 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name = "Hermit"
 
 pluginManagement {
-  repositories {
-    gradlePluginPortal()
-    jcenter()
-  }
-}
 
-include(
-  ":hermit-core",
-  ":hermit-core:samples",
-  ":hermit-coroutines",
-  ":hermit-coroutines:samples",
-  ":hermit-junit4",
-  ":hermit-junit4:samples",
-  ":hermit-junit5",
-  ":hermit-junit5:samples",
-  ":hermit-mockk",
-  ":hermit-mockk:samples"
-)
-
-plugins {
-  id("com.gradle.enterprise").version("3.5.2")
-}
-
-gradleEnterprise {
-  buildScan {
-    termsOfServiceUrl = "https://gradle.com/terms-of-service"
-    termsOfServiceAgree = "yes"
-    publishAlwaysIf(System.getenv("GITHUB_ACTIONS")?.toBoolean() == true)
+  resolutionStrategy {
+    eachPlugin {
+      when {
+        requested.id.id.startsWith("org.jetbrains.kotlin") -> useVersion("1.5.0")
+      }
+    }
   }
 }
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+  versionCatalogs {
+    create("libs") {
+      from(files("../gradle/libs.versions.toml"))
+    }
+  }
+}

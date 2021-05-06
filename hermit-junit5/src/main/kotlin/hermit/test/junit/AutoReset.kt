@@ -15,16 +15,17 @@
 
 package hermit.test.junit
 
-import hermit.test.*
-import org.junit.jupiter.api.extension.*
+import hermit.test.Hermit
+import hermit.test.ResetManager
+import org.junit.jupiter.api.extension.ExtendWith
 
 /**
  * @sample samples.AutoResetClassDelegationSample
  */
 @ExtendWith(HermitExtension::class)
-interface AutoReset : ResetManager
+public interface AutoReset : ResetManager
 
 @Suppress("FunctionName")
-fun AutoReset(): AutoReset = object :
+public fun AutoReset(): AutoReset = object :
   Hermit(),
   AutoReset {}

@@ -15,36 +15,27 @@
 
 plugins {
   id(Plugins.dokka)
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
   id(Plugins.mavenPublish)
 }
 
 dependencies {
 
-  api(project(":hermit-core"))
+  api(projects.hermitCore)
 
-  implementation(Libs.JUnit.api)
+  implementation(libs.dispatch.core)
+  implementation(libs.dispatch.test.core)
+  implementation(libs.junit.api)
+  implementation(libs.kotlin.reflect)
+  implementation(libs.kotlinx.coroutines.core)
+  implementation(libs.kotlinx.coroutines.test)
+  implementation(libs.mockk)
 
-  implementation(Libs.Kotlin.reflect)
-  implementation(Libs.Kotlin.stdlib)
+  runtimeOnly(libs.junit.engine)
 
-  implementation(Libs.Kotlinx.Coroutines.core)
-  implementation(Libs.Kotlinx.Coroutines.test)
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
 
-  implementation(Libs.MockK.core)
-
-  implementation(Libs.RickBusarow.Dispatch.core)
-  implementation(Libs.RickBusarow.Dispatch.Test.core)
-
-  runtimeOnly(Libs.JUnit.runtime)
-
-  testImplementation(project(":hermit-junit5"))
-
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
+  testImplementation(projects.hermitJunit5)
 }

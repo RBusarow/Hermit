@@ -1,10 +1,10 @@
 package hermit.test.junit
 
 import hermit.test.*
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterEach
 import hermit.test.resets as resetsExtension
 
-abstract class HermitJUnit5(
+public abstract class HermitJUnit5(
   delegates: MutableCollection<Resets> = mutableListOf()
 ) : Hermit(delegates),
   AutoReset {
@@ -20,7 +20,7 @@ abstract class HermitJUnit5(
    *
    * @see resetsExtension
    */
-  inline fun <reified T : Any> resets(
+  public inline fun <reified T : Any> resets(
     noinline valueFactory: () -> T = {
       val clazz = T::class
 
@@ -42,5 +42,5 @@ abstract class HermitJUnit5(
         }
       }
     }
-  ) = resetsExtension(valueFactory)
+  ): LazyResets<T> = resetsExtension(valueFactory)
 }

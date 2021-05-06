@@ -16,32 +16,23 @@
 plugins {
   id(Plugins.atomicFu)
   id(Plugins.dokka)
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
   id(Plugins.mavenPublish)
 }
 
 dependencies {
-  implementation(Libs.Kotlin.stdlib)
 
-  implementation(Libs.Kotlinx.Coroutines.core)
+  api(projects.hermitCore)
 
-  runtimeOnly(Libs.JUnit.runtime)
+  implementation(libs.junit.api)
+  implementation(libs.kotlin.reflect)
+  implementation(libs.kotlinx.coroutines.core)
 
-  implementation(Libs.JUnit.api)
+  runtimeOnly(libs.junit.engine)
 
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-
-  implementation(Libs.Kotlin.reflect)
-
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
-
-  testImplementation(Libs.MockK.core)
-
-  testImplementation(Libs.Kotlinx.Coroutines.test)
-
-  api(project(":hermit-core"))
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.mockk)
 }

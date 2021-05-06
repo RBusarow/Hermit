@@ -15,22 +15,18 @@
 
 plugins {
   id(Plugins.dokka)
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
   id(Plugins.mavenPublish)
 }
 
 dependencies {
 
-  api(project(":hermit-core"))
+  api(projects.hermitCore)
 
-  implementation(Libs.JUnit.jUnit4)
-  implementation(Libs.Kotlin.reflect)
-  implementation(Libs.Kotlin.stdlib)
+  implementation(libs.junit.junit4)
+  implementation(libs.kotlin.reflect)
 
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
 }

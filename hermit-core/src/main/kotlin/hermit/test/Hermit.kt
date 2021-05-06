@@ -7,7 +7,7 @@ package hermit.test
  *
  * @sample samples.DelegatingResetManagerImpl
  */
-open class Hermit(
+public open class Hermit(
   private val delegates: MutableCollection<Resets> = mutableListOf()
 ) : ResetManager {
 
@@ -17,8 +17,10 @@ open class Hermit(
     }
   }
 
-  override fun resetAll() = synchronized(delegates) {
-    delegates.forEach { it.reset() }
-    delegates.clear()
+  override fun resetAll() {
+    synchronized(delegates) {
+      delegates.forEach { it.reset() }
+      delegates.clear()
+    }
   }
 }

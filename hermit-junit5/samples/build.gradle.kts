@@ -13,27 +13,21 @@
  * limitations under the License.
  */
 
-import kotlinx.atomicfu.plugin.gradle.*
+import kotlinx.atomicfu.plugin.gradle.sourceSets
 
 plugins {
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
 }
 
 sourceSets["test"].java.srcDir("test")
 
 dependencies {
-  implementation(Libs.Kotlin.stdlib)
 
-  implementation(project(":hermit-core"))
-  implementation(project(":hermit-junit5"))
+  implementation(projects.hermitCore)
+  implementation(projects.hermitJunit5)
 
-  testImplementation(Libs.JUnit.core)
-
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
+  testImplementation(libs.bundles.jUnit)
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
 }

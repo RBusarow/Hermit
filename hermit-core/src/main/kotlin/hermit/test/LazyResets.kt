@@ -18,11 +18,11 @@ package hermit.test
 import hermit.test.internal.LazyResetsImpl
 import kotlin.reflect.KClass
 
-interface LazyResets<out T : Any> :
+public interface LazyResets<out T : Any> :
   Lazy<T>,
   Resets
 
-fun <T : Any> LazyResets(
+public fun <T : Any> LazyResets(
   resetManager: ResetManager,
   valueFactory: () -> T
 ): LazyResets<T> = LazyResetsImpl(resetManager, valueFactory)

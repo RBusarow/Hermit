@@ -14,34 +14,25 @@
  */
 
 plugins {
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
 }
 
 sourceSets["test"].java.srcDir("test")
 
 dependencies {
 
-  implementation(Libs.Kotlin.stdlib)
-  implementation(Libs.Kotlinx.Coroutines.core)
+  implementation(libs.kotlinx.coroutines.core)
 
-  implementation(project(":hermit-core"))
-  implementation(project(":hermit-junit5"))
-  implementation(project(":hermit-coroutines"))
+  implementation(projects.hermitCore)
+  implementation(projects.hermitCoroutines)
+  implementation(projects.hermitJunit5)
 
-  testImplementation(Libs.JUnit.core)
-
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
-
-  testImplementation(Libs.Kotlinx.Coroutines.test)
-
-  testImplementation(Libs.MockK.core)
-
-  testImplementation(Libs.RickBusarow.Dispatch.core)
-  testImplementation(Libs.RickBusarow.Dispatch.Test.core)
+  testImplementation(libs.bundles.jUnit)
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.dispatch.core)
+  testImplementation(libs.dispatch.test.core)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.mockk)
 }

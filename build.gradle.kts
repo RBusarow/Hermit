@@ -28,7 +28,6 @@ buildscript {
     mavenCentral()
     google()
     maven("https://oss.sonatype.org/content/repositories/snapshots")
-    jcenter()
     gradlePluginPortal()
     maven("https://dl.bintray.com/kotlin/kotlinx")
   }
@@ -47,7 +46,7 @@ buildscript {
 
 plugins {
   id(Plugins.benManes) version Versions.benManes
-  id(Plugins.detekt) version Libs.Detekt.version
+  id(Plugins.detekt) version Versions.detekt
   id(Plugins.dokka) version Versions.dokka
   base
 }
@@ -57,7 +56,6 @@ allprojects {
   repositories {
     mavenCentral()
     google()
-    jcenter()
   }
 
   tasks.withType<Test> {
@@ -283,5 +281,15 @@ allprojects {
       "filename", // same as Detekt's MatchingDeclarationName, except Detekt's version can be suppressed and this can't
       "experimental:argument-list-wrapping" // doesn't work half the time
     )
+  }
+}
+
+val sortDependencies by tasks.registering {
+
+  description = "sort all dependencies in a gradle kts file"
+  group = "refactor"
+
+  doLast {
+    sortDependencies()
   }
 }

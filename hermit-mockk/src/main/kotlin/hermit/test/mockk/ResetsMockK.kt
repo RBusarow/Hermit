@@ -76,7 +76,7 @@ public class ResetsMockK<out T : Any>(
     mock.block()
   }
 
-  data class ClearPolicy(
+  public  data class ClearPolicy(
     val answers: Boolean = true,
     val recordedCalls: Boolean = true,
     val childMocks: Boolean = true,

@@ -15,9 +15,11 @@
 
 package hermit.test.junit
 
-import hermit.test.*
-import org.junit.rules.*
-import org.junit.runner.*
+import hermit.test.Hermit
+import hermit.test.LazyResets
+import hermit.test.ResetManager
+import org.junit.rules.TestWatcher
+import org.junit.runner.Description
 
 /**
  * JUnit 4 [Rule][org.junit.Rule] which automatically resets the value
@@ -29,7 +31,7 @@ import org.junit.runner.*
  *
  * @sample samples.AutoResetRuleSample
  */
-class HermitRule(
+public class HermitRule(
   private val delegate: ResetManager = Hermit()
 ) : TestWatcher(),
   ResetManager by delegate {

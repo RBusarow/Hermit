@@ -13,19 +13,36 @@
  * limitations under the License.
  */
 
-repositories {
-  jcenter()
-}
-
 plugins {
   `kotlin-dsl`
 }
 
-kotlinDslPluginOptions {
-  experimentalWarning.set(false)
+repositories {
+  mavenCentral()
+  google()
 }
+
+val kotlinVersion = libs.versions.kotlin.get()
 
 dependencies {
+
   compileOnly(gradleApi())
 
+  implementation(libs.kotlin.gradlePlugin)
+  implementation(libs.kotlin.reflect)
+
+  implementation(libs.kotlin.compiler)
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>()
+  .configureEach {
+
+    kotlinOptions {
+
+      freeCompilerArgs = listOf(
+        "-Xinline-classes",
+        "-Xopt-in=kotlin.ExperimentalStdlibApi",
+        "-Xuse-experimental=kotlin.contracts.ExperimentalContracts"
+      )
+    }
+  }

@@ -15,24 +15,17 @@
 
 plugins {
   id(Plugins.dokka)
-  id(Plugins.javaLibrary)
-  id(Plugins.kotlin)
+  javaLibrary
   id(Plugins.mavenPublish)
 }
 
 dependencies {
 
-  implementation(Libs.Kotlin.stdlib)
-  implementation(Libs.Kotlin.reflect)
+  implementation(libs.kotlin.reflect)
 
-  testImplementation(Libs.Kotlinx.Coroutines.test)
-
-  testImplementation(Libs.JUnit.core)
-
-  testImplementation(Libs.Kotest.assertions)
-  testImplementation(Libs.Kotest.properties)
-  testImplementation(Libs.Kotest.runner)
-
-  testImplementation(Libs.Kotlin.test)
-  testImplementation(Libs.Kotlin.testCommon)
+  testImplementation(libs.bundles.jUnit)
+  testImplementation(libs.bundles.kotest)
+  testImplementation(libs.kotlin.test)
+  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlinx.coroutines.test)
 }

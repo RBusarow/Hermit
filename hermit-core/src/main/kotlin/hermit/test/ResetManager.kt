@@ -21,8 +21,8 @@ package hermit.test
  * @sample samples.UnsafeResetManager
  * @see [ResetManager]
  */
-interface ResetManager {
+public interface ResetManager {
 
-  fun register(delegate: Resets)
-  fun resetAll()
+  public fun register(delegate: Resets)
+  public fun resetAll()
 }

@@ -1,4 +1,4 @@
-# MODULE hermit-junit5
+Module hermit-junit5
 
 ## Contents
 <!--- TOC -->

@@ -1,10 +1,14 @@
 package hermit.test.junit
 
-import hermit.test.*
-import kotlinx.atomicfu.*
-import org.junit.jupiter.api.extension.*
+import hermit.test.Hermit
+import hermit.test.ResetManager
+import hermit.test.Resets
+import kotlinx.atomicfu.atomic
+import org.junit.jupiter.api.extension.AfterEachCallback
+import org.junit.jupiter.api.extension.ExtensionContext
+import org.junit.jupiter.api.extension.TestInstancePostProcessor
 
-class HermitExtension(
+public class HermitExtension(
   resetManager: ResetManager = Hermit()
 ) : TestInstancePostProcessor,
   AfterEachCallback,
