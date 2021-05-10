@@ -38,7 +38,6 @@ jobs:
         with:
           commit_message: Apply ktlint format
           commit_options: '--no-verify --signoff'
-          push_options: '--force' # necessary to push if the branch is protected
 
       - name : detekt
         run : ./gradlew detekt
