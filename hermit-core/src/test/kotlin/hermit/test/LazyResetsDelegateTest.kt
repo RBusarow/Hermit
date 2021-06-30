@@ -103,7 +103,7 @@ internal class LazyResetsDelegateTest : FreeSpec({
 
       var hasReset = false
 
-      val initBlock = suspend{ if (!hasReset) a else b }
+      val initBlock = suspend { if (!hasReset) a else b }
 
       val subject = LazyResets(resetManager, initBlock)
 
