@@ -22,6 +22,7 @@ plugins {
 dependencies {
 
   implementation(libs.kotlin.reflect)
+  implementation(libs.kotlinx.coroutines.core)
 
   testImplementation(libs.bundles.jUnit)
   testImplementation(libs.bundles.kotest)
