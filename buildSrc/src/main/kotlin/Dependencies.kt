@@ -35,14 +35,14 @@ object Versions {
   const val ktlint = "0.35.0"
   const val dokka = "1.4.32"
   const val knit = "0.2.3"
-  const val detekt = "1.16.0"
+  const val detekt = "1.17.1"
 
-  const val kotlinter = "3.4.0"
-  const val binaryCompatibility = "0.5.0"
-  const val benManes = "0.38.0"
-  const val androidTools = "4.2.0"
-  const val kotlin = "1.5.0"
-  const val mavenPublish = "0.13.0"
+  const val kotlinter = "3.4.5"
+  const val binaryCompatibility = "0.6.0"
+  const val benManes = "0.39.0"
+  const val androidTools = "4.2.2"
+  const val kotlin = "1.5.20"
+  const val mavenPublish = "0.16.0"
 }
 
 object BuildPlugins {
@@ -107,7 +107,7 @@ object Libs {
 
     object Dispatch {
 
-      private const val version = "1.0.0-beta08"
+      private const val version = "1.0.0-beta10"
 
       const val core = "com.rickbusarow.dispatch:dispatch-core:$version"
       const val detekt = "com.rickbusarow.dispatch:dispatch-detekt:$version"
@@ -125,7 +125,7 @@ object Libs {
     }
 
     object Hermit {
-      private const val version = "0.9.2"
+      private const val version = "0.9.4"
       const val core = "com.rickbusarow.hermit:hermit-core:$version"
       const val coroutines = "com.rickbusarow.hermit:hermit-coroutines:$version"
       const val junit4 = "com.rickbusarow.hermit:hermit-junit4:$version"
