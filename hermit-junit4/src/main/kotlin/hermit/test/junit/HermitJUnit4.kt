@@ -22,7 +22,7 @@ public abstract class HermitJUnit4(
    * @see resetsExtension
    */
   public  inline fun <reified T : Any> resets(
-    noinline valueFactory: () -> T = {
+    noinline valueFactory: suspend () -> T = {
       val clazz = T::class
 
       try {

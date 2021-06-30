@@ -24,7 +24,7 @@ public interface LazyResets<out T : Any> :
 
 public fun <T : Any> LazyResets(
   resetManager: ResetManager,
-  valueFactory: () -> T
+  valueFactory: suspend () -> T
 ): LazyResets<T> = LazyResetsImpl(resetManager, valueFactory)
 
 /**
@@ -44,7 +44,7 @@ public fun <T : Any> LazyResets(
  * @sample samples.LazyResetsSample.lazyResetDelegateInImplementationSample
  */
 public inline fun <reified T : Any> ResetManager.resets(
-  noinline valueFactory: () -> T = {
+  noinline valueFactory: suspend () -> T = {
     val clazz = T::class
 
     try {

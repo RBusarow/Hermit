@@ -1,6 +1,8 @@
 package hermit.test.internal
 
-import hermit.test.*
+import hermit.test.LazyResets
+import hermit.test.ResetManager
+import kotlinx.coroutines.runBlocking
 
 /**
  * Lazy instance which can be reset.  After a reset, the next access will create a new instance.
@@ -11,7 +13,7 @@ import hermit.test.*
  */
 internal class LazyResetsImpl<out T : Any>(
   private val resetManager: ResetManager,
-  private val valueFactory: () -> T
+  private val valueFactory: suspend () -> T
 ) : LazyResets<T> {
 
   private var lazyHolder: Lazy<T> = createLazy()
@@ -23,7 +25,7 @@ internal class LazyResetsImpl<out T : Any>(
 
   private fun createLazy() = lazy {
     resetManager.register(this)
-    valueFactory()
+    runBlocking { valueFactory() }
   }
 
   override fun reset() {
