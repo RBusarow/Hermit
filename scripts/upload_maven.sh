@@ -1,3 +1,3 @@
 #!/bin/bash
-./gradlew clean build dokka
-./gradlew uploadArchives --no-daemon --no-parallel
+cd ..
+./gradlew publishAllPublicationsToMavenCentralRepository --no-daemon --no-parallel
