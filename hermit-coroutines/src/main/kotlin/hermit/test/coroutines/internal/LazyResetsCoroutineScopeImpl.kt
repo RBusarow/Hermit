@@ -8,6 +8,7 @@ import kotlinx.coroutines.test.*
 @ExperimentalCoroutinesApi
 internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
   private val resetManager: ResetManager,
+  private val cleanUpTestCoroutines: Boolean,
   private val scopeFactory: () -> T
 ) : LazyResetsCoroutineScope<T> {
 
@@ -29,7 +30,7 @@ internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
     } else {
       null
     }
-    if (scope is TestCoroutineScope) {
+    if (scope is TestCoroutineScope && cleanUpTestCoroutines) {
       scope.cleanupTestCoroutines()
     } else {
       scope?.coroutineContext

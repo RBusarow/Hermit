@@ -19,17 +19,20 @@ import kotlinx.coroutines.test.TestCoroutineScope
  *
  * ### reset behavior
  *
- * If the [scopeFactory] creates a [TestCoroutineScope], [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
+ * If the [scopeFactory] creates a [TestCoroutineScope] and [cleanUpTestCoroutines] is true, [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
  *
  * If the [scopeFactory] does not create a [TestCoroutineScope] but its [coroutineContext][kotlin.coroutines.CoroutineContext] contains a [Job],
- * then [Job.cancelChildren] is called.
+ * then [Job.cancel] is called.
  *
  * If the [scopeFactory] does not create a [TestCoroutineScope] and does not have a [Job], then [reset][Resets.reset] has no effect.
  *
+ * @param cleanUpTestCoroutines if true and the dispatcher is a [TestCoroutineScope][kotlinx.coroutines.test.TestCoroutineScope],
+ * invoke [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] during reset.  Has no effect for normal scopes.
  * @sample samples.ResetsScopeSample
  */
 @ExperimentalCoroutinesApi
 public inline fun <reified T : CoroutineScope> ResetManager.resetsScope(
+  cleanUpTestCoroutines: Boolean = true,
   noinline scopeFactory: () -> T = {
     when (T::class) {
       TestProvidedCoroutineScope::class -> TestProvidedCoroutineScope()
@@ -42,18 +45,22 @@ public inline fun <reified T : CoroutineScope> ResetManager.resetsScope(
       else -> CoroutineScope(Job())
     } as T
   }
-): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, scopeFactory)
+): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, cleanUpTestCoroutines, scopeFactory)
 
 public interface LazyResetsCoroutineScope<T : CoroutineScope> : LazyResets<T>
 
 @ExperimentalCoroutinesApi
 public fun <T : CoroutineScope> lazyResetsCoroutineScope(
   resetManager: ResetManager,
-  scope: T
-): LazyResetsCoroutineScope<T> = LazyResetsCoroutineScopeImpl(resetManager) { scope }
+  scope: T,
+  cleanUpTestCoroutines: Boolean = true
+): LazyResetsCoroutineScope<T> =
+  LazyResetsCoroutineScopeImpl(resetManager, cleanUpTestCoroutines) { scope }
 
 @ExperimentalCoroutinesApi
 public fun <T : CoroutineScope> lazyResetsCoroutineScope(
   resetManager: ResetManager,
+  cleanUpTestCoroutines: Boolean = true,
   scope: () -> T
-): LazyResetsCoroutineScope<T> = LazyResetsCoroutineScopeImpl(resetManager, scope)
+): LazyResetsCoroutineScope<T> =
+  LazyResetsCoroutineScopeImpl(resetManager, cleanUpTestCoroutines, scope)
