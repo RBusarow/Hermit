@@ -125,7 +125,7 @@ object Libs {
     }
 
     object Hermit {
-      private const val version = "0.9.4"
+      private const val version = "0.9.5"
       const val core = "com.rickbusarow.hermit:hermit-core:$version"
       const val coroutines = "com.rickbusarow.hermit:hermit-coroutines:$version"
       const val junit4 = "com.rickbusarow.hermit:hermit-junit4:$version"

@@ -3,6 +3,7 @@
 ## Contents
 <!--- TOC -->
 
+* [Version 0.9.5](#version-095)
 * [Version 0.9.4](#version-094)
   * [Breaking change](#breaking-changes)
 * [Version 0.9.1](#version-091)
@@ -15,7 +16,9 @@
 
 <!--- END -->
 
+## Version 0.9.5
 
+* `resetsScope` now has an optional `cleanUpTestCoroutines` argument.  If false, `TestCoroutineScope.cleanupTestCoroutines()` will not be called even for a [TestCoroutineScope].
 
 ## Version 0.9.4
 
