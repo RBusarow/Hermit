@@ -3,6 +3,8 @@
 ## Contents
 <!--- TOC -->
 
+* [Version 0.9.4](#version-094)
+  * [Breaking change](#breaking-changes)
 * [Version 0.9.1](#version-091)
   * [Breaking change](#breaking-change)
   * [New modules](#new-modules)
@@ -14,6 +16,12 @@
 <!--- END -->
 
 
+
+## Version 0.9.4
+
+### Breaking changes
+* `resetsScope` now takes a [CoroutineScope] factory (`() -> T`) instead of a single instance.
+* `resets { ... }`'s lambda argument is now a `suspend` function.
 
 ## Version 0.9.1
 
