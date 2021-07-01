@@ -12,7 +12,7 @@ import org.junit.jupiter.api.*
 @ExperimentalCoroutinesApi
 class ResetsScopeSample : HermitJUnit5() {
 
-  val testScope by resetsScope(TestCoroutineScope())
+  val testScope by resetsScope { TestCoroutineScope() }
   val providedScope by resetsScope<TestProvidedCoroutineScope>()
   val normalScope: CoroutineScope by resetsScope()
 

@@ -19,28 +19,30 @@ import kotlinx.coroutines.test.TestCoroutineScope
  *
  * ### reset behavior
  *
- * If the [scope] implements [TestCoroutineScope], [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
+ * If the [scopeFactory] creates a [TestCoroutineScope], [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
  *
- * If the [scope] does not implement [TestCoroutineScope] but its [coroutineContext][kotlin.coroutines.CoroutineContext] contains a [Job],
+ * If the [scopeFactory] does not create a [TestCoroutineScope] but its [coroutineContext][kotlin.coroutines.CoroutineContext] contains a [Job],
  * then [Job.cancelChildren] is called.
  *
- * If the [scope] is not a [TestCoroutineScope] and does not have a [Job], then [reset][Resets.reset] has no effect.
+ * If the [scopeFactory] does not create a [TestCoroutineScope] and does not have a [Job], then [reset][Resets.reset] has no effect.
  *
  * @sample samples.ResetsScopeSample
  */
 @ExperimentalCoroutinesApi
 public inline fun <reified T : CoroutineScope> ResetManager.resetsScope(
-  scope: T = when (T::class) {
-    TestProvidedCoroutineScope::class -> TestProvidedCoroutineScope()
-    TestCoroutineScope::class -> TestCoroutineScope()
-    DefaultCoroutineScope::class -> DefaultCoroutineScope()
-    IOCoroutineScope::class -> IOCoroutineScope()
-    MainCoroutineScope::class -> MainCoroutineScope()
-    MainImmediateCoroutineScope::class -> MainImmediateCoroutineScope()
-    UnconfinedCoroutineScope::class -> UnconfinedCoroutineScope()
-    else -> CoroutineScope(Job())
-  } as T
-): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, scope)
+  noinline scopeFactory: () -> T = {
+    when (T::class) {
+      TestProvidedCoroutineScope::class -> TestProvidedCoroutineScope()
+      TestCoroutineScope::class -> TestCoroutineScope()
+      DefaultCoroutineScope::class -> DefaultCoroutineScope()
+      IOCoroutineScope::class -> IOCoroutineScope()
+      MainCoroutineScope::class -> MainCoroutineScope()
+      MainImmediateCoroutineScope::class -> MainImmediateCoroutineScope()
+      UnconfinedCoroutineScope::class -> UnconfinedCoroutineScope()
+      else -> CoroutineScope(Job())
+    } as T
+  }
+): LazyResetsCoroutineScope<T> = lazyResetsCoroutineScope(this, scopeFactory)
 
 public interface LazyResetsCoroutineScope<T : CoroutineScope> : LazyResets<T>
 
@@ -48,4 +50,10 @@ public interface LazyResetsCoroutineScope<T : CoroutineScope> : LazyResets<T>
 public fun <T : CoroutineScope> lazyResetsCoroutineScope(
   resetManager: ResetManager,
   scope: T
+): LazyResetsCoroutineScope<T> = LazyResetsCoroutineScopeImpl(resetManager) { scope }
+
+@ExperimentalCoroutinesApi
+public fun <T : CoroutineScope> lazyResetsCoroutineScope(
+  resetManager: ResetManager,
+  scope: () -> T
 ): LazyResetsCoroutineScope<T> = LazyResetsCoroutineScopeImpl(resetManager, scope)

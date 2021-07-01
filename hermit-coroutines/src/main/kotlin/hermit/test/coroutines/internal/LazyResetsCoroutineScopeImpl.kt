@@ -8,7 +8,7 @@ import kotlinx.coroutines.test.*
 @ExperimentalCoroutinesApi
 internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
   private val resetManager: ResetManager,
-  private val scope: T
+  private val scopeFactory: () -> T
 ) : LazyResetsCoroutineScope<T> {
 
   private var lazyHolder: Lazy<T> = createLazy()
@@ -20,14 +20,21 @@ internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
 
   private fun createLazy() = lazy {
     resetManager.register(this)
-    scope
+    scopeFactory.invoke()
   }
 
   override fun reset() {
+    val scope = if (lazyHolder.isInitialized()) {
+      lazyHolder.value
+    } else {
+      null
+    }
     if (scope is TestCoroutineScope) {
       scope.cleanupTestCoroutines()
     } else {
-      scope.coroutineContext[Job]?.cancelChildren()
+      scope?.coroutineContext
+        ?.get(Job)
+        ?.cancelChildren()
     }
     lazyHolder = createLazy()
   }
