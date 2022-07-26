@@ -78,7 +78,7 @@ hermit-jUnit5 = { module = "com.rickbusarow.hermit:hermit-junit5", version.ref =
 hermit-mockk = { module = "com.rickbusarow.hermit:hermit-mockk", version.ref = "hermit" }
 hermit-coroutines = { module = "com.rickbusarow.hermit:hermit-coroutines", version.ref = "hermit" }
 
-mockk = "io.mockk:mockk:1.11.0"
+mockk = "io.mockk:mockk:1.12.4"
 
 [bundles]
 jUnit = ["junit-api", "junit-params", "junit-engine"]
