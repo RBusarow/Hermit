@@ -4,5 +4,6 @@
     "config:base"
   ],
   "rebaseWhen": "conflicted",
-  "rebaseLabel": "rebase"
+  "rebaseLabel": "rebase",
+  "prHourlyLimit" : 20
 }
