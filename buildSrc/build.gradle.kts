@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,6 +20,7 @@ plugins {
 repositories {
   mavenCentral()
   google()
+  maven("https://plugins.gradle.org/m2/")
 }
 
 val kotlinVersion = libs.versions.kotlin.get()
@@ -28,21 +29,19 @@ dependencies {
 
   compileOnly(gradleApi())
 
-  implementation(libs.kotlin.gradlePlugin)
-  implementation(libs.kotlin.reflect)
-
+  implementation(libs.kotlin.annotation.processing)
   implementation(libs.kotlin.compiler)
+  implementation(libs.kotlin.gradle.pluginApi)
+  implementation(libs.kotlin.reflect)
+  implementation(libs.kotlin.stdlib.jdk8)
+  implementation(kotlin("gradle-plugin", version = kotlinVersion))
+  implementation(kotlin("reflect", version = kotlinVersion))
+
+  implementation(libs.agp)
+  implementation(libs.dokka.gradle)
+  implementation(libs.kotlinx.knit.gradle)
+
+  implementation(libs.scabbard)
+
+  implementation(libs.square.anvil.gradle)
 }
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>()
-  .configureEach {
-
-    kotlinOptions {
-
-      freeCompilerArgs = listOf(
-        "-Xinline-classes",
-        "-Xopt-in=kotlin.ExperimentalStdlibApi",
-        "-Xuse-experimental=kotlin.contracts.ExperimentalContracts"
-      )
-    }
-  }

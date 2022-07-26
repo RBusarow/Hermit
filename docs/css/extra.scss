@@ -1,3 +1,18 @@
+/*!
+ * Copyright (C) 2021-2022 Rick Busarow
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 $link_color: #10cfff;
 $header_background: #000;
 $background_color1: #333;
@@ -15,7 +30,7 @@ $navbar_header_background: $link_color;
 		background-color: $header_background;
 	}
 	.md-nav {
-    	background-color: $background_color1; //$navbar_header_background;    	
+    	background-color: $background_color1; //$navbar_header_background;
 	}
 	html .md-nav--primary .md-nav__title {
 		background-color: $navbar_header_background;
@@ -74,7 +89,7 @@ a footnote-ref::before {
 
 .md-nav--secondary {
 	border-left: .4rem solid $header_background;
-} 
+}
 
 .md-nav__link:focus, .md-nav__link:hover {
 	color: $link_color;
@@ -117,5 +132,5 @@ div.superfences-content pre {
 }
 
 @media only screen and (max-width: 76.1875em) {
-	
+
 }

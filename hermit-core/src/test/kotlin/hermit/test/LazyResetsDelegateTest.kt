@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -210,15 +210,12 @@ internal class LazyResetsDelegateTest : FreeSpec({
           }
         }
 
-        "classes without default constructor" {
+        "classes without default constructor should throw LazyResetDelegateNonDefaultConstructorException" - {
 
           val subject = resetManager.resets<NoDefaultConstructor>()
 
-          "should throw LazyResetDelegateNonDefaultConstructorException" - {
-
-            shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
-              subject.value
-            }
+          shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
+            subject.value
           }
         }
       }
