@@ -29,7 +29,7 @@ versionName = "0.10.0"
 
 androidGradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidTools" }
 anvil = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anvil" }
-javaParser = "com.github.javaparser:javaparser-symbol-solver-core:3.20.2"
+javaParser = "com.github.javaparser:javaparser-symbol-solver-core:3.24.2"
 javax-inject = "javax.inject:javax.inject:1"
 
 dispatch-core = { module = "com.rickbusarow.dispatch:dispatch-core", version.ref = "dispatch" }
