@@ -14,6 +14,6 @@
  */
 
 const val GROUP = "com.rickbusarow.hermit"
-const val VERSION_NAME = "0.9.6"
+const val VERSION_NAME = "0.9.7-SNAPSHOT"
 const val SOURCE_WEBSITE = "https://github.com/rbusarow/Hermit"
 const val DOCS_WEBSITE = "https://rbusarow.github.io/Hermit"
