@@ -14,9 +14,12 @@
  */
 
 plugins {
-  dokka
   javaLibrary
-  id("com.vanniktech.maven.publish")
+  published
+}
+
+hermitPublishing {
+  artifactId.set("hermit-coroutines")
 }
 
 dependencies {
