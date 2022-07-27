@@ -2,6 +2,9 @@ public abstract interface class hermit/test/coroutines/LazyResetsCoroutineScope 
 }
 
 public final class hermit/test/coroutines/LazyResetsCoroutineScopeKt {
-	public static final fun lazyResetsCoroutineScope (Lhermit/test/ResetManager;Lkotlinx/coroutines/CoroutineScope;)Lhermit/test/coroutines/LazyResetsCoroutineScope;
+	public static final fun lazyResetsCoroutineScope (Lhermit/test/ResetManager;Lkotlinx/coroutines/CoroutineScope;Z)Lhermit/test/coroutines/LazyResetsCoroutineScope;
+	public static final fun lazyResetsCoroutineScope (Lhermit/test/ResetManager;ZLkotlin/jvm/functions/Function0;)Lhermit/test/coroutines/LazyResetsCoroutineScope;
+	public static synthetic fun lazyResetsCoroutineScope$default (Lhermit/test/ResetManager;Lkotlinx/coroutines/CoroutineScope;ZILjava/lang/Object;)Lhermit/test/coroutines/LazyResetsCoroutineScope;
+	public static synthetic fun lazyResetsCoroutineScope$default (Lhermit/test/ResetManager;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Lhermit/test/coroutines/LazyResetsCoroutineScope;
 }
 
