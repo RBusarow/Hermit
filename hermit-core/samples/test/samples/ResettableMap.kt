@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,11 +15,11 @@
 
 package samples
 
-import hermit.test.*
+import hermit.test.Resets
 
 /**
- * Makes a MutableMap which conforms to the Resettable interface,
- * by delegating `reset()` to the existing [clear][MutableMap.clear] function.
+ * Makes a MutableMap which conforms to the Resettable interface, by delegating `reset()` to the
+ * existing [clear][MutableMap.clear] function.
  */
 class ResettableMap<K, V> :
   MutableMap<K, V> by mutableMapOf(),

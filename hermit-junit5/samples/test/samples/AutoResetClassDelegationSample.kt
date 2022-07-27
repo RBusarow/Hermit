@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,22 +15,20 @@
 
 package samples
 
-import hermit.test.*
-import hermit.test.junit.*
-import io.kotest.matchers.*
-import org.junit.jupiter.api.*
+import hermit.test.junit.AutoReset
+import hermit.test.resets
+import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.Test
 
 /**
- * The JUnit 5 extension is automatically applied,
- * and dependencies are provided via `by AutoReset()`.
+ * The JUnit 5 extension is automatically applied, and dependencies are provided via `by
+ * AutoReset()`.
  *
  * The test lifecycle is automatically managed.
  */
 class AutoResetClassDelegationSample : AutoReset by AutoReset() {
 
-  /**
-   * Automatically reset between each test, including nested class tests.
-   */
+  /** Automatically reset between each test, including nested class tests. */
   val someDao: SomeDao by resets { SomeDao() }
 
   @Test
