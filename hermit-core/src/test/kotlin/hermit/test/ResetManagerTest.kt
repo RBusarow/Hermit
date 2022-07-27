@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,9 +15,10 @@
 
 package hermit.test
 
-import io.kotest.core.spec.*
-import io.kotest.core.spec.style.*
-import io.kotest.matchers.*
+import io.kotest.core.spec.IsolationMode
+import io.kotest.core.spec.style.FreeSpec
+import io.kotest.core.spec.style.freeSpec
+import io.kotest.matchers.shouldBe
 
 internal class ResetManagerTest : FreeSpec({
 

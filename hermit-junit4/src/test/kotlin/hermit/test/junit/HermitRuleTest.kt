@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,10 +15,13 @@
 
 package hermit.test.junit
 
-import hermit.test.*
-import io.kotest.matchers.*
-import org.junit.*
-import org.junit.runners.*
+import hermit.test.Hermit
+import hermit.test.resets
+import io.kotest.matchers.shouldNotBe
+import org.junit.FixMethodOrder
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runners.MethodSorters
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 internal class HermitRuleTest {

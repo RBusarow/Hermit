@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,15 +28,16 @@ public fun <T : Any> LazyResets(
 ): LazyResets<T> = LazyResetsImpl(resetManager, valueFactory)
 
 /**
- * Lazy instance which can be reset.  After a reset, the next access will create a new instance.
+ * Lazy instance which can be reset. After a reset, the next access will create a new instance.
  *
- * Each time a new instance is created, it is registered with the [ResetManager] and will be reset with the next [ResetManager.resetAll].
+ * Each time a new instance is created, it is registered with the [ResetManager] and will be reset
+ * with the next [ResetManager.resetAll].
  *
- * If the type being created can be initialized with a default constructor,
- * this function can be invoked without a [valueFactory] argument.
+ * If the type being created can be initialized with a default constructor, this function can be
+ * invoked without a [valueFactory] argument.
  *
- * If the type being created is an interface, abstract class, or does not have a default constructor,
- * then a factory must be specified.
+ * If the type being created is an interface, abstract class, or does not have a default
+ * constructor, then a factory must be specified.
  *
  * If the type being created is a Kotlin object, then it must implement the [Resets] interface
  *
@@ -107,7 +108,8 @@ public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
   )
 
 /**
- * Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
+ * Objects may not be used with a 'by resets' delegate unless they implement the LazyReset
+ * interface.
  *
  * @see KClass.objectInstance
  */
@@ -117,7 +119,7 @@ public class LazyResetDelegateObjectException(problemClass: KClass<*>) : LazyRes
     "unless they implement the LazyReset interface."
 )
 
-public abstract class LazyResetDelegateException(
+public open class LazyResetDelegateException(
   problemClass: KClass<*>,
   message: String
 ) : Exception("\n\nerror initializing <${problemClass.qualifiedName}>. " + message)

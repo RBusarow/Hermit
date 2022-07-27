@@ -10,7 +10,7 @@ public final class hermit/test/LazyResetDelegateAbstractException : hermit/test/
 	public fun <init> (Lkotlin/reflect/KClass;)V
 }
 
-public abstract class hermit/test/LazyResetDelegateException : java/lang/Exception {
+public class hermit/test/LazyResetDelegateException : java/lang/Exception {
 	public fun <init> (Lkotlin/reflect/KClass;Ljava/lang/String;)V
 }
 
@@ -30,7 +30,7 @@ public abstract interface class hermit/test/LazyResets : hermit/test/Resets, kot
 }
 
 public final class hermit/test/LazyResetsKt {
-	public static final fun LazyResets (Lhermit/test/ResetManager;Lkotlin/jvm/functions/Function0;)Lhermit/test/LazyResets;
+	public static final fun LazyResets (Lhermit/test/ResetManager;Lkotlin/jvm/functions/Function1;)Lhermit/test/LazyResets;
 }
 
 public abstract interface class hermit/test/ResetManager {

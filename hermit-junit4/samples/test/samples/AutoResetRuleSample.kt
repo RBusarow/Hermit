@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,9 +15,11 @@
 
 package samples
 
-import hermit.test.*
-import hermit.test.junit.*
-import io.kotest.matchers.*
+import hermit.test.Hermit
+import hermit.test.ResetManager
+import hermit.test.junit.HermitRule
+import hermit.test.resets
+import io.kotest.matchers.shouldBe
 
 class AutoResetRuleSample {
 
@@ -25,16 +27,12 @@ class AutoResetRuleSample {
   @Rule
   val rule = HermitRule()
 
-  /**
-   * automatically has reset() called on it after each test
-   */
+  /** automatically has reset() called on it after each test */
   val someProperty by rule.resets { SomeProperty() }
 
   val resetManager = Hermit()
 
-  /**
-   * you can also pass in your own [ResetManager]
-   */
+  /** you can also pass in your own [ResetManager] */
   @JvmField
   @Rule
   val explicitRule = HermitRule(resetManager)
