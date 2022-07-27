@@ -15,8 +15,11 @@
 
 plugins {
   javaLibrary
-  id("org.jetbrains.dokka")
-  id("com.vanniktech.maven.publish")
+  published
+}
+
+hermitPublishing {
+  artifactId.set("hermit-mockk")
 }
 
 dependencies {

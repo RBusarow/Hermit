@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021-2022 Rick Busarow
+ * Copyright (C) 2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,23 +13,7 @@
  * limitations under the License.
  */
 
-plugins {
-  javaLibrary
-  published
-}
-
-hermitPublishing {
-  artifactId.set("hermit-junit4")
-}
-
-dependencies {
-
-  api(projects.hermitCore)
-
-  implementation(libs.junit.junit4)
-  implementation(libs.kotlin.reflect)
-
-  testImplementation(libs.bundles.kotest)
-  testImplementation(libs.kotlin.test.common)
-  testImplementation(libs.kotlin.test.core)
-}
+const val GROUP = "com.rickbusarow.hermit"
+const val VERSION_NAME = "0.9.6"
+const val SOURCE_WEBSITE = "https://github.com/rbusarow/Hermit"
+const val DOCS_WEBSITE = "https://rbusarow.github.io/Hermit"

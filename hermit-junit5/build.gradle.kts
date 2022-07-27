@@ -15,9 +15,12 @@
 
 plugins {
   id("kotlinx-atomicfu")
-  id("org.jetbrains.dokka")
   javaLibrary
-  id("com.vanniktech.maven.publish")
+  published
+}
+
+hermitPublishing {
+  artifactId.set("hermit-junit5")
 }
 
 dependencies {
