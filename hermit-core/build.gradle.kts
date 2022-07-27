@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -14,9 +14,9 @@
  */
 
 plugins {
-  id(Plugins.dokka)
+  dokka
   javaLibrary
-  id(Plugins.mavenPublish)
+  id("com.vanniktech.maven.publish")
 }
 
 dependencies {
@@ -26,7 +26,7 @@ dependencies {
 
   testImplementation(libs.bundles.jUnit)
   testImplementation(libs.bundles.kotest)
-  testImplementation(libs.kotlin.test)
-  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlin.test.common)
+  testImplementation(libs.kotlin.test.core)
   testImplementation(libs.kotlinx.coroutines.test)
 }

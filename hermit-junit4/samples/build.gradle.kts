@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import kotlinx.atomicfu.plugin.gradle.sourceSets
-
 plugins {
   javaLibrary
 }
@@ -23,15 +21,14 @@ sourceSets["test"].java.srcDir("test")
 
 dependencies {
 
-
-  implementation(Libs.JUnit.jUnit4)
-
-  implementation(project(":hermit-junit4"))
-
-  implementation(projects.hermitCore)
+  implementation(libs.junit.junit4)
 
   testImplementation(libs.bundles.kotest)
-  testImplementation(libs.kotlin.test)
-  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlin.test.common)
+  testImplementation(libs.kotlin.test.core)
   testImplementation(libs.kotlinx.coroutines.test)
+
+  testImplementation(project(":hermit-junit4"))
+
+  testImplementation(projects.hermitCore)
 }

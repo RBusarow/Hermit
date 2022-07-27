@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Rick Busarow
+ * Copyright (C) 2021-2022 Rick Busarow
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,11 +23,11 @@ sourceSets["test"].java.srcDir("test")
 
 dependencies {
 
-  implementation(projects.hermitCore)
-  implementation(projects.hermitJunit5)
-
   testImplementation(libs.bundles.jUnit)
   testImplementation(libs.bundles.kotest)
-  testImplementation(libs.kotlin.test)
-  testImplementation(libs.kotlin.testCommon)
+  testImplementation(libs.kotlin.test.common)
+  testImplementation(libs.kotlin.test.core)
+
+  testImplementation(projects.hermitCore)
+  testImplementation(projects.hermitJunit5)
 }
