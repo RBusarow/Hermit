@@ -31,7 +31,7 @@ pluginManager.withPlugin("java") {
       it.name.endsWith("runtimeClasspath", ignoreCase = true) &&
         !it.name.endsWith("testRuntimeClasspath", ignoreCase = true)
     }
-    .all { configureClasspath(name) }
+    .configureEach { configureClasspath(name) }
 }
 
 pluginManager.withPlugin("com.android.library") {
