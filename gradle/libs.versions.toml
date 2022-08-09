@@ -1,10 +1,10 @@
 [versions]
-androidTools = "7.2.1"
+androidTools = "7.2.2"
 anvil = "2.4.0"
 benManes = "0.42.0"
 changeTracker = "0.7.3"
 coil = "2.1.0"
-dependencyAnalysis = "1.11.1"
+dependencyAnalysis = "1.12.0"
 dispatch = "1.0.0-beta10"
 detekt = "1.21.0"
 dokka = "1.7.10"
@@ -13,7 +13,7 @@ gradleDoctor = "0.8.1"
 groovy = "3.0.12"
 hermit = "0.9.6"
 jUnit = "5.9.0"
-kotest = "5.4.0"
+kotest = "5.4.1"
 kotlin = "1.7.10"
 ktlint-gradle = "10.3.0"
 ktlint-lib = "0.46.1"
@@ -40,7 +40,7 @@ kotlinx-coroutines = "1.6.4"
 kotlinx-knit = "0.4.0"
 kotlinx-metadata = "0.5.0"
 
-google-dagger = "2.43"
+google-dagger = "2.43.2"
 google-material = "1.6.1"
 
 rickBusarow-dependencySync = "0.11.4"
@@ -182,7 +182,7 @@ androidx-work-core = { module = "androidx.work:work-runtime", version.ref = "and
 androidx-work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work-version" }
 androidx-work-test = { module = "androidx.work:work-testing", version.ref = "androidx-work-version" }
 
-cash-turbine = "app.cash.turbine:turbine:0.8.0"
+cash-turbine = "app.cash.turbine:turbine:0.9.0"
 
 codehaus-groovy-core = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
 codehaus-groovy-xml = { module = "org.codehaus.groovy:groovy-xml", version.ref = "groovy" }
@@ -281,7 +281,7 @@ ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:10.3.0"
 
 mockk = "io.mockk:mockk:1.12.4"
 
-objenesis = "org.objenesis:objenesis:3.2"
+objenesis = "org.objenesis:objenesis:3.3"
 
 robolectric = "org.robolectric:robolectric:4.8.1"
 
