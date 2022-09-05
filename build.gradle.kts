@@ -44,7 +44,7 @@ plugins {
   id("io.gitlab.arturbosch.detekt") version "1.21.0"
   id("com.rickbusarow.module-check") version "0.12.3"
   id("com.dorongold.task-tree") version "2.1.0"
-  id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.0"
+  id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.1"
   base
   dokka
   knit
