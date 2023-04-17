@@ -1,9 +1,9 @@
 [versions]
 
 anvil = "2.4.2"
-benManes = "0.42.0"
+benManes = "0.46.0"
 coil = "2.3.0"
-dependencyAnalysis = "1.13.1"
+dependencyAnalysis = "1.19.0"
 detekt = "1.21.0"
 dispatch = "1.0.0-beta10"
 dokka = "1.7.10"
@@ -101,7 +101,7 @@ kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", versi
 kotlin-test-common = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlin" }
 kotlin-test-core = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 
-kotlin-compile-testing = "com.github.tschuchortdev:kotlin-compile-testing:1.4.9"
+kotlin-compile-testing = "com.github.tschuchortdev:kotlin-compile-testing:1.5.0"
 
 kotlinx-atomicfu-gradle-plugin = { module = "org.jetbrains.kotlinx:atomicfu-gradle-plugin", version.ref = "kotlinx-atomicfu" }
 kotlinx-atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "kotlinx-atomicfu" }
@@ -116,9 +116,9 @@ kotlinx-metadata-jvm = { module = "org.jetbrains.kotlinx:kotlinx-metadata-jvm", 
 kotlinx-knit-gradle = { module = "org.jetbrains.kotlinx:kotlinx-knit", version.ref = "kotlinx-knit" }
 kotlinx-knit-test = { module = "org.jetbrains.kotlinx:kotlinx-knit-test", version.ref = "kotlinx-knit" }
 
-ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.0.0"
+ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.3.1"
 
-mockk = "io.mockk:mockk:1.12.7"
+mockk = "io.mockk:mockk:1.13.5"
 
 rickBusarow-doks = { module = "com.rickbusarow.doks:doks-gradle-plugin", version.ref = "rickBusarow-doks" }
 rickBusarow-ktrules = { module = "com.rickbusarow.ktrules:ktrules", version.ref = "rickBusarow-ktrules" }
