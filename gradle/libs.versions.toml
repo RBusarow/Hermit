@@ -3,7 +3,7 @@
 anvil = "2.4.2"
 benManes = "0.46.0"
 coil = "2.3.0"
-dependencyAnalysis = "1.13.1"
+dependencyAnalysis = "1.19.0"
 detekt = "1.21.0"
 dispatch = "1.0.0-beta10"
 dokka = "1.7.10"
@@ -118,7 +118,7 @@ kotlinx-knit-test = { module = "org.jetbrains.kotlinx:kotlinx-knit-test", versio
 
 ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.0.0"
 
-mockk = "io.mockk:mockk:1.12.7"
+mockk = "io.mockk:mockk:1.13.5"
 
 rickBusarow-doks = { module = "com.rickbusarow.doks:doks-gradle-plugin", version.ref = "rickBusarow-doks" }
 rickBusarow-ktrules = { module = "com.rickbusarow.ktrules:ktrules", version.ref = "rickBusarow-ktrules" }
