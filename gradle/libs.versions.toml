@@ -3,7 +3,7 @@ androidTools = "7.2.2"
 anvil = "2.4.2"
 benManes = "0.42.0"
 changeTracker = "0.7.3"
-coil = "2.2.0"
+coil = "2.3.0"
 dependencyAnalysis = "1.13.1"
 dispatch = "1.0.0-beta10"
 detekt = "1.21.0"
@@ -24,9 +24,9 @@ targetSdk = "30"
 taskTree = "2.1.0"
 
 androidx-compose = "1.4.5"
-androidx-fragment-version = "1.5.2"
+androidx-fragment-version = "1.5.6"
 androidx-lifecycle = "2.5.1"
-androidx-navigation-version = "2.5.1"
+androidx-navigation-version = "2.5.3"
 androidx-paging = "3.1.1"
 androidx-room = "2.4.3"
 androidx-startup = "1.1.1"
@@ -47,7 +47,7 @@ rickBusarow-dependencySync = "0.11.4"
 rickBusarow-moduleCheck = "0.12.3"
 
 square-anvil = "2.4.2"
-square-moshi = "1.13.0"
+square-moshi = "1.14.0"
 square-okhttp = "4.10.0"
 square-okio = "3.2.0"
 square-retrofit = "2.9.0"
@@ -82,7 +82,7 @@ androidx-activity-ktx = "androidx.activity:activity-ktx:1.5.1"
 
 androidx-annotations = "androidx.annotation:annotation:1.4.0"
 
-androidx-appcompat = "androidx.appcompat:appcompat:1.5.0"
+androidx-appcompat = "androidx.appcompat:appcompat:1.6.1"
 
 androidx-arch-test-core = "androidx.arch.core:core-testing:2.1.0"
 
@@ -105,7 +105,7 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", versi
 
 androidx-constraintLayout = "androidx.constraintlayout:constraintlayout:2.1.4"
 
-androidx-coreKtx = "androidx.core:core-ktx:1.8.0"
+androidx-coreKtx = "androidx.core:core-ktx:1.10.0"
 
 androidx-exifinterface = "androidx.exifinterface:exifinterface:1.3.3"
 
@@ -182,7 +182,7 @@ androidx-work-core = { module = "androidx.work:work-runtime", version.ref = "and
 androidx-work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "androidx-work-version" }
 androidx-work-test = { module = "androidx.work:work-testing", version.ref = "androidx-work-version" }
 
-cash-turbine = "app.cash.turbine:turbine:0.9.0"
+cash-turbine = "app.cash.turbine:turbine:0.12.3"
 
 codehaus-groovy-core = { module = "org.codehaus.groovy:groovy", version.ref = "groovy" }
 codehaus-groovy-xml = { module = "org.codehaus.groovy:groovy-xml", version.ref = "groovy" }
