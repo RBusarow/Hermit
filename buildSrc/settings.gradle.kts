@@ -13,18 +13,6 @@
  * limitations under the License.
  */
 
-pluginManagement {
-
-  resolutionStrategy {
-    eachPlugin {
-      when {
-        requested.id.id.startsWith("org.jetbrains.kotlin") -> useVersion("1.5.0")
-      }
-    }
-  }
-}
-
-enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 @Suppress("UnstableApiUsage")
