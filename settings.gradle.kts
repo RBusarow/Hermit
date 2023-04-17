@@ -17,7 +17,22 @@ rootProject.name = "Hermit"
 pluginManagement {
   repositories {
     gradlePluginPortal()
-    jcenter()
+    mavenCentral()
+    google()
+    maven("https://plugins.gradle.org/m2/")
+  }
+}
+
+plugins {
+  id("com.gradle.enterprise").version("3.5.2")
+}
+
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+  repositories {
+    google()
+    mavenCentral()
+    maven("https://plugins.gradle.org/m2/")
   }
 }
 
@@ -33,10 +48,6 @@ include(
   ":hermit-mockk",
   ":hermit-mockk:samples"
 )
-
-plugins {
-  id("com.gradle.enterprise").version("3.13")
-}
 
 gradleEnterprise {
   buildScan {

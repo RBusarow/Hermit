@@ -17,6 +17,12 @@ plugins {
   `kotlin-dsl`
 }
 
+buildscript {
+  dependencies {
+    classpath(libs.kotlin.gradle.pluginApi)
+  }
+}
+
 repositories {
   mavenCentral()
   google()
@@ -38,7 +44,8 @@ dependencies {
   implementation(libs.kotlin.annotation.processing)
   implementation(libs.ktlint.gradle)
   implementation(libs.kotlin.compiler)
-  implementation(libs.kotlin.gradle.pluginApi)
+
+  implementation(libs.kotlinx.atomicfu)
   implementation(libs.kotlin.reflect)
   implementation(libs.kotlin.stdlib.jdk8)
   implementation(libs.kotlinx.knit.gradle)
