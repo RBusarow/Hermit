@@ -28,7 +28,11 @@ plugins {
   alias(libs.plugins.kotlinter) apply false
   base
   dokka
-  knit
+}
+
+moduleCheck {
+  deleteUnused = true
+  checks.sortDependencies = true
 }
 
 allprojects {
@@ -145,14 +149,4 @@ allprojects {
   // dummy ktlint-gradle plugin task names which just delegate to the Kotlinter ones
   tasks.register("ktlintCheck") { dependsOn("lintKotlin") }
   tasks.register("ktlintFormat") { dependsOn("formatKotlin") }
-}
-
-val sortDependencies by tasks.registering {
-
-  description = "sort all dependencies in a gradle kts file"
-  group = "refactor"
-
-  doLast {
-    sortDependencies()
-  }
 }

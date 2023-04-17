@@ -21,7 +21,8 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 /**
- * The JUnit 5 extension is automatically applied, and dependencies are provided via `by AutoReset()`.
+ * The JUnit 5 extension is automatically applied,
+ * and dependencies are provided via `by AutoReset()`.
  *
  * The test lifecycle is automatically managed.
  */
