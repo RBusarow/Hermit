@@ -49,7 +49,7 @@ rickBusarow-moduleCheck = "0.12.5"
 square-anvil = "2.4.5"
 square-moshi = "1.14.0"
 square-okhttp = "4.10.0"
-square-okio = "3.2.0"
+square-okio = "3.3.0"
 square-retrofit = "2.9.0"
 
 zacSweers-moshix = "0.18.3"
