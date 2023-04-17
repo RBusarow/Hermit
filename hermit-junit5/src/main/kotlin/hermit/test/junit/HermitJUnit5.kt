@@ -37,8 +37,8 @@ public abstract class HermitJUnit5(
   }
 
   /**
-   * Convenience function which delegates to [ResetManager.resets][resetsExtension] without needing
-   * the import.
+   * Convenience function which delegates to
+   * [ResetManager.resets][resetsExtension] without needing the import.
    *
    * @see resetsExtension
    */
