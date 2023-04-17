@@ -29,30 +29,33 @@ import kotlin.reflect.KClass
  * # Lifecycle
  *
  * ## On initialization
- * * creates a MockK instance
- * * *if `block` was specified* sets all answers from the `every { ... }` `block` argument
+ * - creates a MockK instance
+ * - *if `block` was specified* sets all answers from the `every { ... }` `block` argument
  *
  * ## On first access after reset
- * * registers the [mock] with the [resetManager]
+ * - registers the [mock] with the [resetManager]
  *
  * ## On repeated access
- * * returns the same [mock] instance and does nothing with `block`
+ * - returns the same [mock] instance and does nothing with `block`
  *
  * ## On reset
- * * calls [clearMocks(mock)][clearMocks] and eagerly invokes `block` again to reset the state to the initial one
+ * - calls [clearMocks(mock)][clearMocks] and eagerly invokes
+ *   `block` again to reset the state to the initial one
  *
  * **Implementation Note**
  *
- * This behavior of eagerly invoking the answers `block` is atypical for this library.  It is necessary
- * because otherwise, it is likely that the first access of the [mock] instance would be inside an [every] block.
- * Attempting to invoke [every] while already inside [every] causes a [MockKException].
+ * This behavior of eagerly invoking the answers `block` is atypical for this
+ * library. It is necessary because otherwise, it is likely that the first
+ * access of the [mock] instance would be inside an [every] block. Attempting
+ * to invoke [every] while already inside [every] causes a [MockKException].
  *
+ * @property resetManager The [ResetManager] which is shared
+ *   by all mocks and other resettable fields in the test.
+ * @property mock The mock instance exposed by the Lazy delegate.
+ * @property clearPolicy Describes the parameters passed via [clearMocks] when invoking [reset]
+ * @property block The answers ( `every { ... } returns ...` ) applied after a reset.
  * @sample samples.SimpleTest
  * @sample samples.ComplexTest
- * @param resetManager The [ResetManager] which is shared by all mocks and other resettable fields in the test.
- * @param mock The mock instance exposed by the Lazy delegate.
- * @param clearPolicy Describes the parameters passed via [clearMocks] when invoking [reset]
- * @param block The answers ( `every { ... } returns ...` ) applied after a reset.
  */
 public class ResetsMockK<out T : Any>(
   private val resetManager: ResetManager,
@@ -116,13 +119,15 @@ public class ResetsMockK<out T : Any>(
  * * returns the same mock instance and does nothing with `block`
  *
  * ## On reset
- * * calls [clearMocks(mock)][clearMocks] and eagerly invokes `block` again to reset the state to the initial one
+ * * calls [clearMocks(mock)][clearMocks] and eagerly invokes
+ *   `block` again to reset the state to the initial one
  *
  * **Implementation Note**
  *
- * This behavior of eagerly invoking the answers `block` is atypical for this library.  It is necessary
- * because otherwise, it is likely that the first access of the mock instance would be inside an [every] block.
- * Attempting to invoke [every] while already inside [every] causes a [MockKException].
+ * This behavior of eagerly invoking the answers `block` is atypical for this
+ * library. It is necessary because otherwise, it is likely that the first
+ * access of the mock instance would be inside an [every] block. Attempting
+ * to invoke [every] while already inside [every] causes a [MockKException].
  *
  * @sample samples.SimpleTest
  * @sample samples.ComplexTest
@@ -130,7 +135,6 @@ public class ResetsMockK<out T : Any>(
  * @see ResetsMockK
  */
 @Suppress(
-  "CHANGING_ARGUMENTS_EXECUTION_ORDER_FOR_NAMED_VARARGS",
   "SpreadOperator",
   "LongParameterList"
 )

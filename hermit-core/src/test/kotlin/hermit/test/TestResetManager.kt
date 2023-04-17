@@ -16,8 +16,7 @@
 package hermit.test
 
 /**
- * Same as the normal [ResetManager] factory instance
- * except that it exposes its delegates
+ * Same as the normal [ResetManager] factory instance except that it exposes its delegates
  */
 internal class TestResetManager : ResetManager {
 

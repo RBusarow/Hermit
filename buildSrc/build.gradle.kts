@@ -17,6 +17,12 @@ plugins {
   `kotlin-dsl`
 }
 
+buildscript {
+  dependencies {
+    classpath(libs.kotlin.gradle.pluginApi)
+  }
+}
+
 repositories {
   mavenCentral()
   google()
@@ -32,17 +38,15 @@ dependencies {
   implementation(kotlin("gradle-plugin", version = kotlinVersion))
   implementation(kotlin("reflect", version = kotlinVersion))
 
-  implementation(libs.agp)
   implementation(libs.dokka.gradle)
   implementation(libs.dropbox.dependencyGuard)
-  implementation(libs.kotlin.annotation.processing)
-  implementation(libs.ktlint.gradle)
   implementation(libs.kotlin.compiler)
-  implementation(libs.kotlin.gradle.pluginApi)
   implementation(libs.kotlin.reflect)
   implementation(libs.kotlin.stdlib.jdk8)
+  implementation(libs.kotlinx.atomicfu.gradle.plugin)
   implementation(libs.kotlinx.knit.gradle)
-  implementation(libs.scabbard)
+  implementation(libs.ktlint.gradle)
+  implementation(libs.rickBusarow.ktrules)
   implementation(libs.square.anvil.gradle)
   implementation(libs.vanniktech.maven.publish)
 }

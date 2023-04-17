@@ -29,6 +29,7 @@ dependencies {
 
   implementation(libs.junit.api)
   implementation(libs.kotlin.reflect)
+  implementation(libs.kotlinx.atomicfu)
   implementation(libs.kotlinx.coroutines.core)
 
   runtimeOnly(libs.junit.engine)

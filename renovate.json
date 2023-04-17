@@ -1,9 +1,18 @@
 {
-  "labels": ["dependencies", "automerge"],
-  "extends": [
-    "config:base"
-  ],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
   "rebaseWhen": "conflicted",
   "rebaseLabel": "rebase",
-  "prHourlyLimit" : 20
+  "packageRules": [{
+    "groupName": "Kotlin and compiler plugins",
+    "matchPackagePatterns": [
+      "^org\\.jetbrains\\.kotlin:(?:[\\w-]+)$",
+      "^com\\.google\\.devtools\\.ksp:(?:[\\w-]+)$",
+      "^com\\.square\\.anvil:(?:[\\w-]+)$"
+    ]
+  }],
+  "labels": [
+    "dependencies",
+    "automerge"
+  ]
 }

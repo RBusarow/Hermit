@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import kotlinx.atomicfu.plugin.gradle.sourceSets
-
 plugins {
   javaLibrary
 }
