@@ -34,15 +34,6 @@ pluginManager.withPlugin("java") {
     .configureEach { configureClasspath(name) }
 }
 
-pluginManager.withPlugin("com.android.library") {
-  // For Android modules, just hard-code `releaseRuntimeClasspath` for the release variant.
-  // This is actually pretty robust, since if this configuration ever changes, dependency-guard
-  // will fail when trying to look it up.
-  extensions.configure< com.android.build.gradle.LibraryExtension> {
-    configureClasspath("releaseRuntimeClasspath")
-  }
-}
-
 fun configureClasspath(classpathName: String) {
   configure<com.dropbox.gradle.plugins.dependencyguard.DependencyGuardPluginExtension> {
     // Tell dependency-guard to check the `$classpathName` configuration's dependencies.

@@ -34,24 +34,24 @@ import kotlinx.coroutines.test.TestScope
 /**
  * Binds a single instance of [CoroutineScope] to a [ResetManager].
  *
- * The same instance is re-used throughout the lifetime of the [LazyResetsCoroutineScope], since its
- * state is entirely reset in [reset][Resets.reset].
+ * The same instance is re-used throughout the lifetime of the
+ * [LazyResetsCoroutineScope], since its state is entirely reset in [reset][Resets.reset].
  *
  * ### reset behavior
  *
- * If the [scopeFactory] creates a [TestCoroutineScope] and [cleanUpTestCoroutines] is true,
- * [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
+ * If the [scopeFactory] creates a [TestCoroutineScope] and [cleanUpTestCoroutines] is
+ * true, [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines] is called.
  *
- * If the [scopeFactory] does not create a [TestCoroutineScope] but its
- * [coroutineContext][kotlin.coroutines.CoroutineContext] contains a [Job], then [Job.cancel] is
- * called.
+ * If the [scopeFactory] does not create a [TestCoroutineScope]
+ * but its [coroutineContext][kotlin.coroutines.CoroutineContext]
+ * contains a [Job], then [Job.cancel] is called.
  *
- * If the [scopeFactory] does not create a [TestCoroutineScope] and does not have a [Job], then
- * [reset][Resets.reset] has no effect.
+ * If the [scopeFactory] does not create a [TestCoroutineScope] and
+ * does not have a [Job], then [reset][Resets.reset] has no effect.
  *
  * @param cleanUpTestCoroutines if true and the dispatcher is a
- *   [TestCoroutineScope][kotlinx.coroutines.test.TestCoroutineScope], invoke
- *   [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines]
+ *   [TestCoroutineScope][kotlinx.coroutines.test.TestCoroutineScope],
+ *   invoke [cleanupTestCoroutines][TestCoroutineScope.cleanupTestCoroutines]
  *   during reset. Has no effect for normal scopes.
  * @sample samples.ResetsScopeSample
  */
