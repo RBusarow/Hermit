@@ -13,10 +13,23 @@
  * limitations under the License.
  */
 
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+pluginManagement {
+  repositories {
+    google()
+    mavenCentral()
+    maven("https://plugins.gradle.org/m2/")
+  }
+}
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
+  @Suppress("UnstableApiUsage")
+  repositories {
+    google()
+    mavenCentral()
+    maven("https://plugins.gradle.org/m2/")
+  }
+
   versionCatalogs {
     create("libs") {
       from(files("../gradle/libs.versions.toml"))
