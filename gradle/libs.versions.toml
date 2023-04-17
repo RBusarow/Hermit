@@ -25,7 +25,7 @@ taskTree = "2.1.1"
 
 androidx-compose = "1.4.5"
 androidx-fragment-version = "1.5.6"
-androidx-lifecycle = "2.5.1"
+androidx-lifecycle = "2.6.1"
 androidx-navigation-version = "2.5.3"
 androidx-paging = "3.1.1"
 androidx-room = "2.4.3"
