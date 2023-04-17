@@ -108,7 +108,8 @@ public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
   )
 
 /**
- * Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
+ * Objects may not be used with a 'by resets' delegate
+ * unless they implement the LazyReset interface.
  *
  * @see KClass.objectInstance
  */

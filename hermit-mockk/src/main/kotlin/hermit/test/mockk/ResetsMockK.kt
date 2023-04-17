@@ -44,9 +44,10 @@ import kotlin.reflect.KClass
  *
  * **Implementation Note**
  *
- * This behavior of eagerly invoking the answers `block` is atypical for this library. It is necessary
- * because otherwise, it is likely that the first access of the [mock] instance would be inside an
- * [every] block. Attempting to invoke [every] while already inside [every] causes a [MockKException].
+ * This behavior of eagerly invoking the answers `block` is atypical for this
+ * library. It is necessary because otherwise, it is likely that the first
+ * access of the [mock] instance would be inside an [every] block. Attempting
+ * to invoke [every] while already inside [every] causes a [MockKException].
  *
  * @property resetManager The [ResetManager] which is shared
  *   by all mocks and other resettable fields in the test.
@@ -123,9 +124,10 @@ public class ResetsMockK<out T : Any>(
  *
  * **Implementation Note**
  *
- * This behavior of eagerly invoking the answers `block` is atypical for this library. It is necessary
- * because otherwise, it is likely that the first access of the mock instance would be inside an
- * [every] block. Attempting to invoke [every] while already inside [every] causes a [MockKException].
+ * This behavior of eagerly invoking the answers `block` is atypical for this
+ * library. It is necessary because otherwise, it is likely that the first
+ * access of the mock instance would be inside an [every] block. Attempting
+ * to invoke [every] while already inside [every] causes a [MockKException].
  *
  * @sample samples.SimpleTest
  * @sample samples.ComplexTest
