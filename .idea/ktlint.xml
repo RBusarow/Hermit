@@ -6,12 +6,6 @@
     <treatAsErrors>false</treatAsErrors>
     <disabledRules>
       <list>
-        <option value="max-line-length" />
-        <option value="filename" />
-        <option value="experimental:function-signature" />
-        <option value="argument-list-wrapping" />
-        <option value="no-empty-first-line-in-method-block" />
-        <option value="experimental:type-parameter-list-spacing" />
       </list>
     </disabledRules>
   </component>

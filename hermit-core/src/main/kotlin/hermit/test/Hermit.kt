@@ -18,7 +18,8 @@ package hermit.test
 /**
  * Factory for creating a default [ResetManager] instance.
  *
- * All calls to [register][ResetManager.register] and [resetAll][ResetManager.resetAll] are thread-safe.
+ * All calls to [register][ResetManager.register] and
+ * [resetAll][ResetManager.resetAll] are thread-safe.
  *
  * @sample samples.DelegatingResetManagerImpl
  */

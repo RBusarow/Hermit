@@ -18,8 +18,8 @@ package samples
 import hermit.test.Resets
 
 /**
- * Makes a MutableMap which conforms to the Resettable interface, by delegating `reset()` to the
- * existing [clear][MutableMap.clear] function.
+ * Makes a MutableMap which conforms to the Resettable interface, by
+ * delegating `reset()` to the existing [clear][MutableMap.clear] function.
  */
 class ResettableMap<K, V> :
   MutableMap<K, V> by mutableMapOf(),

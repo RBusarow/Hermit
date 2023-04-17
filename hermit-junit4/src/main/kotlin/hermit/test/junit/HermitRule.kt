@@ -22,12 +22,11 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
 /**
- * JUnit 4 [Rule][org.junit.Rule] which automatically resets the value
- * of a [LazyResets] instance after every test.
+ * JUnit 4 [Rule][org.junit.Rule] which automatically resets
+ * the value of a [LazyResets] instance after every test.
  *
- * Note that the default behavior for JUnit 4
- * is to create an entirely new test class instance for each test,
- * which means this would only be of value for resetting the state of singletons.
+ * Note that the default behavior for JUnit 4 is to create an entirely new test class instance
+ * for each test, which means this would only be of value for resetting the state of singletons.
  *
  * @sample samples.AutoResetRuleSample
  */

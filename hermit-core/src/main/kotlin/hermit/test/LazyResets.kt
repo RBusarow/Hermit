@@ -30,14 +30,14 @@ public fun <T : Any> LazyResets(
 /**
  * Lazy instance which can be reset. After a reset, the next access will create a new instance.
  *
- * Each time a new instance is created, it is registered with the [ResetManager] and will be reset
- * with the next [ResetManager.resetAll].
+ * Each time a new instance is created, it is registered with the
+ * [ResetManager] and will be reset with the next [ResetManager.resetAll].
  *
- * If the type being created can be initialized with a default constructor, this function can be
- * invoked without a [valueFactory] argument.
+ * If the type being created can be initialized with a default constructor,
+ * this function can be invoked without a [valueFactory] argument.
  *
- * If the type being created is an interface, abstract class, or does not have a default
- * constructor, then a factory must be specified.
+ * If the type being created is an interface, abstract class, or does
+ * not have a default constructor, then a factory must be specified.
  *
  * If the type being created is a Kotlin object, then it must implement the [Resets] interface
  *
@@ -108,8 +108,8 @@ public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
   )
 
 /**
- * Objects may not be used with a 'by resets' delegate unless they implement the LazyReset
- * interface.
+ * Objects may not be used with a 'by resets' delegate
+ * unless they implement the LazyReset interface.
  *
  * @see KClass.objectInstance
  */

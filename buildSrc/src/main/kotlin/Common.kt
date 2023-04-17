@@ -51,7 +51,6 @@ fun Project.common() {
           val oldPath = file.path
           val newPath = oldPath.replace("/java", "/kotlin")
 
-
           if (file.isFile) {
             val text = file.readText()
 
