@@ -24,7 +24,7 @@ targetSdk = "30"
 taskTree = "2.1.0"
 
 androidx-compose = "1.4.5"
-androidx-fragment-version = "1.5.2"
+androidx-fragment-version = "1.5.6"
 androidx-lifecycle = "2.5.1"
 androidx-navigation-version = "2.5.1"
 androidx-paging = "3.1.1"
