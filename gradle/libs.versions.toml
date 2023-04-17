@@ -21,7 +21,7 @@ ktlint-lib = "0.46.1"
 sonarPlugin = "2.6.1"
 spotless = "5.10.1"
 targetSdk = "30"
-taskTree = "2.1.0"
+taskTree = "2.1.1"
 
 androidx-compose = "1.4.5"
 androidx-fragment-version = "1.5.6"
