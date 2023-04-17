@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-import io.gitlab.arturbosch.detekt.*
-import kotlinx.validation.*
-import org.jetbrains.kotlin.gradle.tasks.*
-import org.jlleitschuh.gradle.ktlint.*
-import org.jlleitschuh.gradle.ktlint.tasks.*
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import kotlinx.validation.ApiValidationExtension
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jmailen.gradle.kotlinter.KotlinterExtension
 
 plugins {
   kotlin("jvm")
@@ -26,6 +25,7 @@ plugins {
   alias(libs.plugins.moduleCheck)
   alias(libs.plugins.kotlinx.binaryCompatibility)
   alias(libs.plugins.taskTree)
+  alias(libs.plugins.kotlinter) apply false
   base
   dokka
   knit
@@ -73,6 +73,7 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
   include("**/*.kt", "**/*.kts")
   exclude(
     "**/resources/**",
+    "**/dependencies/**",
     "**/build/**",
     "**/src/test/java**",
     "**/src/integrationTest/kotlin**",
@@ -116,7 +117,7 @@ extensions.configure<ApiValidationExtension> {
 }
 
 fun isNonStable(version: String): Boolean {
-  val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+  val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase().contains(it) }
   val regex = "^[0-9,.v-]+(-r)?$".toRegex()
   val isStable = stableKeyword || regex.matches(version)
   return isStable.not()
@@ -134,31 +135,16 @@ tasks.named(
 val ktlintVersion = libs.versions.ktlint.lib.get()
 
 allprojects {
-  apply(plugin = "org.jlleitschuh.gradle.ktlint")
+  apply(plugin = "org.jmailen.kotlinter")
 
-  configure<KtlintExtension> {
-    debug.set(false)
-    // when updating to 0.46.0:
-    // - Re-enable `experimental:type-parameter-list-spacing`
-    // - remove 'experimental' from 'argument-list-wrapping'
-    // - remove 'experimental' from 'no-empty-first-line-in-method-block'
-    version.set(ktlintVersion)
-    outputToConsole.set(true)
-    enableExperimentalRules.set(true)
-    disabledRules.set(
-      setOf(
-        "max-line-length", // manually formatting still does this, and KTLint will still wrap long chains when possible
-        "filename", // same as Detekt's MatchingDeclarationName, but Detekt's version can be suppressed and this can't
-        "experimental:argument-list-wrapping", // doesn't work half the time
-        "experimental:no-empty-first-line-in-method-block", // code golf...
-        // added in 0.46.0
-        "experimental:function-signature"
-      )
-    )
+  extensions.configure(KotlinterExtension::class.java) {
+    ignoreFailures = false
+    reporters = arrayOf("checkstyle", "plain")
   }
-  tasks.withType<BaseKtLintCheckTask> {
-    workerMaxHeapSize.set("512m")
-  }
+
+  // dummy ktlint-gradle plugin task names which just delegate to the Kotlinter ones
+  tasks.register("ktlintCheck") { dependsOn("lintKotlin") }
+  tasks.register("ktlintFormat") { dependsOn("formatKotlin") }
 }
 
 val sortDependencies by tasks.registering {

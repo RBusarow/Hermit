@@ -18,17 +18,15 @@ package hermit.test
 /**
  * Marks any type which may be reset.
  *
- * Note that some implementations of `Resettable` are lower maintenance (and therefore safer) than others.
+ * Note that some implementations of `Resettable` are
+ * lower maintenance (and therefore safer) than others.
  *
- * It's reasonably safe to implement `Resettable` when all state
- * can be reset in a single "nuclear" option,
- * since future updates would automatically also be captured.
+ * It's reasonably safe to implement `Resettable` when all state can be reset in a single
+ * "nuclear" option, since future updates would automatically also be captured. On the
+ * other hand, if each piece of state needs to be handled explicitly, then it is far
+ * more likely that future additions state may forget to update the `reset` function.
  *
  * @sample samples.ResettableMap
- *
- * On the other hand, if each piece of state needs to be handled explicitly,
- * then it is far more likely that future additions state may forget to update the `reset` function.
- *
  * @sample samples.MutableSingleton
  */
 public interface Resets {
