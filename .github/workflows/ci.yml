@@ -3,24 +3,17 @@ name: CI
 on:
   pull_request:
   workflow_dispatch:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # every day at 10pm CST (4 UTC)
-    - cron: '0 4 * * *'
 
+env:
+  macosGradleArgs: "-Dorg.gradle.jvmargs=-Xmx10g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
+  ubuntuGradleArgs: "-Dorg.gradle.jvmargs=-Xmx5g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
+  windowsGradleArgs: "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
+
+concurrency:
+  group: ci-${{ github.ref }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
-
-  cancel-other-jobs:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      # cancel previous jobs
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.10.0
-        env:
-          access_token: '${{ github.token }}'
 
   detekt:
 
