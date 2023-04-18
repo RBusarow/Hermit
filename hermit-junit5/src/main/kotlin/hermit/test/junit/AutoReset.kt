@@ -19,9 +19,7 @@ import hermit.test.Hermit
 import hermit.test.ResetManager
 import org.junit.jupiter.api.extension.ExtendWith
 
-/**
- * @sample samples.AutoResetClassDelegationSample
- */
+/** @sample samples.AutoResetClassDelegationSample */
 @ExtendWith(HermitExtension::class)
 public interface AutoReset : ResetManager
 
