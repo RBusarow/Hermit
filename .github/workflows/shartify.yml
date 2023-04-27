@@ -9,9 +9,9 @@ env:
   ubuntuGradleArgs: "-Dorg.gradle.jvmargs=-Xmx5g"
   windowsGradleArgs: "-Dorg.gradle.jvmargs=-Xmx4g"
 
-concurrency:
-  group: ci-${{ github.ref }}-${{ github.head_ref }}
-  cancel-in-progress: true
+#concurrency:
+#  group: ci-${{ github.ref }}-${{ github.head_ref }}
+#  cancel-in-progress: true
 
 jobs:
   shard_0:
@@ -3093,4 +3093,3 @@ jobs:
         uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
-
