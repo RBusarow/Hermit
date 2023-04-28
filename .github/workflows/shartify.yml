@@ -35,6 +35,7 @@ jobs:
             :compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_1:
     runs-on: ubuntu-latest
@@ -56,6 +57,7 @@ jobs:
             :detekt
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_2:
     runs-on: ubuntu-latest
@@ -78,6 +80,7 @@ jobs:
             :hermit-core:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_3:
     runs-on: ubuntu-latest
@@ -99,6 +102,7 @@ jobs:
             :hermit-core:dependencyGuard
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_4:
     runs-on: ubuntu-latest
@@ -120,6 +124,7 @@ jobs:
             :hermit-core:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_5:
     runs-on: ubuntu-latest
@@ -141,6 +146,7 @@ jobs:
             :hermit-core:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_6:
     runs-on: ubuntu-latest
@@ -162,6 +168,7 @@ jobs:
             :hermit-core:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_7:
     runs-on: ubuntu-latest
@@ -183,6 +190,7 @@ jobs:
             :hermit-core:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_8:
     runs-on: ubuntu-latest
@@ -205,6 +213,7 @@ jobs:
             :hermit-core:samples:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_9:
     runs-on: ubuntu-latest
@@ -226,6 +235,7 @@ jobs:
             :hermit-core:samples:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_10:
     runs-on: ubuntu-latest
@@ -247,6 +257,7 @@ jobs:
             :hermit-core:samples:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_11:
     runs-on: ubuntu-latest
@@ -268,6 +279,7 @@ jobs:
             :hermit-core:samples:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_12:
     runs-on: ubuntu-latest
@@ -289,6 +301,7 @@ jobs:
             :hermit-core:samples:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_13:
     runs-on: ubuntu-latest
@@ -310,6 +323,7 @@ jobs:
             :hermit-coroutines:dependencyGuard
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_14:
     runs-on: ubuntu-latest
@@ -331,6 +345,7 @@ jobs:
             :hermit-coroutines:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_15:
     runs-on: ubuntu-latest
@@ -352,6 +367,7 @@ jobs:
             :hermit-coroutines:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_16:
     runs-on: ubuntu-latest
@@ -373,6 +389,7 @@ jobs:
             :hermit-coroutines:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_17:
     runs-on: ubuntu-latest
@@ -394,6 +411,7 @@ jobs:
             :hermit-coroutines:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_18:
     runs-on: ubuntu-latest
@@ -416,6 +434,7 @@ jobs:
             :hermit-coroutines:samples:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_19:
     runs-on: ubuntu-latest
@@ -437,6 +456,7 @@ jobs:
             :hermit-coroutines:samples:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_20:
     runs-on: ubuntu-latest
@@ -458,6 +478,7 @@ jobs:
             :hermit-coroutines:samples:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_21:
     runs-on: ubuntu-latest
@@ -479,6 +500,7 @@ jobs:
             :hermit-coroutines:samples:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_22:
     runs-on: ubuntu-latest
@@ -500,6 +522,7 @@ jobs:
             :hermit-coroutines:samples:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_23:
     runs-on: ubuntu-latest
@@ -521,6 +544,7 @@ jobs:
             :hermit-junit4:dependencyGuard
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_24:
     runs-on: ubuntu-latest
@@ -542,6 +566,7 @@ jobs:
             :hermit-junit4:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_25:
     runs-on: ubuntu-latest
@@ -563,6 +588,7 @@ jobs:
             :hermit-junit4:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_26:
     runs-on: ubuntu-latest
@@ -584,6 +610,7 @@ jobs:
             :hermit-junit4:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_27:
     runs-on: ubuntu-latest
@@ -605,6 +632,7 @@ jobs:
             :hermit-junit4:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_28:
     runs-on: ubuntu-latest
@@ -627,6 +655,7 @@ jobs:
             :hermit-junit4:samples:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_29:
     runs-on: ubuntu-latest
@@ -648,6 +677,7 @@ jobs:
             :hermit-junit4:samples:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_30:
     runs-on: ubuntu-latest
@@ -669,6 +699,7 @@ jobs:
             :hermit-junit4:samples:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_31:
     runs-on: ubuntu-latest
@@ -690,6 +721,7 @@ jobs:
             :hermit-junit4:samples:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_32:
     runs-on: ubuntu-latest
@@ -711,6 +743,7 @@ jobs:
             :hermit-junit4:samples:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_33:
     runs-on: ubuntu-latest
@@ -732,6 +765,7 @@ jobs:
             :hermit-junit5:dependencyGuard
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_34:
     runs-on: ubuntu-latest
@@ -753,6 +787,7 @@ jobs:
             :hermit-junit5:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_35:
     runs-on: ubuntu-latest
@@ -774,6 +809,7 @@ jobs:
             :hermit-junit5:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_36:
     runs-on: ubuntu-latest
@@ -795,6 +831,7 @@ jobs:
             :hermit-junit5:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_37:
     runs-on: ubuntu-latest
@@ -816,6 +853,7 @@ jobs:
             :hermit-junit5:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_38:
     runs-on: ubuntu-latest
@@ -838,6 +876,7 @@ jobs:
             :hermit-junit5:samples:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_39:
     runs-on: ubuntu-latest
@@ -859,6 +898,7 @@ jobs:
             :hermit-junit5:samples:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_40:
     runs-on: ubuntu-latest
@@ -880,6 +920,7 @@ jobs:
             :hermit-junit5:samples:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_41:
     runs-on: ubuntu-latest
@@ -901,6 +942,7 @@ jobs:
             :hermit-junit5:samples:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_42:
     runs-on: ubuntu-latest
@@ -922,6 +964,7 @@ jobs:
             :hermit-junit5:samples:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_43:
     runs-on: ubuntu-latest
@@ -943,6 +986,7 @@ jobs:
             :hermit-mockk:dependencyGuard
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_44:
     runs-on: ubuntu-latest
@@ -964,6 +1008,7 @@ jobs:
             :hermit-mockk:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_45:
     runs-on: ubuntu-latest
@@ -985,6 +1030,7 @@ jobs:
             :hermit-mockk:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_46:
     runs-on: ubuntu-latest
@@ -1006,6 +1052,7 @@ jobs:
             :hermit-mockk:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_47:
     runs-on: ubuntu-latest
@@ -1027,6 +1074,7 @@ jobs:
             :hermit-mockk:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_48:
     runs-on: ubuntu-latest
@@ -1049,6 +1097,7 @@ jobs:
             :hermit-mockk:samples:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_49:
     runs-on: ubuntu-latest
@@ -1070,6 +1119,7 @@ jobs:
             :hermit-mockk:samples:lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_50:
     runs-on: ubuntu-latest
@@ -1091,6 +1141,7 @@ jobs:
             :hermit-mockk:samples:lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_51:
     runs-on: ubuntu-latest
@@ -1112,6 +1163,7 @@ jobs:
             :hermit-mockk:samples:processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_52:
     runs-on: ubuntu-latest
@@ -1133,6 +1185,7 @@ jobs:
             :hermit-mockk:samples:processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_53:
     runs-on: ubuntu-latest
@@ -1154,6 +1207,7 @@ jobs:
             :lintKotlinMain
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_54:
     runs-on: ubuntu-latest
@@ -1175,6 +1229,7 @@ jobs:
             :lintKotlinTest
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_55:
     runs-on: ubuntu-latest
@@ -1196,6 +1251,7 @@ jobs:
             :moduleCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_56:
     runs-on: ubuntu-latest
@@ -1217,6 +1273,7 @@ jobs:
             :processResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_57:
     runs-on: ubuntu-latest
@@ -1238,6 +1295,7 @@ jobs:
             :processTestResources
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_58:
     runs-on: ubuntu-latest
@@ -1262,6 +1320,7 @@ jobs:
             :hermit-core:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_59:
     runs-on: ubuntu-latest
@@ -1286,6 +1345,7 @@ jobs:
             :hermit-core:samples:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_60:
     runs-on: ubuntu-latest
@@ -1310,6 +1370,7 @@ jobs:
             :hermit-coroutines:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_61:
     runs-on: ubuntu-latest
@@ -1334,6 +1395,7 @@ jobs:
             :hermit-coroutines:samples:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_62:
     runs-on: ubuntu-latest
@@ -1358,6 +1420,7 @@ jobs:
             :hermit-junit4:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_63:
     runs-on: ubuntu-latest
@@ -1382,6 +1445,7 @@ jobs:
             :hermit-junit4:samples:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_64:
     runs-on: ubuntu-latest
@@ -1406,6 +1470,7 @@ jobs:
             :hermit-junit5:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_65:
     runs-on: ubuntu-latest
@@ -1430,6 +1495,7 @@ jobs:
             :hermit-junit5:samples:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_66:
     runs-on: ubuntu-latest
@@ -1454,6 +1520,7 @@ jobs:
             :hermit-mockk:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_67:
     runs-on: ubuntu-latest
@@ -1478,6 +1545,7 @@ jobs:
             :hermit-mockk:samples:lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_68:
     runs-on: ubuntu-latest
@@ -1502,6 +1570,7 @@ jobs:
             :lintKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_69:
     runs-on: ubuntu-latest
@@ -1526,6 +1595,7 @@ jobs:
             :apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_70:
     runs-on: ubuntu-latest
@@ -1552,6 +1622,7 @@ jobs:
             :compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_71:
     runs-on: ubuntu-latest
@@ -1576,6 +1647,7 @@ jobs:
             :hermit-core:apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_72:
     runs-on: ubuntu-latest
@@ -1600,6 +1672,7 @@ jobs:
             :hermit-core:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_73:
     runs-on: ubuntu-latest
@@ -1624,6 +1697,7 @@ jobs:
             :hermit-core:samples:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_74:
     runs-on: ubuntu-latest
@@ -1648,6 +1722,7 @@ jobs:
             :hermit-coroutines:samples:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_75:
     runs-on: ubuntu-latest
@@ -1672,6 +1747,7 @@ jobs:
             :hermit-junit4:samples:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_76:
     runs-on: ubuntu-latest
@@ -1696,6 +1772,7 @@ jobs:
             :hermit-junit5:samples:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_77:
     runs-on: ubuntu-latest
@@ -1720,6 +1797,7 @@ jobs:
             :hermit-mockk:samples:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_78:
     runs-on: ubuntu-latest
@@ -1744,6 +1822,7 @@ jobs:
             :hermit-core:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_79:
     runs-on: ubuntu-latest
@@ -1767,6 +1846,7 @@ jobs:
             :hermit-core:jar
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_80:
     runs-on: ubuntu-latest
@@ -1792,6 +1872,7 @@ jobs:
             :hermit-core:samples:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_81:
     runs-on: ubuntu-latest
@@ -1816,6 +1897,7 @@ jobs:
             :hermit-coroutines:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_82:
     runs-on: ubuntu-latest
@@ -1840,6 +1922,7 @@ jobs:
             :hermit-junit4:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_83:
     runs-on: ubuntu-latest
@@ -1864,6 +1947,7 @@ jobs:
             :hermit-junit5:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_84:
     runs-on: ubuntu-latest
@@ -1888,6 +1972,7 @@ jobs:
             :hermit-mockk:compileKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_85:
     runs-on: ubuntu-latest
@@ -1913,6 +1998,7 @@ jobs:
             :hermit-core:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_86:
     runs-on: ubuntu-latest
@@ -1938,6 +2024,7 @@ jobs:
             :testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_87:
     runs-on: ubuntu-latest
@@ -1963,6 +2050,7 @@ jobs:
             :hermit-core:samples:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_88:
     runs-on: ubuntu-latest
@@ -1987,6 +2075,7 @@ jobs:
             :hermit-coroutines:apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_89:
     runs-on: ubuntu-latest
@@ -2011,6 +2100,7 @@ jobs:
             :hermit-coroutines:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_90:
     runs-on: ubuntu-latest
@@ -2035,6 +2125,7 @@ jobs:
             :hermit-junit4:apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_91:
     runs-on: ubuntu-latest
@@ -2059,6 +2150,7 @@ jobs:
             :hermit-junit4:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_92:
     runs-on: ubuntu-latest
@@ -2083,6 +2175,7 @@ jobs:
             :hermit-junit5:apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_93:
     runs-on: ubuntu-latest
@@ -2108,6 +2201,7 @@ jobs:
             :hermit-junit5:transformAtomicfuClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_94:
     runs-on: ubuntu-latest
@@ -2132,6 +2226,7 @@ jobs:
             :hermit-mockk:apiCheck
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_95:
     runs-on: ubuntu-latest
@@ -2156,6 +2251,7 @@ jobs:
             :hermit-mockk:classes
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_96:
     runs-on: ubuntu-latest
@@ -2182,6 +2278,7 @@ jobs:
             :hermit-core:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_97:
     runs-on: ubuntu-latest
@@ -2205,6 +2302,7 @@ jobs:
             :hermit-coroutines:jar
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_98:
     runs-on: ubuntu-latest
@@ -2229,6 +2327,7 @@ jobs:
             :hermit-junit4:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_99:
     runs-on: ubuntu-latest
@@ -2252,6 +2351,7 @@ jobs:
             :hermit-junit4:jar
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_100:
     runs-on: ubuntu-latest
@@ -2276,6 +2376,7 @@ jobs:
             :hermit-mockk:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_101:
     runs-on: ubuntu-latest
@@ -2299,6 +2400,7 @@ jobs:
             :hermit-mockk:jar
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_102:
     runs-on: ubuntu-latest
@@ -2323,6 +2425,7 @@ jobs:
             :hermit-core:samples:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_103:
     runs-on: ubuntu-latest
@@ -2348,6 +2451,7 @@ jobs:
             :hermit-junit4:samples:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_104:
     runs-on: ubuntu-latest
@@ -2372,6 +2476,7 @@ jobs:
             :hermit-junit5:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_105:
     runs-on: ubuntu-latest
@@ -2395,6 +2500,7 @@ jobs:
             :hermit-junit5:jar
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_106:
     runs-on: ubuntu-latest
@@ -2420,6 +2526,7 @@ jobs:
             :hermit-coroutines:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_107:
     runs-on: ubuntu-latest
@@ -2446,6 +2553,7 @@ jobs:
             :hermit-coroutines:samples:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_108:
     runs-on: ubuntu-latest
@@ -2471,6 +2579,7 @@ jobs:
             :hermit-junit4:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_109:
     runs-on: ubuntu-latest
@@ -2496,6 +2605,7 @@ jobs:
             :hermit-junit5:samples:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_110:
     runs-on: ubuntu-latest
@@ -2522,6 +2632,7 @@ jobs:
             :hermit-mockk:samples:compileTestKotlin
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_111:
     runs-on: ubuntu-latest
@@ -2547,6 +2658,7 @@ jobs:
             :hermit-mockk:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_112:
     runs-on: ubuntu-latest
@@ -2572,6 +2684,7 @@ jobs:
             :hermit-junit4:samples:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_113:
     runs-on: ubuntu-latest
@@ -2598,6 +2711,7 @@ jobs:
             :hermit-junit5:transformTestAtomicfuClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_114:
     runs-on: ubuntu-latest
@@ -2623,6 +2737,7 @@ jobs:
             :hermit-coroutines:samples:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_115:
     runs-on: ubuntu-latest
@@ -2648,6 +2763,7 @@ jobs:
             :hermit-coroutines:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_116:
     runs-on: ubuntu-latest
@@ -2674,6 +2790,7 @@ jobs:
             :hermit-junit4:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_117:
     runs-on: ubuntu-latest
@@ -2699,6 +2816,7 @@ jobs:
             :hermit-junit5:samples:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_118:
     runs-on: ubuntu-latest
@@ -2725,6 +2843,7 @@ jobs:
             :hermit-mockk:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_119:
     runs-on: ubuntu-latest
@@ -2750,6 +2869,7 @@ jobs:
             :hermit-mockk:samples:testClasses
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_120:
     runs-on: ubuntu-latest
@@ -2774,6 +2894,7 @@ jobs:
             :hermit-junit4:samples:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_121:
     runs-on: ubuntu-latest
@@ -2831,6 +2952,7 @@ jobs:
             :check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_122:
     runs-on: ubuntu-latest
@@ -2857,6 +2979,7 @@ jobs:
             :hermit-coroutines:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_123:
     runs-on: ubuntu-latest
@@ -2881,6 +3004,7 @@ jobs:
             :hermit-coroutines:samples:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_124:
     runs-on: ubuntu-latest
@@ -2907,6 +3031,7 @@ jobs:
             :hermit-junit5:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_125:
     runs-on: ubuntu-latest
@@ -2931,6 +3056,7 @@ jobs:
             :hermit-junit5:samples:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shard_126:
     runs-on: ubuntu-latest
@@ -2955,6 +3081,7 @@ jobs:
             :hermit-mockk:samples:check
             "${{ env.ubuntuGradleArgs }}"
           cache-read-only: false
+          gradle-home-cache-cleanup: true
 
   shartify-all-green:
     if: always()
