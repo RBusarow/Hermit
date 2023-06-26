@@ -14,15 +14,23 @@
  */
 @file:Suppress("UndocumentedPublicProperty", "UnstableApiUsage")
 
-import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.GradlePlugin
 import com.vanniktech.maven.publish.JavadocJar.Dokka
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
-import com.vanniktech.maven.publish.SonatypeHost.DEFAULT
-import com.vanniktech.maven.publish.tasks.JavadocJar
-import com.vanniktech.maven.publish.tasks.SourcesJar
+import com.vanniktech.maven.publish.SonatypeHost.Companion.DEFAULT
+import org.gradle.api.NamedDomainObjectProvider
+import org.gradle.api.Project
+import org.gradle.api.publish.PublishingExtension
+import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.api.publish.maven.tasks.PublishToMavenRepository
+import org.gradle.api.tasks.bundling.Jar
+import org.gradle.language.base.plugins.LifecycleBasePlugin
+import org.gradle.plugin.devel.GradlePluginDevelopmentExtension
+import org.gradle.plugin.devel.PluginDeclaration
+import org.gradle.plugins.signing.Sign
 import org.jetbrains.dokka.gradle.AbstractDokkaLeafTask
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -115,12 +123,6 @@ tasks.withType(PublishToMavenRepository::class.java).configureEach {
 }
 
 tasks.withType(Jar::class.java).configureEach {
-  notCompatibleWithConfigurationCache("")
-}
-tasks.withType(SourcesJar::class.java).configureEach {
-  notCompatibleWithConfigurationCache("")
-}
-tasks.withType(JavadocJar::class.java).configureEach {
   notCompatibleWithConfigurationCache("")
 }
 tasks.withType(Sign::class.java).configureEach {
