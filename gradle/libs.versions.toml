@@ -1,7 +1,7 @@
 [versions]
 
 anvil = "2.4.5"
-benManes = "0.46.0"
+benManes = "0.47.0"
 coil = "2.3.0"
 dependencyAnalysis = "1.20.0"
 detekt = "1.23.0"
