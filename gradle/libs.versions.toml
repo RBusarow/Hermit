@@ -1,19 +1,18 @@
 [versions]
 
-anvil = "2.4.5"
-benManes = "0.46.0"
+anvil = "2.4.6"
+benManes = "0.47.0"
 coil = "2.3.0"
 dependencyAnalysis = "1.20.0"
-detekt = "1.22.0"
+detekt = "1.23.0"
 dispatch = "1.0.0-beta10"
-dokka = "1.8.10"
+dokka = "1.8.20"
 dropbox-dependencyGuard = "0.4.3"
 groovy = "3.0.12"
 hermit = "0.9.6"
-jmailen-kotlinter = "3.14.0"
 jUnit = "5.9.3"
-kotest = "5.6.1"
-kotlin = "1.8.21"
+kotest = "5.6.2"
+kotlin = "1.8.22"
 kotlinx-atomicfu = "0.20.2"
 kotlinx-binaryCompatibility = "0.11.1"
 kotlinx-coroutines = "1.6.4"
@@ -22,10 +21,11 @@ kotlinx-metadata = "0.6.0"
 ktlint-gradle = "11.3.2"
 ktlint-lib = "0.48.2"
 rickBusarow-doks = "0.1.4"
-rickBusarow-ktrules = "1.1.0"
+rickBusarow-ktlint = "0.1.7"
+rickBusarow-ktrules = "1.1.2"
 rickBusarow-moduleCheck = "0.12.5"
 spotless = "5.10.1"
-square-anvil = "2.4.5"
+square-anvil = "2.4.6"
 taskTree = "2.1.1"
 
 
@@ -38,10 +38,9 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 dropbox-dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dropbox-dependencyGuard" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlinter = { id = "org.jmailen.kotlinter", version.ref = "jmailen-kotlinter" }
 kotlinx-binaryCompatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibility" }
 kotlinx-knit = { id = "kotlinx-knit", version.ref = "kotlinx-knit" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
+ktlint = { id = "com.rickbusarow.ktlint", version.ref = "rickBusarow-ktlint" }
 moduleCheck = { id = "com.rickbusarow.module-check", version.ref = "rickBusarow-moduleCheck" }
 taskTree = { id = "com.dorongold.task-tree", version.ref = "taskTree" }
 
@@ -52,8 +51,11 @@ cash-turbine = "app.cash.turbine:turbine:0.12.3"
 detekt-api = { module = "io.gitlab.arturbosch.detekt:detekt-api", version.ref = "detekt" }
 detekt-cli = { module = "io.gitlab.arturbosch.detekt:detekt-cli", version.ref = "detekt" }
 detekt-gradle = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+detekt-rules-libraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-libraries", version.ref = "detekt" }
+detekt-rules-ruleauthors = { module = "io.gitlab.arturbosch.detekt:detekt-rules-ruleauthors", version.ref = "detekt" }
 detekt-test = { module = "io.gitlab.arturbosch.detekt:detekt-test", version.ref = "detekt" }
 detekt-test-utils = { module = "io.gitlab.arturbosch.detekt:detekt-test-utils", version.ref = "detekt" }
+
 
 dispatch-core = { module = "com.rickbusarow.dispatch:dispatch-core", version.ref = "dispatch" }
 dispatch-detekt = { module = "com.rickbusarow.dispatch:dispatch-detekt", version.ref = "dispatch" }
@@ -75,7 +77,6 @@ hermit-jUnit4 = { module = "com.rickbusarow.hermit:hermit-junit4", version.ref =
 hermit-jUnit5 = { module = "com.rickbusarow.hermit:hermit-junit5", version.ref = "hermit" }
 hermit-mockk = { module = "com.rickbusarow.hermit:hermit-mockk", version.ref = "hermit" }
 
-jmailen-kotlinter = { module = "org.jmailen.gradle:kotlinter-gradle", version.ref = "jmailen-kotlinter" }
 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jUnit" }
 junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jUnit" }
@@ -121,6 +122,7 @@ ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.3.2"
 mockk = "io.mockk:mockk:1.13.5"
 
 rickBusarow-doks = { module = "com.rickbusarow.doks:doks-gradle-plugin", version.ref = "rickBusarow-doks" }
+rickBusarow-ktlint = { module = "com.rickbusarow.ktlint:ktlint-gradle-plugin", version.ref = "rickBusarow-ktlint" }
 rickBusarow-ktrules = { module = "com.rickbusarow.ktrules:ktrules", version.ref = "rickBusarow-ktrules" }
 
 square-anvil-annotations = { module = "com.squareup.anvil:annotations", version.ref = "anvil" }
@@ -129,7 +131,7 @@ square-anvil-compiler-core = { module = "com.squareup.anvil:compiler", version.r
 square-anvil-compiler-utils = { module = "com.squareup.anvil:compiler-utils", version.ref = "anvil" }
 square-anvil-gradle = { module = "com.squareup.anvil:gradle-plugin", version.ref = "anvil" }
 
-swiftzer-semver = "net.swiftzer.semver:semver:1.2.0"
+swiftzer-semver = "net.swiftzer.semver:semver:1.3.0"
 
 vanniktech-maven-publish = "com.vanniktech:gradle-maven-publish-plugin:0.21.0"
 

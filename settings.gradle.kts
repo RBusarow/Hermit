@@ -21,6 +21,7 @@ pluginManagement {
     google()
     maven("https://plugins.gradle.org/m2/")
   }
+  includeBuild("build-logic")
 }
 
 plugins {
@@ -30,6 +31,7 @@ plugins {
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
   repositories {
+    gradlePluginPortal()
     google()
     mavenCentral()
     maven("https://plugins.gradle.org/m2/")
