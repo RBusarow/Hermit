@@ -25,13 +25,12 @@ pluginManagement {
 }
 
 plugins {
-  id("com.gradle.enterprise").version("3.13.4")
+  id("com.gradle.enterprise") version "3.13.4"
 }
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
   repositories {
-    gradlePluginPortal()
     google()
     mavenCentral()
     maven("https://plugins.gradle.org/m2/")
