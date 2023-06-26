@@ -117,7 +117,7 @@ kotlinx-metadata-jvm = { module = "org.jetbrains.kotlinx:kotlinx-metadata-jvm", 
 kotlinx-knit-gradle = { module = "org.jetbrains.kotlinx:kotlinx-knit", version.ref = "kotlinx-knit" }
 kotlinx-knit-test = { module = "org.jetbrains.kotlinx:kotlinx-knit-test", version.ref = "kotlinx-knit" }
 
-ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.3.2"
+ktlint-gradle = "org.jlleitschuh.gradle:ktlint-gradle:11.4.2"
 
 mockk = "io.mockk:mockk:1.13.5"
 
