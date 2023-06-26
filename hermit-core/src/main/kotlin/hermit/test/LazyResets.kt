@@ -48,6 +48,7 @@ public inline fun <reified T : Any> ResetManager.resets(
   noinline valueFactory: suspend () -> T = {
     val clazz = T::class
 
+    @Suppress("SwallowedException")
     try {
       clazz.java.getDeclaredConstructor().newInstance()
     } catch (illegal: IllegalAccessException) {

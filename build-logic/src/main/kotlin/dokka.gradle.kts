@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
+import com.rickbusarow.ktlint.KtLintTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jlleitschuh.gradle.ktlint.tasks.KtLintCheckTask
-import org.jlleitschuh.gradle.ktlint.tasks.KtLintFormatTask
 
 plugins {
   id("org.jetbrains.dokka")
@@ -30,8 +29,7 @@ tasks
 
     // Dokka uses their outputs but doesn't explicitly depend upon them.
     mustRunAfter(tasks.withType(KotlinCompile::class.java))
-    mustRunAfter(tasks.withType(KtLintCheckTask::class.java))
-    mustRunAfter(tasks.withType(KtLintFormatTask::class.java))
+    mustRunAfter(tasks.withType(KtLintTask::class.java))
 
     val fullModuleName = project.path.removePrefix(":")
 
@@ -39,31 +37,33 @@ tasks
 
     dokkaSourceSets {
 
-      getByName("main") {
+      if (file("src/main").exists()) {
+        getByName("main") {
 
-        samples.setFrom(
-          fileTree(projectDir) {
-            include("**/samples/**")
-          }
-        )
-
-        val readmeFile = file("$projectDir/README.md")
-
-        if (readmeFile.exists()) {
-          includes.from(readmeFile)
-        }
-
-        sourceLink {
-          localDirectory.set(file("src/main"))
-
-          val modulePath = path.replace(":", "/").replaceFirst("/", "")
-
-          // URL showing where the source code can be accessed through the web browser
-          remoteUrl.set(
-            uri("https://github.com/RBusarow/Hermit/blob/main/$modulePath/src/main").toURL()
+          samples.setFrom(
+            fileTree(projectDir) {
+              include("**/samples/**")
+            }
           )
-          // Suffix which is used to append the line number to the URL. Use #L for GitHub
-          remoteLineSuffix.set("#L")
+
+          val readmeFile = file("$projectDir/README.md")
+
+          if (readmeFile.exists()) {
+            includes.from(readmeFile)
+          }
+
+          sourceLink {
+            localDirectory.set(file("src/main"))
+
+            val modulePath = path.replace(":", "/").replaceFirst("/", "")
+
+            // URL showing where the source code can be accessed through the web browser
+            remoteUrl.set(
+              uri("https://github.com/RBusarow/Hermit/blob/main/$modulePath/src/main").toURL()
+            )
+            // Suffix which is used to append the line number to the URL. Use #L for GitHub
+            remoteLineSuffix.set("#L")
+          }
         }
       }
     }

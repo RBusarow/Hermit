@@ -21,15 +21,17 @@ pluginManagement {
     google()
     maven("https://plugins.gradle.org/m2/")
   }
+  includeBuild("build-logic")
 }
 
 plugins {
-  id("com.gradle.enterprise").version("3.5.2")
+  id("com.gradle.enterprise").version("3.13.4")
 }
 
 @Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
   repositories {
+    gradlePluginPortal()
     google()
     mavenCentral()
     maven("https://plugins.gradle.org/m2/")

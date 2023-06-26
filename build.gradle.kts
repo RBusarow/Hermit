@@ -13,21 +13,30 @@
  * limitations under the License.
  */
 
+import com.rickbusarow.ktlint.KtLintTask
+import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import io.gitlab.arturbosch.detekt.report.ReportMergeTask
 import kotlinx.validation.ApiValidationExtension
+import kotlinx.validation.KotlinApiBuildTask
+import kotlinx.validation.KotlinApiCompareTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jmailen.gradle.kotlinter.KotlinterExtension
+import kotlin.text.RegexOption.MULTILINE
+
+buildscript {
+  dependencies {
+    classpath(libs.kotlin.gradle.plug)
+  }
+}
 
 plugins {
-  kotlin("jvm")
   alias(libs.plugins.benManes)
   alias(libs.plugins.detekt)
   alias(libs.plugins.moduleCheck)
   alias(libs.plugins.kotlinx.binaryCompatibility)
   alias(libs.plugins.taskTree)
-  alias(libs.plugins.kotlinter) apply false
   base
-  dokka
+  id("dokka")
 }
 
 moduleCheck {
@@ -42,18 +51,12 @@ allprojects {
     google()
   }
 
-  tasks.withType<Test> {
+  tasks.withType<Test>().configureEach {
     useJUnitPlatform()
   }
 }
 
-detekt {
-
-  parallel = true
-  config = files("$rootDir/detekt/detekt-config.yml")
-}
-
-tasks.withType<DetektCreateBaselineTask> {
+tasks.withType<DetektCreateBaselineTask>().configureEach {
 
   setSource(files(rootDir))
 
@@ -64,28 +67,68 @@ tasks.withType<DetektCreateBaselineTask> {
   this.jvmTarget = "1.8"
 }
 
-tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
+val detektLibraries = libs.detekt.rules.libraries.get()
+val detektId = libs.plugins.detekt.get().pluginId
 
-  reports {
-    xml.required.set(true)
-    html.required.set(true)
-    txt.required.set(false)
+tasks.register("detektReportMerge", ReportMergeTask::class.java) {
+
+  output.set(buildDir.resolve("reports/detekt/merged.sarif"))
+
+  input.from(allprojects.map { it.tasks.withType(Detekt::class.java).map { it.sarifReportFile } })
+}
+
+allprojects {
+  val target = this
+
+  apply(plugin = detektId)
+
+  detekt {
+
+    parallel = true
+    config.from(files("$rootDir/detekt/detekt-config.yml"))
   }
 
-  setSource(files(projectDir))
+  tasks.withType<Detekt>().configureEach {
 
-  include("**/*.kt", "**/*.kts")
-  exclude(
-    "**/resources/**",
-    "**/dependencies/**",
-    "**/build/**",
-    "**/src/test/java**",
-    "**/src/integrationTest/kotlin**",
-    "**/src/test/kotlin**"
-  )
+    reports {
+      xml.required.set(true)
+      html.required.set(true)
+      txt.required.set(false)
+      sarif.required.set(true)
+    }
+    config.from(files("$rootDir/detekt/detekt-config.yml"))
 
-  // Target version of the generated JVM bytecode. It is used for type resolution.
-  this.jvmTarget = "1.8"
+    setSource(files(projectDir))
+
+    mustRunAfter(tasks.matching { it.name == "transformAtomicfuClasses" })
+
+    include("**/*.kt", "**/*.kts")
+    exclude(
+      "**/resources/**",
+      "**/dependencies/**",
+      "**/build/**",
+      "**/src/test/java**",
+      "**/src/integrationTest/kotlin**",
+      "**/src/test/kotlin**"
+    )
+
+    // Target version of the generated JVM bytecode. It is used for type resolution.
+    this.jvmTarget = "1.8"
+  }
+
+  target.dependencies {
+    "detektPlugins"(detektLibraries)
+  }
+
+  if (target != target.rootProject) {
+    target.tasks.register("detektAll", Detekt::class.java) {
+      description = "runs the standard PSI Detekt as well as all type resolution tasks"
+      dependsOn(
+        target.tasks.withType(Detekt::class.java)
+          .matching { it != this@register }
+      )
+    }
+  }
 }
 
 subprojects {
@@ -137,16 +180,48 @@ tasks.named(
 }
 
 val ktlintVersion = libs.versions.ktlint.lib.get()
+val ktrules = libs.rickBusarow.ktrules.get()
 
 allprojects {
-  apply(plugin = "org.jmailen.kotlinter")
+  apply(plugin = "com.rickbusarow.ktlint")
 
-  extensions.configure(KotlinterExtension::class.java) {
-    ignoreFailures = false
-    reporters = arrayOf("checkstyle", "plain")
+  val target = this@allprojects
+
+  target.dependencies {
+    "ktlint"(ktrules)
   }
 
-  // dummy ktlint-gradle plugin task names which just delegate to the Kotlinter ones
-  tasks.register("ktlintCheck") { dependsOn("lintKotlin") }
-  tasks.register("ktlintFormat") { dependsOn("formatKotlin") }
+  target.tasks.withType(KtLintTask::class.java).configureEach {
+    dependsOn(":updateEditorConfigVersion")
+    mustRunAfter(
+      target.tasks.matching { it.name == "apiDump" },
+      target.tasks.matching { it.name == "dependencyGuard" },
+      target.tasks.matching { it.name == "dependencyGuardBaseline" },
+      target.tasks.withType(KotlinApiBuildTask::class.java),
+      target.tasks.withType(KotlinApiCompareTask::class.java)
+    )
+  }
+}
+
+allprojects {
+  tasks.matching { it.name == "apiBuild" }.configureEach {
+    dependsOn(tasks.matching { it.name == "transformAtomicfuClasses" })
+  }
+}
+
+tasks.register("updateEditorConfigVersion") {
+
+  val file = file(".editorconfig")
+
+  doLast {
+    val oldText = file.readText()
+
+    val reg = """^(ktlint_kt-rules_project_version *?= *?)\S*$""".toRegex(MULTILINE)
+
+    val newText = oldText.replace(reg, "$1$VERSION_NAME")
+
+    if (newText != oldText) {
+      file.writeText(newText)
+    }
+  }
 }
