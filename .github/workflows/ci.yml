@@ -4,151 +4,140 @@ on:
   pull_request:
   workflow_dispatch:
 
-env:
-  macosGradleArgs: "-Dorg.gradle.jvmargs=-Xmx10g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
-  ubuntuGradleArgs: "-Dorg.gradle.jvmargs=-Xmx5g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
-  windowsGradleArgs: "-Dorg.gradle.jvmargs=-Xmx4g -Dfile.encoding=UTF-8 -XX:+UseParallelGC"
-
 concurrency:
   group: ci-${{ github.ref }}-${{ github.head_ref }}
   cancel-in-progress: true
 
 jobs:
 
-  detekt:
-
-    runs-on: ubuntu-latest
-    if: github.actor != 'renovate[bot]'
-
+  build-all:
+    runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+      - name: check out
+        uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: main build
+        uses: ./.github/actions/gradle-task
         with:
-          distribution: 'zulu'
-          java-version: '11'
-
-      - name: detekt
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: detekt
-          cache-read-only: false
+          task: jar compileKotlin
+          write-cache-key: main-build-artifacts
 
   ktlint:
-
     runs-on: ubuntu-latest
-    if: github.actor != 'renovate[bot]'
-
     steps:
-      - name: check out with token (used by forks)
-        uses: actions/checkout@v3
-        if: github.event.pull_request.head.repo.full_name != github.repository
-
-      - name: check out with PAT (used by main repo)
-        uses: actions/checkout@v3
-        if: github.event.pull_request.head.repo.full_name == github.repository
+      - uses: actions/checkout@v3
+      - name: ktlint
+        uses: ./.github/actions/gradle-task-with-commit
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          fetch-depth: 0
+          personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          fix-task: ktlintFormat
+          check-task: ktlintCheck
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+  dependency-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: dependency-guard
+        uses: ./.github/actions/gradle-task-with-commit
         with:
-          distribution: 'zulu'
-          java-version: '11'
+          personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          fix-task: dependencyGuardBaseline
+          check-task: dependencyGuard
 
-      - name: KtLint format (used by main repo)
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: gradle/gradle-build-action@v2
+  moduleCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: moduleCheck
+        uses: ./.github/actions/gradle-task-with-commit
         with:
-          arguments: ktlintformat
-          cache-read-only: false
+          personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          fix-task: moduleCheckAuto
+          check-task: moduleCheck
 
-      # If KtLint generated changes, commit and push those changes.
-      - name: commit changes (used by main repo)
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: stefanzweifel/git-auto-commit-action@v4
+  check-version-is-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: check version is snapshot
+        uses: ./.github/actions/gradle-task
         with:
-          commit_message: Apply KtLint format
-          commit_options: '--no-verify --signoff'
+          task: checkVersionIsSnapshot
 
-      - name: KtLint check (used by forks)
-        if: github.event.pull_request.head.repo.full_name != github.repository
-        uses: gradle/gradle-build-action@v2
+  detekt:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: detektAll
+        uses: ./.github/actions/gradle-task
         with:
-          arguments: ktlintCheck
-          cache-read-only: false
+          task: detektAll
+          restore-cache-key: main-build-artifacts
 
-      - name: ModuleCheck with auto-correct (used by main repo)
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: moduleCheckAuto
-          cache-read-only: false
+      - name: merge detekt SARIF reports
+        run: ./gradlew detektReportMerge
 
-      # If KtLint generated changes, commit and push those changes.
-      - name: commit changes (used by main repo)
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Upload SARIF to Github using the upload-sarif action
+        uses: github/codeql-action/upload-sarif@v2
+        if: success() || failure()
         with:
-          commit_message: Apply ModuleCheck fixes
-          commit_options: "--no-verify --signoff"
-
-      - name: ModuleCheck check (used by forks)
-        if: github.event.pull_request.head.repo.full_name != github.repository
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: moduleCheck
-          cache-read-only: false
+          sarif_file: build/reports/detekt/merged.sarif
 
   api-check:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
+      - name: api-check
+        uses: ./.github/actions/gradle-task-with-commit
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+          personal-access-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          fix-task: apiDump
+          check-task: apiCheck
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '11'
-
-      - name: api check
-        uses: gradle/gradle-build-action@v2
-        with:
-          arguments: apicheck
-          cache-read-only: false
-
-  tests-ubuntu:
-
-    runs-on: ubuntu-latest
-
+  unit-tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [ ubuntu, windows ]
+    runs-on: ${{ matrix.runner }}-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+      - name: check out
+        uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: unit tests
+        uses: ./.github/actions/gradle-task
         with:
-          distribution: 'zulu'
-          java-version: '11'
+          task: test
+          restore-cache-key: main-build-artifacts
 
-      - name: all tests
-        uses: gradle/gradle-build-action@v2
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        if: failure()
         with:
-          arguments: testJvm
-          cache-read-only: false
+          name: test-results
+          path: ${{ github.workspace }}/**/build/reports/tests/
+
+      - name: Unit test results
+        uses: mikepenz/action-junit-report@v3
+        if: failure()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: '**/build/**/TEST-*.xml'
+          check_name: Unit Test Results - ${{runner.os}}
+
+  all-checks:
+    if: always()
+    runs-on: ubuntu-latest
+    needs:
+      - api-check
+      - check-version-is-snapshot
+      - dependency-guard
+      - detekt
+      - ktlint
+      - moduleCheck
+      - unit-tests
+    steps:
+      - name: require that all other jobs have passed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}

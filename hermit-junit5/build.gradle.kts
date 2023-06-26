@@ -15,8 +15,8 @@
 
 plugins {
   id("kotlinx-atomicfu")
-  javaLibrary
-  published
+  id("javaLibrary")
+  id("published")
 }
 
 hermitPublishing {

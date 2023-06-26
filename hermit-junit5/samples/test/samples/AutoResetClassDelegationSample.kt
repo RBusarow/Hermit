@@ -43,6 +43,6 @@ class AutoResetClassDelegationSample : AutoReset by AutoReset() {
   @Test
   fun `test two`() {
     // This test passes because someDao has been reset and is a different instance
-    someDao.getAllThings() shouldBe listOf()
+    someDao.getAllThings() shouldBe emptyList()
   }
 }

@@ -29,14 +29,14 @@ public class HermitExtension(
   AfterEachCallback,
   ResetManager {
 
-  private var tempDelegates: MutableList<Resets>? = mutableListOf()
+  private val tempDelegates: MutableList<Resets> = mutableListOf()
 
   private val topInstanceProcessed = atomic(false)
 
   private var delegate: ResetManager = resetManager
     set(new) {
       field = new
-      tempDelegates = null
+      tempDelegates.clear()
     }
 
   override fun register(delegate: Resets) {
@@ -44,7 +44,7 @@ public class HermitExtension(
       this.delegate.register(delegate)
     } else {
       synchronized(this) {
-        tempDelegates?.add(delegate)
+        tempDelegates.add(delegate)
       }
     }
   }
@@ -52,8 +52,8 @@ public class HermitExtension(
   override fun resetAll() {
     delegate.resetAll()
     synchronized(this) {
-      tempDelegates?.forEach { it.reset() }
-      tempDelegates?.clear()
+      tempDelegates.forEach { it.reset() }
+      tempDelegates.clear()
     }
   }
 

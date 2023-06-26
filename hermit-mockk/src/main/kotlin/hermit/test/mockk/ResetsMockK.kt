@@ -94,13 +94,49 @@ public class ResetsMockK<out T : Any>(
     mock.block()
   }
 
-  public data class ClearPolicy(
-    val answers: Boolean = true,
-    val recordedCalls: Boolean = true,
-    val childMocks: Boolean = true,
-    val verificationMarks: Boolean = true,
-    val exclusionRules: Boolean = true
-  )
+  public class ClearPolicy(
+    public val answers: Boolean = true,
+    public val recordedCalls: Boolean = true,
+    public val childMocks: Boolean = true,
+    public val verificationMarks: Boolean = true,
+    public val exclusionRules: Boolean = true
+  ) {
+    override fun equals(other: Any?): Boolean {
+      if (this === other) return true
+      if (other !is ClearPolicy) return false
+
+      if (answers != other.answers) return false
+      if (recordedCalls != other.recordedCalls) return false
+      if (childMocks != other.childMocks) return false
+      if (verificationMarks != other.verificationMarks) return false
+      return exclusionRules == other.exclusionRules
+    }
+
+    override fun hashCode(): Int {
+      var result = answers.hashCode()
+      result = 31 * result + recordedCalls.hashCode()
+      result = 31 * result + childMocks.hashCode()
+      result = 31 * result + verificationMarks.hashCode()
+      result = 31 * result + exclusionRules.hashCode()
+      return result
+    }
+
+    override fun toString(): String {
+      return buildString {
+        append("ClearPolicy(answers=")
+        append(answers)
+        append(", recordedCalls=")
+        append(recordedCalls)
+        append(", childMocks=")
+        append(childMocks)
+        append(", verificationMarks=")
+        append(verificationMarks)
+        append(", exclusionRules=")
+        append(exclusionRules)
+        append(")")
+      }
+    }
+  }
 }
 
 /**

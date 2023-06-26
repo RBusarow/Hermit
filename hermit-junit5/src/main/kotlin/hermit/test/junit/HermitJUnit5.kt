@@ -25,6 +25,7 @@ import hermit.test.Resets
 import org.junit.jupiter.api.AfterEach
 import hermit.test.resets as resetsExtension
 
+@Suppress("UnnecessaryAbstractClass")
 public abstract class HermitJUnit5(
   delegates: MutableCollection<Resets> = mutableListOf()
 ) : Hermit(delegates),
@@ -46,6 +47,7 @@ public abstract class HermitJUnit5(
     noinline valueFactory: suspend () -> T = {
       val clazz = T::class
 
+      @Suppress("SwallowedException")
       try {
         clazz.java.getDeclaredConstructor().newInstance()
       } catch (illegal: IllegalAccessException) {
