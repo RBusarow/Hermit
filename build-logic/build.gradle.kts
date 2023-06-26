@@ -44,7 +44,6 @@ dependencies {
   implementation(libs.kotlin.reflect)
   implementation(libs.kotlin.stdlib.jdk8)
   implementation(libs.kotlinx.atomicfu.gradle.plugin)
-  implementation(libs.kotlinx.knit.gradle)
   implementation(libs.rickBusarow.ktlint)
   implementation(libs.rickBusarow.ktrules)
   implementation(libs.square.anvil.gradle)
