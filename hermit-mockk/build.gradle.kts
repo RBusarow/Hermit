@@ -32,8 +32,14 @@ dependencies {
 
   runtimeOnly(libs.junit.engine)
 
+  testImplementation(libs.bundles.jUnit)
   testImplementation(libs.bundles.kotest)
   testImplementation(libs.kotlin.test.common)
   testImplementation(libs.kotlin.test.core)
+  testImplementation(libs.kotlin.test.core)
   testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.mockk)
+
+  testImplementation(projects.hermitJunit5)
+  testImplementation(projects.hermitMockk)
 }

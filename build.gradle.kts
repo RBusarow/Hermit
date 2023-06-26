@@ -17,7 +17,6 @@ import com.rickbusarow.ktlint.KtLintTask
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import io.gitlab.arturbosch.detekt.report.ReportMergeTask
-import kotlinx.validation.ApiValidationExtension
 import kotlinx.validation.KotlinApiBuildTask
 import kotlinx.validation.KotlinApiCompareTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -45,11 +44,6 @@ moduleCheck {
 }
 
 allprojects {
-
-  repositories {
-    mavenCentral()
-    google()
-  }
 
   tasks.withType<Test>().configureEach {
     useJUnitPlatform()
@@ -151,16 +145,6 @@ val cleanDocs by tasks.registering {
   doLast {
     cleanDocs()
   }
-}
-
-extensions.configure<ApiValidationExtension> {
-
-  /** Packages that are excluded from public API dumps even if they contain public API. */
-  ignoredPackages = mutableSetOf("sample", "samples")
-
-  /** Sub-projects that are excluded from API validation */
-  ignoredProjects =
-    mutableSetOf("samples")
 }
 
 /** */
