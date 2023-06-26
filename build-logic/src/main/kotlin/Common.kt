@@ -32,7 +32,6 @@ fun Project.common() {
           "-Xjvm-default=all",
           "-Xallow-result-return-type",
           "-opt-in=kotlin.contracts.ExperimentalContracts",
-          "-opt-in=kotlin.Experimental",
           "-opt-in=kotlin.time.ExperimentalTime",
           "-opt-in=kotlin.RequiresOptIn",
           "-Xinline-classes"

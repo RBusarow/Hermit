@@ -14,7 +14,7 @@
  */
 
 plugins {
-  javaLibrary
+  id("javaLibrary")
 }
 
 sourceSets["test"].java.srcDir("test")

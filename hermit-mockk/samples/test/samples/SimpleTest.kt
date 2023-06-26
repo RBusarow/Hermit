@@ -30,7 +30,7 @@ import org.junit.jupiter.api.TestMethodOrder
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class SimpleTest : HermitJUnit5() {
+internal class SimpleTest : HermitJUnit5() {
 
   val car: Car by resetsMockk()
 

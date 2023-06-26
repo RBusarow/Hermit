@@ -41,6 +41,6 @@ val testJvm by tasks.registering {
 val buildTests by tasks.registering {
   dependsOn("testClasses")
 }
-tasks.withType(Jar::class.java) {
+tasks.withType(Jar::class.java).configureEach {
   duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

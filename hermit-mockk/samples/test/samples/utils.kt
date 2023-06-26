@@ -20,10 +20,6 @@ import org.junit.jupiter.api.Test
 
 typealias Sample = Test
 
-infix fun Any?.shouldPrint(
-  expected: String
-) = toString() shouldBe expected
+infix fun Any?.shouldPrint(expected: String) = toString() shouldBe expected
 
-infix fun List<Any?>.shouldPrint(
-  expected: String
-) = joinToString("\n") shouldBe expected
+infix fun List<Any?>.shouldPrint(expected: String) = joinToString("\n") shouldBe expected
