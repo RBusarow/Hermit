@@ -25,6 +25,7 @@ import hermit.test.Resets
 import org.junit.After
 import hermit.test.resets as resetsExtension
 
+@Suppress("UnnecessaryAbstractClass")
 public abstract class HermitJUnit4(
   private val resetManager: ResetManager
 ) : ResetManager by resetManager {
@@ -45,6 +46,7 @@ public abstract class HermitJUnit4(
     noinline valueFactory: suspend () -> T = {
       val clazz = T::class
 
+      @Suppress("SwallowedException")
       try {
         clazz.java.getDeclaredConstructor().newInstance()
       } catch (illegal: IllegalAccessException) {

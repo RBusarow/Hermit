@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-@file:Suppress("UndocumentedPublicProperty")
+@file:Suppress("UndocumentedPublicProperty", "UnstableApiUsage")
 
 import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.GradlePlugin
@@ -133,7 +133,7 @@ tasks.withType(Sign::class.java).configureEach {
 tasks.matching { it.name == "javaDocReleaseGeneration" }.configureEach {
   onlyIf { !skipDokka }
 }
-tasks.withType(AbstractDokkaLeafTask::class.java) {
+tasks.withType(AbstractDokkaLeafTask::class.java).configureEach {
   onlyIf { !skipDokka }
 }
 
