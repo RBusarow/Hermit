@@ -38,7 +38,6 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 dropbox-dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dropbox-dependencyGuard" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-binaryCompatibility = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binaryCompatibility" }
-kotlinx-knit = { id = "kotlinx-knit", version.ref = "kotlinx-knit" }
 ktlint = { id = "com.rickbusarow.ktlint", version.ref = "rickBusarow-ktlint" }
 moduleCheck = { id = "com.rickbusarow.module-check", version.ref = "rickBusarow-moduleCheck" }
 taskTree = { id = "com.dorongold.task-tree", version.ref = "taskTree" }
@@ -108,8 +107,8 @@ kotlinx-coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-co
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 
-kotlinx-knit-gradle = { module = "org.jetbrains.kotlinx:kotlinx-knit", version.ref = "kotlinx-knit" }
-kotlinx-knit-test = { module = "org.jetbrains.kotlinx:kotlinx-knit-test", version.ref = "kotlinx-knit" }
+kotlinx-knit = { module = "org.jetbrains.kotlinx:kotlinx-knit", version.ref = "kotlinx-knit" }
+kotlinx-knit-pathSaver = { module = "org.jetbrains.kotlinx:dokka-pathsaver-plugin", version.ref = "kotlinx-knit" }
 
 kotlinx-metadata-jvm = { module = "org.jetbrains.kotlinx:kotlinx-metadata-jvm", version.ref = "kotlinx-metadata" }
 
