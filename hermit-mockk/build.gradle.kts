@@ -14,8 +14,8 @@
  */
 
 plugins {
-  javaLibrary
-  published
+  id("javaLibrary")
+  id("published")
 }
 
 hermitPublishing {

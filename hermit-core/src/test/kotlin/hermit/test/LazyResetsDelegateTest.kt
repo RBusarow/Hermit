@@ -238,5 +238,7 @@ Should all require factories
  */
 internal class NoDefaultConstructor(val name: String)
 internal interface Interface
+
+@Suppress("UnnecessaryAbstractClass")
 internal abstract class AbstractClass
 internal object ObjectWithoutResets
