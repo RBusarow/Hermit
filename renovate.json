@@ -13,9 +13,18 @@
       "^com\\.google\\.devtools\\.ksp:(?:[\\w-]+)$",
       "^com\\.squareup\\.anvil:(?:[\\w-]+)$"
     ]
-  }],
+    },
+    {
+      "matchPackagePatterns": [
+        "^com\\.pinterest\\.ktlint:(?:[\\w-]+)$",
+        "^com\\.rickbusarow\\.ktlint:(?:[\\w-]+)$",
+        "^com\\.rickbusarow\\.ktrules:(?:[\\w-]+)$"
+      ],
+      "groupName": "KtLint things"
+    }
+  ],
   "labels": [
     "dependencies",
     "automerge"
   ]
-}
+} 
