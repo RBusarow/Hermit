@@ -210,14 +210,15 @@ internal class LazyResetsDelegateTest : FreeSpec({
           }
         }
 
-        "classes without default constructor should throw LazyResetDelegateNonDefaultConstructorException" - {
+        "classes without default constructor " +
+          "should throw LazyResetDelegateNonDefaultConstructorException" - {
 
-          val subject = resetManager.resets<NoDefaultConstructor>()
+            val subject = resetManager.resets<NoDefaultConstructor>()
 
-          shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
-            subject.value
+            shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
+              subject.value
+            }
           }
-        }
       }
     }
   }
