@@ -49,11 +49,11 @@ import kotlin.reflect.KClass
  * access of the [mock] instance would be inside an [every] block. Attempting
  * to invoke [every] while already inside [every] causes a [MockKException].
  *
- * @property resetManager The [ResetManager] which is shared
+ * @param resetManager The [ResetManager] which is shared
  *   by all mocks and other resettable fields in the test.
- * @property mock The mock instance exposed by the Lazy delegate.
- * @property clearPolicy Describes the parameters passed via [clearMocks] when invoking [reset]
- * @property block The answers ( `every { ... } returns ...` ) applied after a reset.
+ * @param mock The mock instance exposed by the Lazy delegate.
+ * @param clearPolicy Describes the parameters passed via [clearMocks] when invoking [reset]
+ * @param block The answers ( `every { ... } returns ...` ) applied after a reset.
  * @sample samples.SimpleTest
  * @sample samples.ComplexTest
  */
