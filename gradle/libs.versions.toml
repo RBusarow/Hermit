@@ -24,7 +24,7 @@ rickBusarow-ktlint = "0.1.8"
 rickBusarow-ktrules = "1.1.3"
 rickBusarow-moduleCheck = "0.12.5"
 spotless = "5.10.1"
-square-anvil = "2.4.6"
+square-anvil = "2.4.9-1-8"
 taskTree = "2.1.1"
 
 
