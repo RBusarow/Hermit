@@ -22,7 +22,7 @@ package hermit.test
  * @see [ResetManager]
  */
 public interface ResetManager {
-
   public fun register(delegate: Resets)
+
   public fun resetAll()
 }

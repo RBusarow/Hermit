@@ -29,7 +29,6 @@ internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
   private val cleanUpTestCoroutines: Boolean,
   private val scopeFactory: () -> T
 ) : LazyResetsCoroutineScope<T> {
-
   private var lazyHolder: Lazy<T> = createLazy()
 
   override val value: T
@@ -37,22 +36,25 @@ internal class LazyResetsCoroutineScopeImpl<T : CoroutineScope>(
 
   override fun isInitialized(): Boolean = lazyHolder.isInitialized()
 
-  private fun createLazy() = lazy {
-    resetManager.register(this)
-    scopeFactory.invoke()
-  }
+  private fun createLazy() =
+    lazy {
+      resetManager.register(this)
+      scopeFactory.invoke()
+    }
 
   override fun reset() {
-    val scope = if (lazyHolder.isInitialized()) {
-      lazyHolder.value
-    } else {
-      null
-    }
+    val scope =
+      if (lazyHolder.isInitialized()) {
+        lazyHolder.value
+      } else {
+        null
+      }
     @Suppress("DEPRECATION")
     if (scope is TestCoroutineScope && cleanUpTestCoroutines) {
       scope.cleanupTestCoroutines()
     } else {
-      scope?.coroutineContext
+      scope
+        ?.coroutineContext
         ?.get(Job)
         ?.cancelChildren()
     }

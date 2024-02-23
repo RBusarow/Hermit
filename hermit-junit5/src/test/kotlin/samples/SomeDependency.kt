@@ -16,7 +16,6 @@
 package samples
 
 class SomeDao {
-
   private val all = mutableListOf<Thing>()
 
   fun insertThing(thing: Thing) {

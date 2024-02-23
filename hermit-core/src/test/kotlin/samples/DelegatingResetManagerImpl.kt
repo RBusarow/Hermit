@@ -20,7 +20,6 @@ import hermit.test.ResetManager
 import hermit.test.resets
 
 class DelegatingResetManagerImpl : ResetManager by Hermit() {
-
   // auto-registered with this ResetManager
   val someResettable by resets { SomeClass() }
 

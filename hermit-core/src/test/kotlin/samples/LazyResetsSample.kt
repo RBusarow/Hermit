@@ -20,20 +20,20 @@ import hermit.test.LazyResets
 import hermit.test.resets
 
 class LazyResetsSample : SampleTest() {
-
   @Sample
   fun lazyResetClassSample() {
     var instanceNumber = 0
 
     val resetManager = Hermit()
 
-    val lazyInt = LazyResets(resetManager) {
-      val newValue = ++instanceNumber
+    val lazyInt =
+      LazyResets(resetManager) {
+        val newValue = ++instanceNumber
 
-      println("initializing as $newValue")
+        println("initializing as $newValue")
 
-      newValue
-    }
+        newValue
+      }
 
     println("after declaration")
 
@@ -48,14 +48,15 @@ class LazyResetsSample : SampleTest() {
     // creates new instance, invoking the lambda again
     println("access lazy --> ${lazyInt.value}")
 
-    output shouldPrint """after declaration
+    output shouldPrint
+      """after declaration
       |initializing as 1
       |access lazy --> 1
       |access lazy --> 1
       |resetting
       |initializing as 2
       |access lazy --> 2
-    """.trimMargin()
+      """.trimMargin()
   }
 
   @Sample
@@ -85,20 +86,20 @@ class LazyResetsSample : SampleTest() {
     // creates new instance, invoking the lambda again
     println("access lazy --> $lazyInt")
 
-    output shouldPrint """after declaration
+    output shouldPrint
+      """after declaration
       |initializing as 1
       |access lazy --> 1
       |access lazy --> 1
       |resetting
       |initializing as 2
       |access lazy --> 2
-    """.trimMargin()
+      """.trimMargin()
   }
 
   @Sample
   fun lazyResetDelegateInImplementationSample() {
     class SomeImplementation : Hermit() {
-
       var instanceNumber = 0
 
       val lazyInt by resets {
@@ -125,13 +126,14 @@ class LazyResetsSample : SampleTest() {
     // creates new instance, invoking the lambda again
     println("access lazy --> ${impl.lazyInt}")
 
-    output shouldPrint """after declaration
+    output shouldPrint
+      """after declaration
       |initializing as 1
       |access lazy --> 1
       |access lazy --> 1
       |resetting
       |initializing as 2
       |access lazy --> 2
-    """.trimMargin()
+      """.trimMargin()
   }
 }

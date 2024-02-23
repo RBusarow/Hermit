@@ -30,7 +30,6 @@ public abstract class HermitJUnit5(
   delegates: MutableCollection<Resets> = mutableListOf()
 ) : Hermit(delegates),
   AutoReset {
-
   @Suppress("FunctionName")
   @AfterEach
   internal fun _afterEach() {

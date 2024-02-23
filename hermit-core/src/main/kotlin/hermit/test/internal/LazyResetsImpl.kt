@@ -31,7 +31,6 @@ internal class LazyResetsImpl<out T : Any>(
   private val resetManager: ResetManager,
   private val valueFactory: suspend () -> T
 ) : LazyResets<T> {
-
   private var lazyHolder: Lazy<T> = createLazy()
 
   override val value: T
@@ -39,10 +38,11 @@ internal class LazyResetsImpl<out T : Any>(
 
   override fun isInitialized(): Boolean = lazyHolder.isInitialized()
 
-  private fun createLazy() = lazy {
-    resetManager.register(this)
-    runBlocking { valueFactory() }
-  }
+  private fun createLazy() =
+    lazy {
+      resetManager.register(this)
+      runBlocking { valueFactory() }
+    }
 
   override fun reset() {
     lazyHolder = createLazy()

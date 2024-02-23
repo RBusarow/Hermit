@@ -28,7 +28,6 @@ public class HermitExtension(
 ) : TestInstancePostProcessor,
   AfterEachCallback,
   ResetManager {
-
   private val tempDelegates: MutableList<Resets> = mutableListOf()
 
   private val topInstanceProcessed = atomic(false)
@@ -57,7 +56,10 @@ public class HermitExtension(
     }
   }
 
-  override fun postProcessTestInstance(testInstance: Any?, context: ExtensionContext?) {
+  override fun postProcessTestInstance(
+    testInstance: Any?,
+    context: ExtensionContext?
+  ) {
     /*
     Nested classes also trigger `postProcessTestInstance`,
     so add a check to only set the instance for the first (top-most) instance.

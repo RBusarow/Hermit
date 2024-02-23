@@ -18,7 +18,6 @@ package samples
 import hermit.test.Resets
 
 object MutableSingleton : Resets {
-
   var sideEffect1: Int? = null
   var sideEffect2: Int? = null
 

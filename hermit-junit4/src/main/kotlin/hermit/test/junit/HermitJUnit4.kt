@@ -29,7 +29,6 @@ import hermit.test.resets as resetsExtension
 public abstract class HermitJUnit4(
   private val resetManager: ResetManager
 ) : ResetManager by resetManager {
-
   /** @see ResetManager.resetAll */
   @After
   override fun resetAll() {

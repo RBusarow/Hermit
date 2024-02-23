@@ -27,7 +27,6 @@ import org.junit.jupiter.api.TestInstance
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ComplexTest : HermitJUnit5() {
-
   val car: Car by resetsMockk(
     name = "Civic",
     relaxed = true,

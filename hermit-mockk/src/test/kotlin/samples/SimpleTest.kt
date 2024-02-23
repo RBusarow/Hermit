@@ -31,7 +31,6 @@ import org.junit.jupiter.api.TestMethodOrder
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 internal class SimpleTest : HermitJUnit5() {
-
   val car: Car by resetsMockk()
 
   @Test
@@ -56,7 +55,6 @@ internal class SimpleTest : HermitJUnit5() {
 }
 
 class Car {
-
   val manufacturer = "Toyota"
 
   @Suppress("FunctionOnlyReturningConstant")

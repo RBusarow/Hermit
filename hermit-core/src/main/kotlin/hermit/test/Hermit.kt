@@ -26,7 +26,6 @@ package hermit.test
 public open class Hermit(
   private val delegates: MutableCollection<Resets> = mutableListOf()
 ) : ResetManager {
-
   override fun register(delegate: Resets) {
     synchronized(delegates) {
       delegates.add(delegate)

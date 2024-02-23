@@ -29,23 +29,24 @@ import org.junit.jupiter.api.Test
 
 @ExperimentalCoroutinesApi
 class ResetsScopeSample : HermitJUnit5() {
-
   val testScope by resetsScope { TestScope() }
   val providedScope by resetsScope<TestProvidedCoroutineScope>()
   val normalScope: CoroutineScope by resetsScope()
 
   @Test
-  fun `resetAll should cancel all child coroutines if not a test scope`() = runBlocking<Unit> {
-    val leakyJob = normalScope.leak()
+  fun `resetAll should cancel all child coroutines if not a test scope`() =
+    runBlocking<Unit> {
+      val leakyJob = normalScope.leak()
 
-    resetAll()
+      resetAll()
 
-    leakyJob.isCancelled shouldBe true
-  }
-
-  fun CoroutineScope.leak() = launch {
-    while (true) {
-      delay(10)
+      leakyJob.isCancelled shouldBe true
     }
-  }
+
+  fun CoroutineScope.leak() =
+    launch {
+      while (true) {
+        delay(10)
+      }
+    }
 }

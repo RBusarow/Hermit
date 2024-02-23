@@ -27,7 +27,6 @@ import org.junit.jupiter.api.Test
  * The test lifecycle is automatically managed.
  */
 class AutoResetClassDelegationSample : AutoReset by AutoReset() {
-
   /** Automatically reset between each test, including nested class tests. */
   val someDao: SomeDao by resets { SomeDao() }
 

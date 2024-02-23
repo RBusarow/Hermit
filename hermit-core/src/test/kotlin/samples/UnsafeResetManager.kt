@@ -19,7 +19,6 @@ import hermit.test.ResetManager
 import hermit.test.Resets
 
 class UnsafeResetManager : ResetManager {
-
   private val delegates = mutableListOf<Resets>()
 
   override fun register(delegate: Resets) {
