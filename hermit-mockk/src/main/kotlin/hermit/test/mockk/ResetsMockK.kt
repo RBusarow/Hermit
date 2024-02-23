@@ -64,7 +64,6 @@ public class ResetsMockK<out T : Any>(
   private val block: T.() -> Unit = {}
 ) : Lazy<T>,
   Resets {
-
   init {
     mock.block()
   }
@@ -76,10 +75,11 @@ public class ResetsMockK<out T : Any>(
 
   override fun isInitialized(): Boolean = lazyHolder.isInitialized()
 
-  private fun createLazy() = lazy {
-    resetManager.register(this)
-    mock
-  }
+  private fun createLazy() =
+    lazy {
+      resetManager.register(this)
+      mock
+    }
 
   override fun reset() {
     lazyHolder = createLazy()
@@ -121,8 +121,8 @@ public class ResetsMockK<out T : Any>(
       return result
     }
 
-    override fun toString(): String {
-      return buildString {
+    override fun toString(): String =
+      buildString {
         append("ClearPolicy(answers=")
         append(answers)
         append(", recordedCalls=")
@@ -135,7 +135,6 @@ public class ResetsMockK<out T : Any>(
         append(exclusionRules)
         append(")")
       }
-    }
   }
 }
 
@@ -181,14 +180,16 @@ public inline fun <reified T : Any> ResetManager.resetsMockk(
   relaxUnitFun: Boolean = false,
   clearPolicy: ResetsMockK.ClearPolicy = ResetsMockK.ClearPolicy(),
   noinline block: T.() -> Unit = {}
-): ResetsMockK<T> = ResetsMockK(
-  resetManager = this,
-  mock = mockk(
-    name = name,
-    relaxed = relaxed,
-    relaxUnitFun = relaxUnitFun,
-    moreInterfaces = moreInterfaces
-  ),
-  clearPolicy = clearPolicy,
-  block = block
-)
+): ResetsMockK<T> =
+  ResetsMockK(
+    resetManager = this,
+    mock =
+      mockk(
+        name = name,
+        relaxed = relaxed,
+        relaxUnitFun = relaxUnitFun,
+        moreInterfaces = moreInterfaces
+      ),
+    clearPolicy = clearPolicy,
+    block = block
+  )

@@ -24,7 +24,6 @@ import hermit.test.Resets
 class ResettableMap<K, V> :
   MutableMap<K, V> by mutableMapOf(),
   Resets {
-
   override fun reset() {
     clear()
   }

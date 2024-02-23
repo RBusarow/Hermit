@@ -80,8 +80,9 @@ public inline fun <reified T : Any> ResetManager.resets(
  *
  * @see Class.newInstance
  */
-public class LazyResetDelegateNonDefaultConstructorException(problemClass: KClass<*>) :
-  LazyResetDelegateException(
+public class LazyResetDelegateNonDefaultConstructorException(
+  problemClass: KClass<*>
+) : LazyResetDelegateException(
     problemClass,
     "Classes without a default constructor cannot be used with a 'by resets' delegate."
   )
@@ -91,8 +92,9 @@ public class LazyResetDelegateNonDefaultConstructorException(problemClass: KClas
  *
  * @see Class.newInstance
  */
-public class LazyResetDelegateInterfaceException(problemClass: KClass<*>) :
-  LazyResetDelegateException(
+public class LazyResetDelegateInterfaceException(
+  problemClass: KClass<*>
+) : LazyResetDelegateException(
     problemClass,
     "Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated."
   )
@@ -102,8 +104,9 @@ public class LazyResetDelegateInterfaceException(problemClass: KClass<*>) :
  *
  * @see Class.newInstance
  */
-public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
-  LazyResetDelegateException(
+public class LazyResetDelegateAbstractException(
+  problemClass: KClass<*>
+) : LazyResetDelegateException(
     problemClass,
     "Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated."
   )
@@ -114,11 +117,13 @@ public class LazyResetDelegateAbstractException(problemClass: KClass<*>) :
  *
  * @see KClass.objectInstance
  */
-public class LazyResetDelegateObjectException(problemClass: KClass<*>) : LazyResetDelegateException(
-  problemClass,
-  "Objects may not be used with a 'by resets' delegate " +
-    "unless they implement the LazyReset interface."
-)
+public class LazyResetDelegateObjectException(
+  problemClass: KClass<*>
+) : LazyResetDelegateException(
+    problemClass,
+    "Objects may not be used with a 'by resets' delegate " +
+      "unless they implement the LazyReset interface."
+  )
 
 public open class LazyResetDelegateException(
   problemClass: KClass<*>,

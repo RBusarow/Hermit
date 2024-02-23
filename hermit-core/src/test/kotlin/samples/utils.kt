@@ -26,7 +26,6 @@ infix fun Any?.shouldPrint(expected: String) = toString() shouldBe expected
 infix fun List<Any?>.shouldPrint(expected: String) = joinToString("\n") shouldBe expected
 
 open class SampleTest {
-
   protected val output = mutableListOf<String>()
 
   @AfterEach

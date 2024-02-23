@@ -23,213 +23,219 @@ import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.checkAll
 import kotlin.properties.Delegates
 
-internal class LazyResetsDelegateTest : FreeSpec({
+internal class LazyResetsDelegateTest :
+  FreeSpec({
 
-  var resetManager: TestResetManager by Delegates.notNull()
+    var resetManager: TestResetManager by Delegates.notNull()
 
-  beforeTest {
-    resetManager = TestResetManager()
-  }
-
-  "types" - {
-
-    "should be LazyResets" - {
-
-      val subject = resetManager.resets { 33 }
-
-      subject.shouldBeInstanceOf<LazyResets<Int>>()
+    beforeTest {
+      resetManager = TestResetManager()
     }
 
-    "should be Lazy" - {
+    "types" - {
 
-      val subject = resetManager.resets { 33 }
+      "should be LazyResets" - {
 
-      subject.shouldBeInstanceOf<Lazy<Int>>()
-    }
+        val subject = resetManager.resets { 33 }
 
-    "should be Resets" - {
+        subject.shouldBeInstanceOf<LazyResets<Int>>()
+      }
 
-      val subject = resetManager.resets { 33 }
+      "should be Lazy" - {
 
-      subject.shouldBeInstanceOf<Resets>()
-    }
-  }
+        val subject = resetManager.resets { 33 }
 
-  "isInitialized()" - {
+        subject.shouldBeInstanceOf<Lazy<Int>>()
+      }
 
-    "should be false before `value` is called" - {
+      "should be Resets" - {
 
-      val subject = resetManager.resets { 33 }
+        val subject = resetManager.resets { 33 }
 
-      subject.isInitialized() shouldBe false
-    }
-
-    "should be true after `value` is called" - {
-
-      val subject = resetManager.resets { 33 }
-
-      subject.value
-
-      subject.isInitialized() shouldBe true
-    }
-
-    "should be false after reset" - {
-
-      val subject = resetManager.resets { 33 }
-
-      subject.value
-
-      subject.isInitialized() shouldBe true
-
-      subject.reset()
-
-      subject.isInitialized() shouldBe false
-    }
-  }
-
-  "value should be the value factory output" - {
-
-    checkAll<String> { str ->
-
-      val strLazy = resetManager.resets { str }
-
-      strLazy.value shouldBe str
-    }
-  }
-
-  "value factory should be re-invoked for each reset" - {
-
-    checkAll<String, String> { a, b ->
-
-      var hasReset = false
-
-      val initBlock = suspend { if (!hasReset) a else b }
-
-      val subject = LazyResets(resetManager, initBlock)
-
-      subject.value shouldBe a
-
-      hasReset = true
-      resetManager.resetAll()
-
-      subject.value shouldBe b
-    }
-  }
-
-  "registration with resetManager" - {
-
-    "should not be registered if not initialized" - {
-
-      val subject = resetManager.resets { 33 }
-
-      subject.isInitialized() shouldBe false
-
-      resetManager.delegates.shouldBeEmpty()
-    }
-
-    "should be registered after initialization" - {
-
-      val subject = resetManager.resets { 33 }
-
-      subject.value
-
-      resetManager.delegates shouldBe listOf(subject)
-    }
-  }
-
-  "value factory behavior" - {
-
-    "explicit factory declaration should execute normally" - {
-
-      checkAll<Int> { i ->
-        val subject = resetManager.resets { i }
-
-        subject.value shouldBe i
+        subject.shouldBeInstanceOf<Resets>()
       }
     }
 
-    "no-factory initialization" - {
+    "isInitialized()" - {
 
-      "happy path" - {
+      "should be false before `value` is called" - {
 
-        "classes with default constructors should work" - {
+        val subject = resetManager.resets { 33 }
 
-          val subject = resetManager.resets<DefaultConstructor>()
+        subject.isInitialized() shouldBe false
+      }
 
-          subject.value
-        }
+      "should be true after `value` is called" - {
 
-        "classes with default parameters for non-default constructors should work" - {
+        val subject = resetManager.resets { 33 }
 
-          val subject = resetManager.resets<ConstructorWithDefaultValues>()
+        subject.value
 
-          subject.value
-        }
+        subject.isInitialized() shouldBe true
+      }
 
-        "open classes with default constructors should work" - {
+      "should be false after reset" - {
 
-          val subject = resetManager.resets<OpenClass>()
+        val subject = resetManager.resets { 33 }
 
-          subject.value
-        }
+        subject.value
 
-        "objects which implement Resets should work" - {
+        subject.isInitialized() shouldBe true
 
-          val subject = resetManager.resets<ObjectWithResets>()
+        subject.reset()
 
-          subject.value
+        subject.isInitialized() shouldBe false
+      }
+    }
+
+    "value should be the value factory output" - {
+
+      checkAll<String> { str ->
+
+        val strLazy = resetManager.resets { str }
+
+        strLazy.value shouldBe str
+      }
+    }
+
+    "value factory should be re-invoked for each reset" - {
+
+      checkAll<String, String> { a, b ->
+
+        var hasReset = false
+
+        val initBlock = suspend { if (!hasReset) a else b }
+
+        val subject = LazyResets(resetManager, initBlock)
+
+        subject.value shouldBe a
+
+        hasReset = true
+        resetManager.resetAll()
+
+        subject.value shouldBe b
+      }
+    }
+
+    "registration with resetManager" - {
+
+      "should not be registered if not initialized" - {
+
+        val subject = resetManager.resets { 33 }
+
+        subject.isInitialized() shouldBe false
+
+        resetManager.delegates.shouldBeEmpty()
+      }
+
+      "should be registered after initialization" - {
+
+        val subject = resetManager.resets { 33 }
+
+        subject.value
+
+        resetManager.delegates shouldBe listOf(subject)
+      }
+    }
+
+    "value factory behavior" - {
+
+      "explicit factory declaration should execute normally" - {
+
+        checkAll<Int> { i ->
+          val subject = resetManager.resets { i }
+
+          subject.value shouldBe i
         }
       }
 
-      "sad path" - {
+      "no-factory initialization" - {
 
-        "normal objects should throw LazyResetDelegateObjectException" - {
+        "happy path" - {
 
-          val subject = resetManager.resets<ObjectWithoutResets>()
+          "classes with default constructors should work" - {
 
-          shouldThrow<LazyResetDelegateObjectException> {
+            val subject = resetManager.resets<DefaultConstructor>()
+
+            subject.value
+          }
+
+          "classes with default parameters for non-default constructors should work" - {
+
+            val subject = resetManager.resets<ConstructorWithDefaultValues>()
+
+            subject.value
+          }
+
+          "open classes with default constructors should work" - {
+
+            val subject = resetManager.resets<OpenClass>()
+
+            subject.value
+          }
+
+          "objects which implement Resets should work" - {
+
+            val subject = resetManager.resets<ObjectWithResets>()
+
             subject.value
           }
         }
 
-        "abstract classes should throw LazyResetDelegateObjectException" - {
+        "sad path" - {
 
-          val subject = resetManager.resets<AbstractClass>()
+          "normal objects should throw LazyResetDelegateObjectException" - {
 
-          shouldThrow<LazyResetDelegateAbstractException> {
-            subject.value
-          }
-        }
+            val subject = resetManager.resets<ObjectWithoutResets>()
 
-        "interfaces should throw LazyResetDelegateInterfaceException" - {
-
-          val subject = resetManager.resets<Interface>()
-
-          shouldThrow<LazyResetDelegateInterfaceException> {
-            subject.value
-          }
-        }
-
-        "classes without default constructor " +
-          "should throw LazyResetDelegateNonDefaultConstructorException" - {
-
-            val subject = resetManager.resets<NoDefaultConstructor>()
-
-            shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
+            shouldThrow<LazyResetDelegateObjectException> {
               subject.value
             }
           }
+
+          "abstract classes should throw LazyResetDelegateObjectException" - {
+
+            val subject = resetManager.resets<AbstractClass>()
+
+            shouldThrow<LazyResetDelegateAbstractException> {
+              subject.value
+            }
+          }
+
+          "interfaces should throw LazyResetDelegateInterfaceException" - {
+
+            val subject = resetManager.resets<Interface>()
+
+            shouldThrow<LazyResetDelegateInterfaceException> {
+              subject.value
+            }
+          }
+
+          "classes without default constructor " +
+            "should throw LazyResetDelegateNonDefaultConstructorException" - {
+
+              val subject = resetManager.resets<NoDefaultConstructor>()
+
+              shouldThrow<LazyResetDelegateNonDefaultConstructorException> {
+                subject.value
+              }
+            }
+        }
       }
     }
-  }
-})
+  })
 
 /*
 Should all work without factories
  */
 internal class DefaultConstructor
-internal class ConstructorWithDefaultValues(val name: String = "default")
+
+internal class ConstructorWithDefaultValues(
+  val name: String = "default"
+)
+
 internal open class OpenClass
+
 internal object ObjectWithResets : Resets {
   override fun reset() = Unit
 }
@@ -237,9 +243,13 @@ internal object ObjectWithResets : Resets {
 /*
 Should all require factories
  */
-internal class NoDefaultConstructor(val name: String)
+internal class NoDefaultConstructor(
+  val name: String
+)
+
 internal interface Interface
 
 @Suppress("UnnecessaryAbstractClass")
 internal abstract class AbstractClass
+
 internal object ObjectWithoutResets

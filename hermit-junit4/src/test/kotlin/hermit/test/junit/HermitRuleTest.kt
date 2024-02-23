@@ -25,7 +25,6 @@ import org.junit.runners.MethodSorters
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 internal class HermitRuleTest {
-
   @JvmField
   @Rule
   val defaultRule = HermitRule()
@@ -57,7 +56,6 @@ internal class HermitRuleTest {
   }
 
   companion object {
-
     var lastDefaultResetProperty: Long? = null
     var lastArgumentResetProperty: Long? = null
   }

@@ -61,8 +61,18 @@ tasks.withType<DetektCreateBaselineTask>().configureEach {
   this.jvmTarget = "1.8"
 }
 
-val detektLibraries = libs.detekt.rules.libraries.get()
-val detektId = libs.plugins.detekt.get().pluginId
+val detektLibraries =
+  libs
+    .detekt
+    .rules
+    .libraries
+    .get()
+val detektId =
+  libs
+    .plugins
+    .detekt
+    .get()
+    .pluginId
 
 tasks.register("detektReportMerge", ReportMergeTask::class.java) {
 
@@ -118,7 +128,9 @@ allprojects {
     target.tasks.register("detektAll", Detekt::class.java) {
       description = "runs the standard PSI Detekt as well as all type resolution tasks"
       dependsOn(
-        target.tasks.withType(Detekt::class.java)
+        target
+          .tasks
+          .withType(Detekt::class.java)
           .matching { it != this@register }
       )
     }
@@ -126,7 +138,8 @@ allprojects {
 }
 
 subprojects {
-  tasks.withType<KotlinCompile>()
+  tasks
+    .withType<KotlinCompile>()
     .configureEach {
 
       kotlinOptions {
@@ -155,16 +168,28 @@ fun isNonStable(version: String): Boolean {
   return isStable.not()
 }
 
-tasks.named(
-  "dependencyUpdates",
-  com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask::class.java
-).configure {
-  rejectVersionIf {
-    isNonStable(candidate.version) && !isNonStable(currentVersion)
+tasks
+  .named(
+    "dependencyUpdates",
+    com
+      .github
+      .benmanes
+      .gradle
+      .versions
+      .updates
+      .DependencyUpdatesTask::class.java
+  ).configure {
+    rejectVersionIf {
+      isNonStable(candidate.version) && !isNonStable(currentVersion)
+    }
   }
-}
 
-val ktlintVersion = libs.versions.ktlint.lib.get()
+val ktlintVersion =
+  libs
+    .versions
+    .ktlint
+    .lib
+    .get()
 val ktrules = libs.rickBusarow.ktrules.get()
 
 allprojects {

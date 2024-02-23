@@ -22,71 +22,76 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeInstanceOf
 
 @Suppress("MaxLineLength", "Unused")
-class ExceptionsTest : FreeSpec({
+class ExceptionsTest :
+  FreeSpec({
 
-  "types" - {
+    "types" - {
 
-    "should all be Exception" - {
+      "should all be Exception" - {
 
-      forAll(
-        row(object : LazyResetDelegateException(String::class, "") {}),
-        row(LazyResetDelegateNonDefaultConstructorException(String::class)),
-        row(LazyResetDelegateInterfaceException(String::class)),
-        row(LazyResetDelegateAbstractException(String::class)),
-        row(LazyResetDelegateObjectException(String::class))
-      ) { exception ->
+        forAll(
+          row(object : LazyResetDelegateException(String::class, "") {}),
+          row(LazyResetDelegateNonDefaultConstructorException(String::class)),
+          row(LazyResetDelegateInterfaceException(String::class)),
+          row(LazyResetDelegateAbstractException(String::class)),
+          row(LazyResetDelegateObjectException(String::class))
+        ) { exception ->
 
-        exception.shouldBeInstanceOf<Exception>()
+          exception.shouldBeInstanceOf<Exception>()
+        }
+      }
+
+      "should all be LazyResetDelegateException" - {
+
+        forAll(
+          row(LazyResetDelegateNonDefaultConstructorException(String::class)),
+          row(LazyResetDelegateInterfaceException(String::class)),
+          row(LazyResetDelegateAbstractException(String::class)),
+          row(LazyResetDelegateObjectException(String::class))
+        ) { exception ->
+
+          exception.shouldBeInstanceOf<LazyResetDelegateException>()
+        }
       }
     }
 
-    "should all be LazyResetDelegateException" - {
+    "non default constructor exception message" - {
 
-      forAll(
-        row(LazyResetDelegateNonDefaultConstructorException(String::class)),
-        row(LazyResetDelegateInterfaceException(String::class)),
-        row(LazyResetDelegateAbstractException(String::class)),
-        row(LazyResetDelegateObjectException(String::class))
-      ) { exception ->
+      LazyResetDelegateNonDefaultConstructorException(String::class).message shouldBe
+        """
 
-        exception.shouldBeInstanceOf<LazyResetDelegateException>()
-      }
+
+        error initializing <kotlin.String>. Classes without a default constructor cannot be used with a 'by resets' delegate.
+        """.trimIndent()
     }
-  }
 
-  "non default constructor exception message" - {
+    "interface exception message" - {
 
-    LazyResetDelegateNonDefaultConstructorException(String::class).message shouldBe """
-
-
-      error initializing <kotlin.String>. Classes without a default constructor cannot be used with a 'by resets' delegate.
-    """.trimIndent()
-  }
-
-  "interface exception message" - {
-
-    LazyResetDelegateInterfaceException(String::class).message shouldBe """
+      LazyResetDelegateInterfaceException(String::class).message shouldBe
+        """
 
 
-      error initializing <kotlin.String>. Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
-    """.trimIndent()
-  }
+        error initializing <kotlin.String>. Interfaces cannot be used with a 'by resets' delegate since they cannot be instantiated.
+        """.trimIndent()
+    }
 
-  "abstract class exception message" - {
+    "abstract class exception message" - {
 
-    LazyResetDelegateAbstractException(String::class).message shouldBe """
-
-
-      error initializing <kotlin.String>. Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated.
-    """.trimIndent()
-  }
-
-  "object without Resets implementation exception message" - {
-
-    LazyResetDelegateObjectException(String::class).message shouldBe """
+      LazyResetDelegateAbstractException(String::class).message shouldBe
+        """
 
 
-      error initializing <kotlin.String>. Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
-    """.trimIndent()
-  }
-})
+        error initializing <kotlin.String>. Abstract classes cannot be used with a 'by resets' delegate since they cannot be instantiated.
+        """.trimIndent()
+    }
+
+    "object without Resets implementation exception message" - {
+
+      LazyResetDelegateObjectException(String::class).message shouldBe
+        """
+
+
+        error initializing <kotlin.String>. Objects may not be used with a 'by resets' delegate unless they implement the LazyReset interface.
+        """.trimIndent()
+    }
+  })

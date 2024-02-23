@@ -22,110 +22,111 @@ import io.kotest.matchers.types.shouldBeInstanceOf
 import io.kotest.property.checkAll
 import kotlin.properties.Delegates
 
-internal class LazyResetsTest : FreeSpec({
+internal class LazyResetsTest :
+  FreeSpec({
 
-  var resetManager: TestResetManager by Delegates.notNull()
+    var resetManager: TestResetManager by Delegates.notNull()
 
-  beforeTest {
-    resetManager = TestResetManager()
-  }
-
-  "types" - {
-
-    "should be Lazy" - {
-
-      val subject = LazyResets(resetManager) { 33 }
-
-      subject.shouldBeInstanceOf<Lazy<Int>>()
+    beforeTest {
+      resetManager = TestResetManager()
     }
 
-    "should be Resets" - {
+    "types" - {
 
-      val subject = LazyResets(resetManager) { 33 }
+      "should be Lazy" - {
 
-      subject.shouldBeInstanceOf<Resets>()
-    }
-  }
+        val subject = LazyResets(resetManager) { 33 }
 
-  "isInitialized()" - {
+        subject.shouldBeInstanceOf<Lazy<Int>>()
+      }
 
-    "should be false before `value` is called" - {
+      "should be Resets" - {
 
-      val subject = LazyResets(resetManager) { 33 }
+        val subject = LazyResets(resetManager) { 33 }
 
-      subject.isInitialized() shouldBe false
-    }
-
-    "should be true after `value` is called" - {
-
-      val subject = LazyResets(resetManager) { 33 }
-
-      subject.value
-
-      subject.isInitialized() shouldBe true
+        subject.shouldBeInstanceOf<Resets>()
+      }
     }
 
-    "should be false after reset" - {
+    "isInitialized()" - {
 
-      val subject = LazyResets(resetManager) { 33 }
+      "should be false before `value` is called" - {
 
-      subject.value
+        val subject = LazyResets(resetManager) { 33 }
 
-      subject.isInitialized() shouldBe true
+        subject.isInitialized() shouldBe false
+      }
 
-      subject.reset()
+      "should be true after `value` is called" - {
 
-      subject.isInitialized() shouldBe false
-    }
-  }
+        val subject = LazyResets(resetManager) { 33 }
 
-  "value should be the value factory output" - {
+        subject.value
 
-    checkAll<String> { str ->
+        subject.isInitialized() shouldBe true
+      }
 
-      val strLazy = LazyResets(resetManager) { str }
+      "should be false after reset" - {
 
-      strLazy.value shouldBe str
-    }
-  }
+        val subject = LazyResets(resetManager) { 33 }
 
-  "value factory should be re-invoked for each reset" - {
+        subject.value
 
-    checkAll<String, String> { a, b ->
+        subject.isInitialized() shouldBe true
 
-      var hasReset = false
+        subject.reset()
 
-      val initBlock = suspend { if (!hasReset) a else b }
-
-      val subject = LazyResets(resetManager, initBlock)
-
-      subject.value shouldBe a
-
-      hasReset = true
-      resetManager.resetAll()
-
-      subject.value shouldBe b
-    }
-  }
-
-  "registration with resetManager" - {
-
-    "should not be registered if not initialized" - {
-
-      val subject = LazyResets(resetManager) { 33 }
-
-      subject.isInitialized() shouldBe false
-
-      resetManager.delegates.shouldBeEmpty()
+        subject.isInitialized() shouldBe false
+      }
     }
 
-    "should be registered after initialization" - {
+    "value should be the value factory output" - {
 
-      val subject = LazyResets(resetManager) { 33 }
+      checkAll<String> { str ->
 
-      subject.value
+        val strLazy = LazyResets(resetManager) { str }
 
-      resetManager.delegates shouldBe listOf(subject)
+        strLazy.value shouldBe str
+      }
     }
-  }
-})
+
+    "value factory should be re-invoked for each reset" - {
+
+      checkAll<String, String> { a, b ->
+
+        var hasReset = false
+
+        val initBlock = suspend { if (!hasReset) a else b }
+
+        val subject = LazyResets(resetManager, initBlock)
+
+        subject.value shouldBe a
+
+        hasReset = true
+        resetManager.resetAll()
+
+        subject.value shouldBe b
+      }
+    }
+
+    "registration with resetManager" - {
+
+      "should not be registered if not initialized" - {
+
+        val subject = LazyResets(resetManager) { 33 }
+
+        subject.isInitialized() shouldBe false
+
+        resetManager.delegates.shouldBeEmpty()
+      }
+
+      "should be registered after initialization" - {
+
+        val subject = LazyResets(resetManager) { 33 }
+
+        subject.value
+
+        resetManager.delegates shouldBe listOf(subject)
+      }
+    }
+  })

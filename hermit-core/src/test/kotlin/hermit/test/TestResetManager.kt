@@ -17,7 +17,6 @@ package hermit.test
 
 /** Same as the normal [ResetManager] factory instance except that it exposes its delegates */
 internal class TestResetManager : ResetManager {
-
   val delegates = mutableListOf<Resets>()
 
   override fun register(delegate: Resets) {
@@ -26,8 +25,9 @@ internal class TestResetManager : ResetManager {
     }
   }
 
-  override fun resetAll() = synchronized(delegates) {
-    delegates.forEach { it.reset() }
-    delegates.clear()
-  }
+  override fun resetAll() =
+    synchronized(delegates) {
+      delegates.forEach { it.reset() }
+      delegates.clear()
+    }
 }

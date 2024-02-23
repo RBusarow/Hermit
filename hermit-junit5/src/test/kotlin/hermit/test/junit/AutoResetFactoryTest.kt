@@ -23,19 +23,38 @@ import io.kotest.core.spec.style.FreeSpec
 import io.kotest.core.spec.style.freeSpec
 import io.kotest.matchers.shouldBe
 
-internal class AutoResetFactoryTest : FreeSpec({
+internal class AutoResetFactoryTest :
+  FreeSpec({
 
-  include(managerTests(Hermit()))
-  include(managerTests(AutoReset()))
-  include(managerTests(object : HermitJUnit5() {}))
-}) {
+    include(managerTests(Hermit()))
+    include(managerTests(AutoReset()))
+    include(managerTests(object : HermitJUnit5() {}))
+  }) {
   override fun isolationMode(): IsolationMode? = IsolationMode.InstancePerLeaf
 }
 
-private inline fun <reified T : ResetManager> managerTests(manager: T) = freeSpec {
-  manager::class.toString() - {
-    "resetAll" - {
-      "registered delegates should  be reset" - {
+private inline fun <reified T : ResetManager> managerTests(manager: T) =
+  freeSpec {
+    manager::class.toString() - {
+      "resetAll" - {
+        "registered delegates should  be reset" - {
+          val a = TestResets()
+          val b = TestResets()
+
+          manager.register(a)
+          manager.register(b)
+
+          a.numResets shouldBe 0
+          b.numResets shouldBe 0
+
+          manager.resetAll()
+
+          a.numResets shouldBe 1
+          b.numResets shouldBe 1
+        }
+      }
+
+      "delegates should only be reset once unless re-registered" - {
         val a = TestResets()
         val b = TestResets()
 
@@ -46,33 +65,15 @@ private inline fun <reified T : ResetManager> managerTests(manager: T) = freeSpe
         b.numResets shouldBe 0
 
         manager.resetAll()
+        manager.resetAll()
 
         a.numResets shouldBe 1
         b.numResets shouldBe 1
       }
     }
-
-    "delegates should only be reset once unless re-registered" - {
-      val a = TestResets()
-      val b = TestResets()
-
-      manager.register(a)
-      manager.register(b)
-
-      a.numResets shouldBe 0
-      b.numResets shouldBe 0
-
-      manager.resetAll()
-      manager.resetAll()
-
-      a.numResets shouldBe 1
-      b.numResets shouldBe 1
-    }
   }
-}
 
 internal class TestResets : Resets {
-
   var numResets = 0
 
   override fun reset() {

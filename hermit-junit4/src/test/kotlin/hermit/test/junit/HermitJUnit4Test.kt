@@ -25,7 +25,6 @@ import org.junit.runners.MethodSorters
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class HermitJUnit4Test : HermitJUnit4(HermitJUnit4Test) {
-
   companion object : Hermit() {
     var resetCount = 0
     val subject by resets { TestSubject() }

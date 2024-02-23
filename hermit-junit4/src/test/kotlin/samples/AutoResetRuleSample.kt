@@ -22,7 +22,6 @@ import hermit.test.resets
 import io.kotest.matchers.shouldBe
 
 class AutoResetRuleSample {
-
   @JvmField
   @Rule
   val rule = HermitRule()
@@ -46,4 +45,5 @@ class AutoResetRuleSample {
 class SomeProperty
 
 annotation class Test
+
 annotation class Rule
